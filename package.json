@@ -10,8 +10,9 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "generate:data": "tsx scripts/generate-dataset.ts",
+    "analyze:normalizer": "tsx scripts/analyze-normalizer.ts",
     "eval": "tsx evals/runner.ts",
-    "test": "node --test --experimental-strip-types"
+    "test": "node --import tsx --test src"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.65.0",

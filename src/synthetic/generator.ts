@@ -250,6 +250,16 @@ export interface GenerateOptions {
   readonly incomeScale?: number;
 }
 
+function weightedPick(mix: readonly (readonly [CategoryId, number])[], rng: Rng): CategoryId {
+  const total = mix.reduce((s, [, w]) => s + w, 0);
+  let r = rng.float(0, total);
+  for (const [id, w] of mix) {
+    r -= w;
+    if (r <= 0) return id;
+  }
+  return mix[mix.length - 1]![0];
+}
+
 export function generateTransactions(opts: GenerateOptions): SyntheticTransaction[] {
   const rng = new Rng(opts.seed);
   const scale = opts.incomeScale ?? 1;
@@ -275,7 +285,12 @@ export function generateTransactions(opts: GenerateOptions): SyntheticTransactio
             ? rng.normal((min + max) / 2, (max - min) / 5)
             : rng.skewed(min, max);
       }
-      amount *= seasonalMultiplier(day, merchant.category) * scale;
+      // Multi-department merchants draw a category per basket. The descriptor
+      // carries no signal about which one, so this is the irreducible ambiguity
+      // the pipeline's accuracy ceiling is made of.
+      const category = merchant.categoryMix ? weightedPick(merchant.categoryMix, rng) : merchant.category;
+
+      amount *= seasonalMultiplier(day, category) * scale;
       amount = Math.max(min * 0.6, Math.min(max * 1.8, amount));
 
       const signed = direction === 'inflow' ? amount : -amount;
@@ -288,9 +303,9 @@ export function generateTransactions(opts: GenerateOptions): SyntheticTransactio
         rawDescriptor: descriptor,
         accountId: routeAccount(merchant, rng),
         label: {
-          category: merchant.category,
+          category,
           merchant: merchant.name,
-          hard: merchant.hard ?? false,
+          hard: merchant.hard ?? (merchant.categoryMix?.length ?? 0) > 1,
         },
       });
     }

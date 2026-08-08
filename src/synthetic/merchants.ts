@@ -25,7 +25,23 @@ export type Cadence =
 export interface MerchantDef {
   /** Canonical, human-facing name. Also the target for merchant normalization evals. */
   readonly name: string;
+  /** Modal category. Used directly unless `categoryMix` is present. */
   readonly category: CategoryId;
+  /**
+   * Weighted category distribution for merchants that sell across departments.
+   *
+   * This is what makes the task genuinely hard. An Amazon order is household
+   * supplies, electronics, or pet food depending on the basket, and the descriptor
+   * says none of that. Without a mix, every merchant maps to exactly one category,
+   * a memory lookup is correct by construction, and the eval reports 100% precision
+   * for a system that has learned nothing — which is exactly what the first version
+   * of this fixture did.
+   *
+   * The consequence is a real accuracy ceiling below 100%: the share of spend that
+   * cannot be resolved from a descriptor alone. That ceiling is the argument for
+   * line-item receipt ingestion in Phase 5.
+   */
+  readonly categoryMix?: readonly (readonly [CategoryId, number])[];
   readonly descriptors: readonly string[];
   /** Amount range in dollars. Sign is applied by the generator from category direction. */
   readonly amount: readonly [min: number, max: number];
@@ -70,7 +86,7 @@ export const MERCHANTS: readonly MerchantDef[] = [
   { name: 'Whole Foods Market', category: 'food.groceries', descriptors: ['WHOLEFDS {city} #{n5}', 'WHOLE FOODS MARKET {n4}', 'AMZN WHOLE FOODS {city}'], amount: [24, 210], cadence: { kind: 'weekly', timesPerWeek: 0.75 } },
   { name: 'Trader Joe\'s', category: 'food.groceries', descriptors: ['TRADER JOE\'S #{n3} QPS', 'TRADER JOES {n3}', 'TJ\'S {city} {st}'], amount: [18, 145], cadence: { kind: 'weekly', timesPerWeek: 0.6 } },
   { name: 'Safeway', category: 'food.groceries', descriptors: ['SAFEWAY #{n4}', 'SAFEWAY STORE {n4} {city}', 'POS DEBIT SAFEWAY {n4}'], amount: [15, 175], cadence: { kind: 'weekly', timesPerWeek: 0.5 } },
-  { name: 'Costco Wholesale', category: 'food.groceries', descriptors: ['COSTCO WHSE #{n4}', 'COSTCO WHOLESALE {city}'], amount: [85, 420], cadence: { kind: 'sporadic', timesPerYear: 12 }, hard: true },
+  { name: 'Costco Wholesale', category: 'food.groceries', categoryMix: [['food.groceries', 0.62], ['shopping.household', 0.22], ['transport.fuel', 0.10], ['shopping.electronics', 0.06]], descriptors: ['COSTCO WHSE #{n4}', 'COSTCO WHOLESALE {city}'], amount: [85, 420], cadence: { kind: 'sporadic', timesPerYear: 12 }, hard: true },
   { name: 'Instacart', category: 'food.delivery', descriptors: ['INSTACART*{ref}', 'INSTACART SAN FRANCISCO', 'IC* INSTACART'], amount: [45, 190], cadence: { kind: 'sporadic', timesPerYear: 10 }, hard: true },
 
   // ── Restaurants / coffee / bars ───────────────────────────────────────────
@@ -100,22 +116,22 @@ export const MERCHANTS: readonly MerchantDef[] = [
   { name: 'CA DMV', category: 'transport.maintenance', descriptors: ['DMV RENEWAL FEE {st}', 'CA DEPT MOTOR VEHICLES'], amount: [95, 340], cadence: { kind: 'sporadic', timesPerYear: 1 }, hard: true },
 
   // ── Shopping ──────────────────────────────────────────────────────────────
-  { name: 'Amazon', category: 'shopping.general', descriptors: ['AMZN Mktp US*{ref}', 'AMAZON.COM*{ref} AMZN.COM/BILL', 'Amazon.com*{ref}', 'AMZN Mktp US {ref}'], amount: [8, 240], cadence: { kind: 'weekly', timesPerWeek: 1.0 }, hard: true },
+  { name: 'Amazon', category: 'shopping.general', categoryMix: [['shopping.general', 0.42], ['shopping.household', 0.22], ['shopping.electronics', 0.14], ['shopping.hobbies', 0.10], ['personal.pets', 0.06], ['health.pharmacy', 0.06]], descriptors: ['AMZN Mktp US*{ref}', 'AMAZON.COM*{ref} AMZN.COM/BILL', 'Amazon.com*{ref}', 'AMZN Mktp US {ref}'], amount: [8, 240], cadence: { kind: 'weekly', timesPerWeek: 1.0 }, hard: true },
   { name: 'Grove Collaborative', category: 'shopping.household', descriptors: ['GROVE COLLABORATIVE', 'GROVE.CO {n5}'], amount: [28, 95], cadence: { kind: 'monthly', dayOfMonth: 13, jitterDays: 5 } },
-  { name: 'Target', category: 'shopping.general', descriptors: ['TARGET {n8}', 'TARGET.COM * {ref}', 'TARGET T-{n4} {city}'], amount: [18, 195], cadence: { kind: 'sporadic', timesPerYear: 16 }, hard: true },
+  { name: 'Target', category: 'shopping.general', categoryMix: [['shopping.general', 0.40], ['shopping.household', 0.30], ['food.groceries', 0.20], ['shopping.clothing', 0.10]], descriptors: ['TARGET {n8}', 'TARGET.COM * {ref}', 'TARGET T-{n4} {city}'], amount: [18, 195], cadence: { kind: 'sporadic', timesPerYear: 16 }, hard: true },
   { name: 'Uniqlo', category: 'shopping.clothing', descriptors: ['UNIQLO USA {n4}', 'UNIQLO {city} {st}'], amount: [35, 220], cadence: { kind: 'sporadic', timesPerYear: 7 } },
   { name: 'Nordstrom', category: 'shopping.clothing', descriptors: ['NORDSTROM #{n4}', 'NORDSTROM.COM {ref}'], amount: [60, 480], cadence: { kind: 'sporadic', timesPerYear: 5 } },
   { name: 'Best Buy', category: 'shopping.electronics', descriptors: ['BEST BUY {n5}', 'BESTBUYCOM{n12}'], amount: [40, 1200], cadence: { kind: 'sporadic', timesPerYear: 2 } },
-  { name: 'Apple Store', category: 'shopping.electronics', descriptors: ['APPLE STORE #R{n3}', 'APPLE.COM/US {n4}'], amount: [99, 2400], cadence: { kind: 'sporadic', timesPerYear: 1 }, hard: true },
+  { name: 'Apple Store', category: 'shopping.electronics', categoryMix: [['shopping.electronics', 0.75], ['personal.software', 0.25]], descriptors: ['APPLE STORE #R{n3}', 'APPLE.COM/US {n4}'], amount: [99, 2400], cadence: { kind: 'sporadic', timesPerYear: 1 }, hard: true },
   { name: 'IKEA', category: 'housing.furnishing', descriptors: ['IKEA {city}', 'IKEA.COM {n5}'], amount: [45, 890], cadence: { kind: 'sporadic', timesPerYear: 2 } },
-  { name: 'Home Depot', category: 'housing.maintenance', descriptors: ['THE HOME DEPOT {n4}', 'HOMEDEPOT.COM {ref}'], amount: [22, 380], cadence: { kind: 'sporadic', timesPerYear: 11 }, hard: true },
+  { name: 'Home Depot', category: 'housing.maintenance', categoryMix: [['housing.maintenance', 0.68], ['shopping.hobbies', 0.18], ['housing.furnishing', 0.14]], descriptors: ['THE HOME DEPOT {n4}', 'HOMEDEPOT.COM {ref}'], amount: [22, 380], cadence: { kind: 'sporadic', timesPerYear: 11 }, hard: true },
   { name: 'REI', category: 'shopping.hobbies', descriptors: ['REI #{n3} {city}', 'REI.COM {ref}'], amount: [45, 620], cadence: { kind: 'sporadic', timesPerYear: 5 } },
   { name: 'Etsy', category: 'shopping.gifts', descriptors: ['ETSY.COM - {ref}', 'ETSY INC {n5}'], amount: [18, 145], cadence: { kind: 'sporadic', timesPerYear: 9 }, hard: true },
 
   // ── Health ────────────────────────────────────────────────────────────────
   { name: 'One Medical', category: 'health.medical', descriptors: ['ONE MEDICAL GROUP', '1LIFE HEALTHCARE {n4}'], amount: [35, 320], cadence: { kind: 'sporadic', timesPerYear: 5 } },
-  { name: 'CVS Pharmacy', category: 'health.pharmacy', descriptors: ['CVS/PHARMACY #{n5}', 'CVS {n5} {city} {st}'], amount: [9, 145], cadence: { kind: 'sporadic', timesPerYear: 20 }, hard: true },
-  { name: 'Walgreens', category: 'health.pharmacy', descriptors: ['WALGREENS #{n5}', 'WALGREENS STORE {n5}'], amount: [7, 98], cadence: { kind: 'sporadic', timesPerYear: 12 }, hard: true },
+  { name: 'CVS Pharmacy', category: 'health.pharmacy', categoryMix: [['health.pharmacy', 0.55], ['shopping.household', 0.28], ['personal.care', 0.17]], descriptors: ['CVS/PHARMACY #{n5}', 'CVS {n5} {city} {st}'], amount: [9, 145], cadence: { kind: 'sporadic', timesPerYear: 20 }, hard: true },
+  { name: 'Walgreens', category: 'health.pharmacy', categoryMix: [['health.pharmacy', 0.58], ['shopping.household', 0.26], ['personal.care', 0.16]], descriptors: ['WALGREENS #{n5}', 'WALGREENS STORE {n5}'], amount: [7, 98], cadence: { kind: 'sporadic', timesPerYear: 12 }, hard: true },
   { name: 'Bright Smile Dental', category: 'health.dental_vision', descriptors: ['BRIGHT SMILE DENTAL {city}', 'SQ *BRIGHT SMILE DENTAL'], amount: [85, 1400], cadence: { kind: 'sporadic', timesPerYear: 2 } },
   { name: 'Warby Parker', category: 'health.dental_vision', descriptors: ['WARBY PARKER {n4}', 'WARBYPARKER.COM'], amount: [95, 395], cadence: { kind: 'sporadic', timesPerYear: 1 }, hard: true },
   { name: 'Blue Shield of California', category: 'health.insurance', descriptors: ['BLUE SHIELD CA PREMIUM', 'BSCA HEALTH PLAN {n8}', 'ACH DEBIT BLUE SHIELD OF CA'], amount: [242, 318], cadence: { kind: 'monthly', dayOfMonth: 4 }, fixedAmount: true },
