@@ -8,6 +8,11 @@
  *               confident wrong answer, and it is invisible in aggregate accuracy.
  *
  *   npm run analyze:normalizer
+ *
+ * The "TIER 1 PROJECTION" below is an ungated upper bound, not the memory tier's
+ * real behaviour: it answers with the plurality label whenever the key is known,
+ * however split the evidence. That is the number to beat, and the gap between it
+ * and `npm run analyze:memory` is exactly what abstention buys.
  */
 
 import { readFileSync } from 'node:fs';

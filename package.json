@@ -11,6 +11,7 @@
     "typecheck": "tsc --noEmit",
     "generate:data": "tsx scripts/generate-dataset.ts",
     "analyze:normalizer": "tsx scripts/analyze-normalizer.ts",
+    "analyze:memory": "tsx scripts/analyze-memory.ts",
     "eval": "tsx evals/runner.ts",
     "test": "tsx scripts/test.ts"
   },

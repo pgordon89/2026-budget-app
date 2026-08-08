@@ -20,6 +20,9 @@ data/private/
 # Eval run output (regenerable; only the committed baseline is tracked)
 evals/runs/
 
+# Per-machine agent settings. Local tool permissions, not project config.
+.claude/settings.local.json
+
 .DS_Store
 Thumbs.db
 *.log
