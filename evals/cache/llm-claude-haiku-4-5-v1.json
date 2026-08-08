@@ -1,0 +1,3460 @@
+{
+ "1LIFE HEALTHCARE 3708": {
+  "status": "ok",
+  "category": "health.insurance",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2922,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2617
+ },
+ "1LIFE HEALTHCARE 7934": {
+  "status": "ok",
+  "category": "health.insurance",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2922,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2762
+ },
+ "1LIFE HEALTHCARE 8269": {
+  "status": "ok",
+  "category": "health.insurance",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2922,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2979
+ },
+ "24HRFIT*BERKELEY CA": {
+  "status": "ok",
+  "category": "health.fitness",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2915,
+   "outputTokens": 104,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3424
+ },
+ "24HRFIT*BERKELEY OR": {
+  "status": "ok",
+  "category": "health.fitness",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2915,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2526
+ },
+ "24HRFIT*SANFRAN CA  SAN MATEO CA": {
+  "status": "ok",
+  "category": "health.fitness",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2932,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2550
+ },
+ "24HRFIT*SANFRAN NV": {
+  "status": "ok",
+  "category": "health.fitness",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2918,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1381
+ },
+ "ACH DEBIT BLUE SHIEL": {
+  "status": "ok",
+  "category": "health.insurance",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2916,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1431
+ },
+ "AGA SERVICE COMPANY": {
+  "status": "ok",
+  "category": "housing.maintenance",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2909,
+   "outputTokens": 84,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1573
+ },
+ "AMAZON.COM REFUND 9MPRR13W": {
+  "status": "ok",
+  "category": "income.refund",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2939,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1582
+ },
+ "AMAZON.COM REFUND 9QBTPVR": {
+  "status": "ok",
+  "category": "income.refund",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2939,
+   "outputTokens": 84,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 4113
+ },
+ "AMAZON.COM REFUND X8NLNH45  SANFRAN CA": {
+  "status": "ok",
+  "category": "income.refund",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2943,
+   "outputTokens": 87,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1312
+ },
+ "AMAZON.COM*0F2RHW AMZN.COM/BILL": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.55,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2961,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1245
+ },
+ "AMAZON.COM*28Z20P8CV AMZN.COM/BILL": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.55,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2961,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2860
+ },
+ "AMAZON.COM*2VW8JE1Y AMZN.COM/BILL": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.7,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2981,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2864
+ },
+ "AMAZON.COM*3C7JN4 AMZN.COM/BILL": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.6,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2962,
+   "outputTokens": 76,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1488
+ },
+ "AMAZON.COM*3KAW50FB9X AMZN.COM/BILL": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.68,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2981,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2006
+ },
+ "AMAZON.COM*84S5GH1W AMZN.COM/BILL  ALAMEDA NV": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2968,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2379
+ },
+ "AMAZON.COM*A3FHERC2D9D AMZN.COM/BILL": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2984,
+   "outputTokens": 76,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1610
+ },
+ "AMAZON.COM*CDUC3BEFG AMZN.  EMERYVLE CA": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2953,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2534
+ },
+ "AMAZON.COM*CHMYBBCY8 AMZN.COM/BILL": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.58,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2963,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1336
+ },
+ "AMAZON.COM*CLWTFBX AMZN.COM/BILL": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.72,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2976,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1424
+ },
+ "AMAZON.COM*CQ03MQ3ET38 AMZN.COM/BILL": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2982,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1206
+ },
+ "AMAZON.COM*D3ZYWCU5CY": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2937,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2520
+ },
+ "AMAZON.COM*EJQUNT57U AMZN.COM/BILL": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2976,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3061
+ },
+ "AMAZON.COM*JPC6BRUAYXQ AMZN.COM/BILL": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2980,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1787
+ },
+ "AMAZON.COM*MXWY2V8RFK AMZN.COM/BILL": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.58,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2964,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2675
+ },
+ "AMAZON.COM*UFMHN8EUT74 AMZN.COM/BILL": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2984,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1609
+ },
+ "AMAZON.COM*ZLGD8CDHFJ4 AMZN.COM/BILL": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2967,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 4684
+ },
+ "AMC BERKELEY 25  ALAMEDA CA": {
+  "status": "ok",
+  "category": "entertainment.events",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2913,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1275
+ },
+ "AMZN Mktp US 03Q28S9T56": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.7,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2950,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2560
+ },
+ "AMZN Mktp US 1ZPYH7B4G0L": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.68,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2954,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2570
+ },
+ "AMZN Mktp US 4PDBRWQ9": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2950,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2531
+ },
+ "AMZN Mktp US 6HUU0NA": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2951,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3091
+ },
+ "AMZN Mktp US 82YWRNQ19L4": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.6,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2952,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2608
+ },
+ "AMZN Mktp US AYSQVRT": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.72,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2949,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3654
+ },
+ "AMZN Mktp US CCQQ2HDH": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.6,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2949,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2531
+ },
+ "AMZN Mktp US JWTFA984FM": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2947,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2794
+ },
+ "AMZN Mktp US L53SVA3F": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2949,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1230
+ },
+ "AMZN Mktp US PSF3KKH59TV": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.6,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2950,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1265
+ },
+ "AMZN Mktp US RRCZJKT6G0": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2951,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2662
+ },
+ "AMZN Mktp US TE7JAZS": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2947,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1288
+ },
+ "AMZN Mktp US VY1R6E": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2949,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2518
+ },
+ "AMZN Mktp US W1BZGJY3LK3": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.55,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2952,
+   "outputTokens": 76,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1466
+ },
+ "AMZN Mktp US Z10JMXJK5W": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.6,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2952,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2759
+ },
+ "AMZN Mktp US ZFNHN9Z": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.55,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2949,
+   "outputTokens": 76,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1395
+ },
+ "AMZN Mktp US*22U5GRX0": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2951,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2748
+ },
+ "AMZN Mktp US*3A3SCJJY": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2953,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2622
+ },
+ "AMZN Mktp US*6VZ8CLUCM": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2955,
+   "outputTokens": 101,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2452
+ },
+ "AMZN Mktp US*81Y73RK7": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.55,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2949,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3285
+ },
+ "AMZN Mktp US*83V8NSSN4": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.55,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2951,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1187
+ },
+ "AMZN Mktp US*8HW6TH": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.7,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2949,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2985
+ },
+ "AMZN Mktp US*AB1SGEL90": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2950,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1250
+ },
+ "AMZN Mktp US*AWGBK7D": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2950,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2000
+ },
+ "AMZN Mktp US*B3M3Q0L3R": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2952,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2842
+ },
+ "AMZN Mktp US*DKKY73645": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.7,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2948,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1354
+ },
+ "AMZN Mktp US*G1UT4J": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2950,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2484
+ },
+ "AMZN Mktp US*HTU8BLP REFUND": {
+  "status": "ok",
+  "category": "income.refund",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2960,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2577
+ },
+ "AMZN Mktp US*JR5K1UA11": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2950,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2893
+ },
+ "AMZN Mktp US*KHHQHX": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2950,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1287
+ },
+ "AMZN Mktp US*LA2LL27J": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.68,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2950,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3631
+ },
+ "AMZN Mktp US*LU4H266Y1": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.7,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2952,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1169
+ },
+ "AMZN Mktp US*N1U3N4": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.72,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2948,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2963
+ },
+ "AMZN Mktp US*Q4NQ7YYU": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.72,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2954,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3297
+ },
+ "AMZN Mktp US*T3XZB2E4Q14": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2958,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3286
+ },
+ "AMZN Mktp US*U00F9QRM": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.72,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2948,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2529
+ },
+ "AMZN Mktp US*U7NM7AT": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2952,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3317
+ },
+ "AMZN Mktp US*VJGBY9 REFUND": {
+  "status": "ok",
+  "category": "income.refund",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2956,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2095
+ },
+ "AMZN Mktp US*VQXQJY0N5  SF CA": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.55,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2956,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1347
+ },
+ "AMZN Mktp US*YCGHC3GQ8": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.6,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2952,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2760
+ },
+ "AMZN Mktp US*ZDEMPRQ REFUND": {
+  "status": "ok",
+  "category": "income.refund",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2960,
+   "outputTokens": 86,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2586
+ },
+ "APL*ITUNES.COM/BILL": {
+  "status": "ok",
+  "category": "entertainment.streaming",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2946,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2955
+ },
+ "Amazon.com*38GNX9SA094": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2932,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3228
+ },
+ "Amazon.com*58VDARF": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2929,
+   "outputTokens": 102,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1431
+ },
+ "Amazon.com*J5U8WC  OAKLAND CA": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2934,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1337
+ },
+ "Amazon.com*RZYVDMD": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2928,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2684
+ },
+ "BART-OAKLAND": {
+  "status": "ok",
+  "category": "transport.transit",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2919,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1509
+ },
+ "BART-SF": {
+  "status": "ok",
+  "category": "transport.transit",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2912,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1248
+ },
+ "BEST BUY 73205": {
+  "status": "ok",
+  "category": "shopping.electronics",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2922,
+   "outputTokens": 102,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1406
+ },
+ "CA DEPT MOTOR VEHICLES": {
+  "status": "ok",
+  "category": "transport.maintenance",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2930,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2826
+ },
+ "CHEWY INC 2N03DNUUA9F": {
+  "status": "ok",
+  "category": "personal.pets",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2936,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2687
+ },
+ "CHEWY INC 9N8G4TTAQ3B": {
+  "status": "ok",
+  "category": "personal.pets",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2938,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1358
+ },
+ "COSTCO WHOLESALE BERKELEY": {
+  "status": "ok",
+  "category": "food.groceries",
+  "confidence": 0.7,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2917,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2739
+ },
+ "COSTCO WHOLESALE DALY CITY": {
+  "status": "ok",
+  "category": "food.groceries",
+  "confidence": 0.72,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2920,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3192
+ },
+ "COSTCO WHOLESALE OAKLAND": {
+  "status": "ok",
+  "category": "food.groceries",
+  "confidence": 0.72,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2917,
+   "outputTokens": 84,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3243
+ },
+ "COSTCO WHOLESALE SANFRAN": {
+  "status": "ok",
+  "category": "food.groceries",
+  "confidence": 0.72,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2919,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1624
+ },
+ "COSTCO WHOLESALE SF": {
+  "status": "ok",
+  "category": "food.groceries",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2916,
+   "outputTokens": 85,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1462
+ },
+ "COURSERA.ORG KQNAZCD8JL": {
+  "status": "ok",
+  "category": "personal.education",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2963,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1274
+ },
+ "COURSERA.ORG Y1A7ZN": {
+  "status": "ok",
+  "category": "personal.education",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2952,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3929
+ },
+ "COURTYARD BY MARRIOTT": {
+  "status": "ok",
+  "category": "travel.lodging",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2923,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2494
+ },
+ "COURTYARD BY MARRIOTT 7282": {
+  "status": "ok",
+  "category": "travel.lodging",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2926,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1431
+ },
+ "COURTYARD BY MARRIOTT 8798": {
+  "status": "ok",
+  "category": "travel.lodging",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2926,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1484
+ },
+ "CVS 03456 SANFRAN CA": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.72,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2877,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1740
+ },
+ "CVS 04181 OAKLAND CA": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2875,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2099
+ },
+ "CVS 23413 SANFRAN OR": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2877,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1458
+ },
+ "CVS 33875 ALAMEDA CA": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2876,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3911
+ },
+ "CVS 42146 BERKELEY CA  EMERYVLE OR": {
+  "status": "ok",
+  "category": "shopping.household",
+  "confidence": 0.72,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2918,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1386
+ },
+ "CVS 56310 SF OR": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.72,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2874,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1639
+ },
+ "CVS 57515 EMERYVLE CA": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2877,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2894
+ },
+ "CVS 60723 SAN MATEO CA": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2878,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2784
+ },
+ "CVS 63990 BERKELEY CA": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.72,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2875,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2493
+ },
+ "CVS 69251 SAN MATEO CA": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2878,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2016
+ },
+ "CVS 72472 BERKELEY OR": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2875,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1587
+ },
+ "CVS 76987 EMERYVLE CA": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2877,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1266
+ },
+ "CVS 99571 ALAMEDA OR": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2876,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1285
+ },
+ "CVS/PHARMACY #02010": {
+  "status": "ok",
+  "category": "shopping.household",
+  "confidence": 0.7,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2918,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2687
+ },
+ "CVS/PHARMACY #05704": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2918,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2712
+ },
+ "CVS/PHARMACY #10092": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2918,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1268
+ },
+ "CVS/PHARMACY #12128": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2918,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1491
+ },
+ "CVS/PHARMACY #27540": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2918,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1926
+ },
+ "CVS/PHARMACY #50902": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2918,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1276
+ },
+ "CVS/PHARMACY #55178": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2918,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1215
+ },
+ "CVS/PHARMACY #62234": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2918,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2785
+ },
+ "CVS/PHARMACY #66717": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2918,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1361
+ },
+ "DMV RENEWAL FEE CA": {
+  "status": "ok",
+  "category": "transport.maintenance",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2930,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3391
+ },
+ "DOORDASH*2D3E258LPL": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2930,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 5141
+ },
+ "DOORDASH*3BS4ANKRA05": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2928,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1479
+ },
+ "DOORDASH*EAM3N4VPAE9": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2933,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2488
+ },
+ "DOORDASH*TPNTFKE": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2925,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3212
+ },
+ "DOORDASH*VF7RL8XU": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2929,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1269
+ },
+ "DOORDASH*VWG3AU": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2923,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1123
+ },
+ "ETSY.COM - QRKEG4G9Z": {
+  "status": "ok",
+  "category": "shopping.gifts",
+  "confidence": 0.72,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2934,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3132
+ },
+ "ETSY.COM - ZV3ETUW3MWH": {
+  "status": "ok",
+  "category": "shopping.gifts",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2939,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2877
+ },
+ "FRANCHISE TAX BD CASTTAXRFD": {
+  "status": "ok",
+  "category": "financial.taxes",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2929,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1619
+ },
+ "GITHUB.COM 01DE2SF3UPH": {
+  "status": "ok",
+  "category": "personal.software",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2931,
+   "outputTokens": 76,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2927
+ },
+ "GITHUB.COM A9RFNYBJJT": {
+  "status": "ok",
+  "category": "personal.software",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2926,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1399
+ },
+ "GITHUB.COM E18C3AZQ7CM": {
+  "status": "ok",
+  "category": "personal.software",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2928,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1304
+ },
+ "HERTZ ALAMEDA APO": {
+  "status": "ok",
+  "category": "travel.rental_car",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2927,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2986
+ },
+ "HERTZ ALAMEDA APO  ALAMEDA NV": {
+  "status": "ok",
+  "category": "travel.rental_car",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2933,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3209
+ },
+ "HERTZ BERKELEY APO": {
+  "status": "ok",
+  "category": "travel.rental_car",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2921,
+   "outputTokens": 88,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3133
+ },
+ "HERTZ SAN MATEO APO": {
+  "status": "ok",
+  "category": "travel.rental_car",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2933,
+   "outputTokens": 102,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3582
+ },
+ "HERTZ SANFRAN APO": {
+  "status": "ok",
+  "category": "travel.rental_car",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2930,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1234
+ },
+ "HOMEDEPOT.COM 1YKMNKZY": {
+  "status": "ok",
+  "category": "housing.maintenance",
+  "confidence": 0.72,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2954,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1401
+ },
+ "HOMEDEPOT.COM 6Y9P62P": {
+  "status": "ok",
+  "category": "housing.maintenance",
+  "confidence": 0.72,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2953,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1870
+ },
+ "HOMEDEPOT.COM AN5VXB3": {
+  "status": "ok",
+  "category": "housing.maintenance",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2938,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2970
+ },
+ "HOMEDEPOT.COM MRWX1D": {
+  "status": "ok",
+  "category": "housing.maintenance",
+  "confidence": 0.72,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2952,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1266
+ },
+ "HOMEDEPOT.COM R22V74UU": {
+  "status": "ok",
+  "category": "housing.maintenance",
+  "confidence": 0.45,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2951,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2510
+ },
+ "HOMEDEPOT.COM TF1B2UWU": {
+  "status": "ok",
+  "category": "housing.maintenance",
+  "confidence": 0.6,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2955,
+   "outputTokens": 85,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3147
+ },
+ "HOMEDEPOT.COM VEXNHFYXH": {
+  "status": "ok",
+  "category": "housing.maintenance",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2957,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1359
+ },
+ "HOMEDEPOT.COM ZPGKRY": {
+  "status": "ok",
+  "category": "housing.maintenance",
+  "confidence": 0.72,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2949,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3192
+ },
+ "IRS USATAXPYMT 1288781883": {
+  "status": "ok",
+  "category": "financial.taxes",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2924,
+   "outputTokens": 76,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1230
+ },
+ "JIFFY LUBE #0588": {
+  "status": "ok",
+  "category": "transport.maintenance",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2911,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3880
+ },
+ "JIFFY LUBE #0812": {
+  "status": "ok",
+  "category": "transport.maintenance",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2911,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2777
+ },
+ "JIFFY LUBE #5411": {
+  "status": "ok",
+  "category": "transport.maintenance",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2911,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3057
+ },
+ "JIFFY LUBE #9453": {
+  "status": "ok",
+  "category": "transport.maintenance",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2911,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1573
+ },
+ "JIFFYLUBE OAKLAND NV": {
+  "status": "ok",
+  "category": "transport.maintenance",
+  "confidence": 0.96,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2915,
+   "outputTokens": 89,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3692
+ },
+ "JIFFYLUBE SANFRAN NV": {
+  "status": "ok",
+  "category": "transport.maintenance",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2917,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 4542
+ },
+ "LYFT *RIDE UWDCN802Q0K": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.99,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2945,
+   "outputTokens": 84,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2683
+ },
+ "MARRIOTT SF 48192": {
+  "status": "ok",
+  "category": "travel.lodging",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2908,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2640
+ },
+ "POS DEBIT 24HRFIT*BERKELEY CA": {
+  "status": "ok",
+  "category": "health.fitness",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2920,
+   "outputTokens": 85,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2798
+ },
+ "POS DEBIT AMAZON.COM REFUND 94WRYZ": {
+  "status": "ok",
+  "category": "income.refund",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2941,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1295
+ },
+ "POS DEBIT AMZN Mktp US J5Z2668V1": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2954,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2489
+ },
+ "POS DEBIT AMZN Mktp US JP10RF6J": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.55,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2952,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2949
+ },
+ "POS DEBIT AMZN Mktp US U9RLGYH": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.68,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2954,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2408
+ },
+ "POS DEBIT AMZN Mktp US YE31Y83D": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.7,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2954,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 4006
+ },
+ "POS DEBIT AMZN Mktp US*64QG7GZ3C": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.5,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2956,
+   "outputTokens": 97,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1439
+ },
+ "POS DEBIT AMZN Mktp US*E3ZLSLFFXRB": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2961,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2571
+ },
+ "POS DEBIT AMZN Mktp US*HLZARYH": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.68,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2955,
+   "outputTokens": 102,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1997
+ },
+ "POS DEBIT Amazon.com*CSA8E9TD": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2935,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1588
+ },
+ "POS DEBIT BESTBUYCOM940252894545": {
+  "status": "ok",
+  "category": "shopping.electronics",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2928,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2715
+ },
+ "POS DEBIT CVS 02166 SF CA": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2879,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1383
+ },
+ "POS DEBIT GITHUB.COM GB3NRLLBAA8": {
+  "status": "ok",
+  "category": "personal.software",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2933,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2470
+ },
+ "POS DEBIT HOMEDEPOT.COM 83XZV1EV": {
+  "status": "ok",
+  "category": "housing.maintenance",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2947,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2629
+ },
+ "POS DEBIT HOMEDEPOT.COM NF2K7V19RYF": {
+  "status": "ok",
+  "category": "housing.maintenance",
+  "confidence": 0.72,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2961,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3349
+ },
+ "POS DEBIT STATEMENT CREDIT REWARDS": {
+  "status": "ok",
+  "category": "income.other",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2934,
+   "outputTokens": 76,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2556
+ },
+ "POS DEBIT STATEMENT CREDIT REWARDS  BERKELEY NV": {
+  "status": "ok",
+  "category": "income.other",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2939,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1274
+ },
+ "POS DEBIT TARGET.COM * 9L9ECAHB": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2929,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2684
+ },
+ "POS DEBIT TST* CHIPOTLE - DALY CITY  SAN MATEO CA": {
+  "status": "ok",
+  "category": "food.restaurants",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2941,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2671
+ },
+ "POS DEBIT UBER *TRIP BBMTFFCF": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2943,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1263
+ },
+ "POS DEBIT UBER *TRIP WG5C3ZECAGT": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2947,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2728
+ },
+ "POS DEBIT VERIZON WRLS 40438-141": {
+  "status": "ok",
+  "category": "housing.internet_phone",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2959,
+   "outputTokens": 85,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2675
+ },
+ "REI.COM EUT0KJ8P4": {
+  "status": "ok",
+  "category": "shopping.hobbies",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2933,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2612
+ },
+ "REI.COM HB071QKADBJ  ALAMEDA NV": {
+  "status": "ok",
+  "category": "shopping.hobbies",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2939,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2498
+ },
+ "REI.COM WFG4EXN9K": {
+  "status": "ok",
+  "category": "shopping.hobbies",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2935,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1443
+ },
+ "SAFEWAY STORE 4209 OAKLAND  BERKELEY CA": {
+  "status": "ok",
+  "category": "food.groceries",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2920,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2473
+ },
+ "SBUX ALAMEDA OR  DALY CITY NV": {
+  "status": "ok",
+  "category": "food.coffee",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2923,
+   "outputTokens": 85,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2786
+ },
+ "SBUX OAKLAND OR  DALY CITY NV": {
+  "status": "ok",
+  "category": "food.coffee",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2920,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 4542
+ },
+ "SBUX SAN MATEO CA  OAKLAND CA": {
+  "status": "ok",
+  "category": "food.coffee",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2928,
+   "outputTokens": 102,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1449
+ },
+ "SQ *BAYSIDE VET ALAMEDA": {
+  "status": "ok",
+  "category": "personal.pets",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2924,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2660
+ },
+ "STARBUCKS 55548 DALY CITY  OAKLAND CA": {
+  "status": "ok",
+  "category": "food.coffee",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2936,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2649
+ },
+ "STARBUCKS 70640 SAN MATEO  OAKLAND CA": {
+  "status": "ok",
+  "category": "food.coffee",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2932,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1151
+ },
+ "STATEMENT CREDIT REWAR": {
+  "status": "ok",
+  "category": "income.other",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2932,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1296
+ },
+ "STATEMENT CREDIT REWARDS": {
+  "status": "ok",
+  "category": "income.other",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2929,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2729
+ },
+ "TARGET 04947506": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2916,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2722
+ },
+ "TARGET 29926131": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2916,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3150
+ },
+ "TARGET 55930925": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2916,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3292
+ },
+ "TARGET 91116060": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2916,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3425
+ },
+ "TARGET 92455122": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2916,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1316
+ },
+ "TARGET T-2612 ALAMEDA": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2920,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2622
+ },
+ "TARGET T-3319 SF": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2918,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2672
+ },
+ "TARGET T-3972 OAKLAND": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.72,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2919,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1232
+ },
+ "TARGET T-6554 SAN MAT": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2916,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2686
+ },
+ "TARGET T-8436 EMERYVLE  OAKLAND CA": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2915,
+   "outputTokens": 76,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2551
+ },
+ "TARGET T-8601 SANFRAN": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2921,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2709
+ },
+ "TARGET T-9694 DALY CITY": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2922,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1187
+ },
+ "TARGET.COM * AT5PRV37M2": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2920,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2876
+ },
+ "TARGET.COM * EEAZE1SRW0": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2926,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3137
+ },
+ "TARGET.COM * J7BSACBYP": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2922,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2626
+ },
+ "TARGET.COM * KMB654": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2913,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 4583
+ },
+ "TARGET.COM * PQJUR2": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2918,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2817
+ },
+ "TARGET.COM * U09YQJ9": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.78,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2920,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2885
+ },
+ "TJ'S ALAMEDA CA  BERKELEY CA": {
+  "status": "ok",
+  "category": "food.groceries",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2923,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1459
+ },
+ "TJ'S OAKLAND CA  DALY CITY OR": {
+  "status": "ok",
+  "category": "food.groceries",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2922,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1403
+ },
+ "UBER *EATS 5MSE63R": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.99,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2935,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2619
+ },
+ "UBER *EATS E1D7LP5": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2935,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1336
+ },
+ "UBER *EATS E699H5DYN7": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2939,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2545
+ },
+ "UBER *EATS FA4GCWLMR": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2939,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2846
+ },
+ "UBER *EATS GTZ4JNW3CU": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.99,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2941,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3089
+ },
+ "UBER *EATS NHPT1J8TUJ": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2941,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3278
+ },
+ "UBER *EATS PL0LEWH1": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2937,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1294
+ },
+ "UBER *EATS SXH3PMQRUN": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2939,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2830
+ },
+ "UBER *EATS XARPEUZ3E": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2937,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1294
+ },
+ "UBER *TRIP 7381UVKY75": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2938,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2827
+ },
+ "UBER *TRIP BUBXR4L1": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2938,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1827
+ },
+ "UBER *TRIP FJAT4V3QNS": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2942,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2814
+ },
+ "UBER *TRIP GWYKDFTAKX": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2938,
+   "outputTokens": 102,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1978
+ },
+ "UBER *TRIP MR83FLNA0VL": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2943,
+   "outputTokens": 84,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 9150
+ },
+ "UBER *TRIP NUMFYA6ALJ": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2938,
+   "outputTokens": 101,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3886
+ },
+ "UBER *TRIP PMA0L3R21": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2938,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1383
+ },
+ "UBER *TRIP QAHHQ2TEHJQ": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2943,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1723
+ },
+ "UBER *TRIP VFZQCQE45FW": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2946,
+   "outputTokens": 84,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1439
+ },
+ "UBER *TRIP XUJ2WSNRARE": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2942,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1263
+ },
+ "UBER *TRIP YQLJNQDKUF": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2940,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3049
+ },
+ "UBER *TRIP ZW5RBUKWUGA": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2940,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1826
+ },
+ "UNITED 0574633134891": {
+  "status": "ok",
+  "category": "travel.flights",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2908,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3651
+ },
+ "UNITED AIRLINES EMERYVLE  BERKELEY CA": {
+  "status": "ok",
+  "category": "travel.flights",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2924,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2862
+ },
+ "VENMO *CFT4AAQZ": {
+  "status": "ok",
+  "category": "transfer.person",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2920,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1611
+ },
+ "VENMO *CNETSN9": {
+  "status": "ok",
+  "category": "transfer.person",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2916,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3149
+ },
+ "VENMO *GU2GP8K0FB4": {
+  "status": "ok",
+  "category": "transfer.person",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2924,
+   "outputTokens": 84,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2848
+ },
+ "VENMO *L3MBUMBJYE": {
+  "status": "ok",
+  "category": "transfer.person",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2920,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1253
+ },
+ "VENMO *LY3F4PWE28V": {
+  "status": "ok",
+  "category": "transfer.person",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2924,
+   "outputTokens": 84,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2855
+ },
+ "VENMO *MFLAHX0": {
+  "status": "ok",
+  "category": "transfer.person",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2918,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2554
+ },
+ "VENMO *RA50XK6V": {
+  "status": "ok",
+  "category": "transfer.person",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2920,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3144
+ },
+ "VERIZON WRLS 03605-402": {
+  "status": "ok",
+  "category": "housing.internet_phone",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2954,
+   "outputTokens": 84,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2706
+ },
+ "VERIZON WRLS 53028-336": {
+  "status": "ok",
+  "category": "housing.internet_phone",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2954,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1958
+ },
+ "WALGREENS #29555": {
+  "status": "ok",
+  "category": "shopping.household",
+  "confidence": 0.45,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2916,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1451
+ },
+ "WALGREENS #51034": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.72,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2916,
+   "outputTokens": 89,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1396
+ },
+ "WALGREENS #55815": {
+  "status": "ok",
+  "category": "shopping.household",
+  "confidence": 0.65,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2916,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2620
+ },
+ "WALGREENS #65235": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2916,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2615
+ },
+ "WHOLEFDS SAN MATEO #91546  OAKLAND NV": {
+  "status": "ok",
+  "category": "food.groceries",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2933,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1237
+ },
+ "XFINITY MOBILE 1158": {
+  "status": "ok",
+  "category": "housing.internet_phone",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2932,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3554
+ },
+ "XFINITY MOBILE 5547": {
+  "status": "ok",
+  "category": "housing.internet_phone",
+  "confidence": 0.99,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2932,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2525
+ },
+ "XFINITY MOBILE 6338": {
+  "status": "ok",
+  "category": "housing.internet_phone",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2932,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2851
+ },
+ "ZELLE FROM 1QTJECNPV6V 13858819": {
+  "status": "ok",
+  "category": "transfer.person",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2943,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3137
+ },
+ "ZELLE FROM GXUS390Y8S 77391034": {
+  "status": "ok",
+  "category": "transfer.person",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2939,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1373
+ },
+ "ZELLE FROM ZC8NQXA5G 83659114": {
+  "status": "ok",
+  "category": "transfer.person",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2941,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2748
+ },
+ "ZUNI CAFE BERKELEY OR  DALY CITY CA": {
+  "status": "ok",
+  "category": "food.restaurants",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2924,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1304
+ }
+}

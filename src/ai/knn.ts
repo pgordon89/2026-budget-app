@@ -62,6 +62,8 @@ export const DEFAULT_NEIGHBOUR_CONFIG: NeighbourConfig = {
 export interface ScoredNeighbour {
   readonly key: string;
   readonly similarity: number;
+  /** The neighbour's own plurality label. Tier 3 draws few-shot examples from these. */
+  readonly category: CategoryId;
 }
 
 export type NeighbourOutcome =
@@ -80,6 +82,19 @@ export type NeighbourOutcome =
   | { readonly status: 'no_neighbours'; readonly key: string }
   /** Tier 0 could not produce a usable key. */
   | { readonly status: 'degenerate'; readonly key: string };
+
+/** Heaviest category in a distribution, ties broken by id so few-shot sets are stable. */
+function plurality(distribution: ReadonlyMap<CategoryId, number>): CategoryId {
+  let best: CategoryId | undefined;
+  let bestWeight = -1;
+  for (const [category, weight] of distribution) {
+    if (weight > bestWeight || (weight === bestWeight && (best === undefined || category < best))) {
+      best = category;
+      bestWeight = weight;
+    }
+  }
+  return best!;
+}
 
 /** Cosine similarity between a sparse indexed row and a dense query, both unit length. */
 function sparseDot(row: { indices: Int32Array; values: Float32Array }, query: Float32Array): number {
@@ -229,7 +244,11 @@ export class NeighbourIndex {
       confidence,
       agreement,
       nearest,
-      neighbours: voters.map((v) => ({ key: this.keys[v.index]!, similarity: v.similarity })),
+      neighbours: voters.map((v) => ({
+        key: this.keys[v.index]!,
+        similarity: v.similarity,
+        category: plurality(this.distributions[v.index]!),
+      })),
     };
   }
 
