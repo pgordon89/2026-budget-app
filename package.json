@@ -12,6 +12,7 @@
     "generate:data": "tsx scripts/generate-dataset.ts",
     "analyze:normalizer": "tsx scripts/analyze-normalizer.ts",
     "analyze:memory": "tsx scripts/analyze-memory.ts",
+    "analyze:knn": "tsx scripts/analyze-knn.ts",
     "eval": "tsx evals/runner.ts",
     "test": "tsx scripts/test.ts"
   },

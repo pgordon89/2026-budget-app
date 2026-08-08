@@ -235,6 +235,22 @@ export class MerchantMemory {
     };
   }
 
+  /**
+   * Every known key with its label distribution, as weights.
+   *
+   * Exists for Tier 2, which is this same store queried by approximate key
+   * match instead of exact. Sharing the corpus rather than building a second
+   * one keeps "what the system knows about a merchant" in a single place, so a
+   * user correction cannot be visible to one tier and stale in the other.
+   */
+  *entries(): Generator<{ key: string; distribution: ReadonlyMap<CategoryId, number> }> {
+    for (const [key, tallies] of this.byKey) {
+      const distribution = new Map<CategoryId, number>();
+      for (const [category, tally] of tallies) distribution.set(category, tally.weight);
+      yield { key, distribution };
+    }
+  }
+
   /** Distinct merchant keys held. */
   get size(): number {
     return this.byKey.size;
