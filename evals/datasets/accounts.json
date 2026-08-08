@@ -1,0 +1,20 @@
+[
+  {
+    "id": "acct_chk",
+    "name": "Everyday Checking",
+    "type": "checking",
+    "mask": "4417"
+  },
+  {
+    "id": "acct_sav",
+    "name": "High-Yield Savings",
+    "type": "savings",
+    "mask": "9032"
+  },
+  {
+    "id": "acct_cc",
+    "name": "Sapphire Credit Card",
+    "type": "credit",
+    "mask": "2288"
+  }
+]

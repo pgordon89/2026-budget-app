@@ -1,0 +1,25 @@
+{
+  "name": "fiscus",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "An AI-native personal finance platform. Deterministic where money is involved, probabilistic where judgement is.",
+  "engines": {
+    "node": ">=20.11"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "generate:data": "tsx scripts/generate-dataset.ts",
+    "eval": "tsx evals/runner.ts",
+    "test": "node --test --experimental-strip-types"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.65.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

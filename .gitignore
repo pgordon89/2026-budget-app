@@ -1,0 +1,27 @@
+node_modules/
+.next/
+out/
+dist/
+build/
+
+# Secrets — never commit
+.env
+.env.local
+.env*.local
+
+# Real financial data must never enter this repo.
+# Synthetic fixtures under evals/datasets/ are the only committed transaction data.
+data/private/
+*.ofx
+*.qfx
+*.csv
+!evals/datasets/*.csv
+
+# Eval run output (regenerable; only the committed baseline is tracked)
+evals/runs/
+
+.DS_Store
+Thumbs.db
+*.log
+.vercel
+.tsbuildinfo
