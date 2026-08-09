@@ -1,0 +1,136 @@
+{
+  "promptVersion": "v1",
+  "config": {
+    "memoryGate": 0.3,
+    "neighbourGate": 0.5,
+    "neighbourK": 3,
+    "llmGate": 0.9,
+    "llmModel": "claude-haiku-4-5"
+  },
+  "dataset": {
+    "historyTransactions": 2097,
+    "holdoutTransactions": 1429,
+    "hardTransactions": 420
+  },
+  "normalizer": {
+    "distinctRawDescriptors": 2370,
+    "distinctKeys": 602,
+    "collapseRatio": 3.94,
+    "collisions": 0
+  },
+  "overall": {
+    "transactions": 1429,
+    "answered": 1327,
+    "correct": 1307,
+    "coveragePct": 92.86,
+    "precisionPct": 98.49,
+    "resolvedPct": 91.46
+  },
+  "slices": {
+    "easy": {
+      "transactions": 1009,
+      "answered": 1007,
+      "correct": 1007,
+      "coveragePct": 99.8,
+      "precisionPct": 100,
+      "resolvedPct": 99.8
+    },
+    "hard": {
+      "transactions": 420,
+      "answered": 320,
+      "correct": 300,
+      "coveragePct": 76.19,
+      "precisionPct": 93.75,
+      "resolvedPct": 71.43
+    }
+  },
+  "tiers": {
+    "memory": {
+      "transactions": 1157,
+      "answered": 1157,
+      "correct": 1139,
+      "hitRatePct": 80.97,
+      "coveragePct": 80.97,
+      "precisionPct": 98.44,
+      "resolvedPct": 79.71
+    },
+    "embedding": {
+      "transactions": 90,
+      "answered": 90,
+      "correct": 89,
+      "hitRatePct": 6.3,
+      "coveragePct": 6.3,
+      "precisionPct": 98.89,
+      "resolvedPct": 6.23
+    },
+    "llm": {
+      "transactions": 80,
+      "answered": 80,
+      "correct": 79,
+      "hitRatePct": 5.6,
+      "coveragePct": 5.6,
+      "precisionPct": 98.75,
+      "resolvedPct": 5.53
+    }
+  },
+  "review": {
+    "transactions": 102,
+    "pct": 7.14
+  },
+  "transfers": {
+    "inHoldout": 68,
+    "answered": 67,
+    "misclassifiedAsSpend": 0,
+    "misclassifiedAsSpendPct": 0,
+    "spendMisclassifiedAsTransfer": 0
+  },
+  "worstConfusions": [
+    {
+      "pair": "shopping.household → shopping.general",
+      "count": 5
+    },
+    {
+      "pair": "personal.care → health.pharmacy",
+      "count": 4
+    },
+    {
+      "pair": "shopping.household → health.pharmacy",
+      "count": 4
+    },
+    {
+      "pair": "shopping.electronics → food.groceries",
+      "count": 2
+    },
+    {
+      "pair": "shopping.household → food.groceries",
+      "count": 2
+    },
+    {
+      "pair": "shopping.electronics → personal.software",
+      "count": 1
+    },
+    {
+      "pair": "shopping.hobbies → housing.maintenance",
+      "count": 1
+    },
+    {
+      "pair": "shopping.hobbies → shopping.general",
+      "count": 1
+    }
+  ],
+  "cost": {
+    "totalUsd": 0.60725,
+    "perThousandTransactionsUsd": 0.4249,
+    "perThousandModelCallsUsd": 3.3365,
+    "modelTokens": {
+      "inputTokens": 533775,
+      "outputTokens": 14695,
+      "cacheReadTokens": 0,
+      "cacheCreationTokens": 0
+    }
+  },
+  "llmLatencyAtCaptureMs": {
+    "p50": 1997,
+    "p95": 3880
+  }
+}

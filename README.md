@@ -4,7 +4,7 @@ An AI-native personal finance platform. **Deterministic where money is involved,
 
 Most "AI budgeting" apps are a chat box bolted onto a ledger. This one treats categorization as a measurable ML systems problem, keeps the language model away from arithmetic entirely, and gates every merge on an accuracy regression suite.
 
-> **Status:** in active development. Phase 1 complete; Phase 2 nearly complete — all four categorization tiers are built and measured end to end (91.5% of holdout transactions resolved at 98.5% precision, $0.42 per 1,000). Eval harness and CI accuracy gate are next.
+> **Status:** in active development. **Phases 1 and 2 complete** — four-tier categorization pipeline, scored eval harness, and a CI accuracy gate that runs on every push. 91.5% of holdout transactions resolved at 98.5% precision for $0.42 per 1,000.
 
 ---
 
@@ -163,6 +163,63 @@ The gate landed at 0.90 — chosen by sweep on the validation split, not by read
 
 **Prompt caching is declared and does nothing on this model.** The shared system prompt is ~2,900 tokens; Haiku 4.5's minimum cacheable prefix is 4,096. `cache_control` is accepted, no error is raised, and `cache_creation_input_tokens` stays 0 across all 182 calls. The floor is recorded per-model in the price table and the eval prints the cache counters, because this failure is otherwise completely silent. It is also not monotonic across model generations — a newer model is not automatically a lower floor.
 
+---
+
+## The eval harness and the accuracy gate
+
+```bash
+npm run eval                      # score the cascade, compare to the committed baseline
+npm run eval -- --write-baseline  # accept the current numbers
+```
+
+One command scores the whole pipeline over the 1,429-transaction holdout and prints per-tier hit rate and precision, easy/hard slices, transfer misclassification, cost per 1,000, model-tier latency, and the worst confusion pairs. It writes [`evals/baseline.json`](evals/baseline.json), and on subsequent runs it diffs against that baseline and **exits non-zero on regression**.
+
+```
+                     share   precision   resolved
+  tier memory         81.0%      98.4%     79.7%
+  tier embedding       6.3%      98.9%      6.2%
+  tier llm             5.6%      98.8%      5.5%
+  human review         7.1%          —         —
+
+OVERALL              92.9% coverage ·   98.5% precision ·   91.5% resolved
+  easy slice         99.8% coverage ·  100.0% precision
+  hard slice         76.2% coverage ·   93.8% precision
+```
+
+Four things about it are deliberate.
+
+**It grades; it does not tune.** The `analyze:*` scripts sweep parameters and pick thresholds. The runner scores the already-chosen configuration and decides whether the build passes. A script that both tuned and graded would be marking its own homework, so the gates are pinned constants here rather than re-derived.
+
+**It runs offline and free, which is why it can gate every push.** The deterministic tiers compute live; the model tier replays a committed response cache. The usual reason model evals get excluded from CI is per-run API spend — a committed cache removes it. The one job that costs money (refreshing the cache after a prompt-version change) is manual-trigger only.
+
+**The gate is directional, per metric.** This matters more than it sounds. Loosening the memory tier's confidence gate from 0.30 to 0.20 produces:
+
+```
+improved   overall.resolvedPct:      91.46 → 93.14  (+1.68)
+improved   overall.coveragePct:      92.86 → 96.22  (+3.36)
+improved   cost.perThousandUsd:      0.4249 → 0.2692
+REGRESSED  overall.precisionPct:     98.49 → 96.80  (-1.69)
+REGRESSED  slices.hard.precisionPct: 93.75 → 88.04  (-5.71)
+```
+
+Coverage up, resolved up, cost down — three headline numbers improving. A gate watching the headline would have shipped it. It bought all of that by emitting wrong answers, and it fails on precision. Ten metrics are gated, each with its own direction; *higher* cost or *more* transfer errors are regressions, and improvements pass with a nudge to re-baseline rather than blocking.
+
+**The tolerance is zero.** Every tier is deterministic and the model tier is replayed, so the same commit produces byte-identical numbers. That allows an exact gate instead of the usual "within a few percent" band, which is a materially stronger guarantee — a 0.1% drift is a real behaviour change, not noise.
+
+CI ([`.github/workflows/eval.yml`](.github/workflows/eval.yml)) runs typecheck, unit tests, the accuracy gate, and a determinism check that regenerates the corpus and fails if a single byte moved — because if the fixture drifts, every accuracy number across commits is being compared against a different dataset and the gate means nothing. It runs on Node 20 and 22, and needs no secrets.
+
+**Where the system actually fails**, from the same run:
+
+```
+  5×  shopping.household → shopping.general
+  4×  personal.care      → health.pharmacy
+  4×  shopping.household → health.pharmacy
+```
+
+Those are the mixed-basket merchants — a drugstore that sells both toiletries and prescriptions, a big-box retailer with no basket signal in the descriptor. This is the irreducible ambiguity the fixture was rebuilt to contain, showing up exactly where it should.
+
+---
+
 **Not measured:** the cost-aware routing claim. Comparing Haiku against Sonnet 5 on identical transactions needs both models reachable, and Sonnet 5 and Opus 5 both return HTTP 429 from the environment this was run in. The script reports the gap by name rather than quietly omitting it. Until that runs, "cheap model for bulk, expensive model for reasoning" is a design intention, not a result.
 
 ---
@@ -201,7 +258,7 @@ Amount distributions are right-skewed rather than normal. Real spend at a mercha
 | Phase | Scope | Status |
 |---|---|---|
 | 1 | Taxonomy, seeded fixture corpus, temporal split | ✅ |
-| 2 | Four-tier categorization pipeline, eval harness, CI accuracy gate | tiers done; harness + gate in progress |
+| 2 | Four-tier categorization pipeline, eval harness, CI accuracy gate | ✅ |
 | 3 | Next.js UI, CSV/OFX import, ledger, budgets, reporting | |
 | 4 | NL → constrained SQL, insight agent, cash-flow forecasting | |
 | 5 | Multimodal statement ingestion, cost & observability dashboard | |
@@ -219,8 +276,7 @@ npm install
 npm run generate:data     # deterministic — regeneration leaves the tree byte-identical
 npm run typecheck
 npm test
-npm run analyze:normalizer
-npm run analyze:memory
+npm run eval              # the scored run + regression gate
 ```
 
 ## Layout

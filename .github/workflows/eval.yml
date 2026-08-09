@@ -1,0 +1,89 @@
+# Accuracy gate.
+#
+# The eval runs on every push because it costs nothing to run: the deterministic
+# tiers compute live and the model tier replays a committed response cache. The
+# usual reason model evals are excluded from CI is per-run API spend, and a
+# committed cache removes it — so a change that quietly drops precision fails the
+# build rather than being noticed a month later.
+#
+# No secrets are needed for the gate. The one job that does spend money
+# (refreshing the cache after a prompt change) is manual-trigger only.
+
+name: eval
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    name: typecheck · tests · accuracy gate
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # The floor declared in package.json engines, and the version this was
+        # actually developed on. Pinning only one hides drift between them.
+        node: ['20.x', '22.x']
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+
+      - run: npm ci
+
+      - name: typecheck
+        run: npm run typecheck
+
+      - name: unit tests
+        run: npm test
+
+      # Rule 5 of the project, enforced rather than trusted: same seed must
+      # produce a byte-identical corpus. If it does not, every accuracy number
+      # across commits is being compared against a different dataset and the
+      # gate below is meaningless.
+      - name: fixture generator is deterministic
+        run: |
+          npm run generate:data
+          git diff --exit-code -- evals/datasets \
+            || { echo "::error::generate:data is not deterministic — the corpus changed"; exit 1; }
+
+      - name: accuracy gate
+        run: npm run eval
+
+  refresh-llm-cache:
+    name: refresh model responses (manual, spends credits)
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+          cache: npm
+
+      - run: npm ci
+
+      # The only step in this file that costs money. Needed when the prompt
+      # version changes, since the cache is keyed by it and the runner refuses
+      # to score a holdout it has no responses for.
+      - name: re-call the model tier
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: npm run analyze:llm -- --refresh
+
+      - name: score against the refreshed cache
+        run: npm run eval || true
+
+      # Uploaded rather than committed: new model responses change the scored
+      # numbers, and that should be a reviewed diff, not a bot push to main.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: llm-response-cache
+          path: evals/cache/
