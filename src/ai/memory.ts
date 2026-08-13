@@ -140,12 +140,84 @@ export function wilsonLowerBound(successes: number, total: number, z: number): n
   return Math.max(0, Math.min(1, (centre - margin) / denominator));
 }
 
+export interface TallyScore {
+  readonly category: CategoryId;
+  readonly confidence: number;
+  readonly support: number;
+  readonly agreement: number;
+}
+
+/**
+ * Turns a category-weight distribution into a scored winner.
+ *
+ * Extracted so the in-memory store and the Postgres-backed one cannot drift.
+ * They hold their tallies differently — a Map in one, rows in the other — but a
+ * merchant must score identically either way, and the only way to guarantee that
+ * is for there to be one implementation rather than two that agree today.
+ *
+ * Returns undefined when there is nothing to score.
+ */
+export function scoreTallies(
+  distribution: Iterable<readonly [CategoryId, number]>,
+  z: number,
+): TallyScore | undefined {
+  let winner: CategoryId | undefined;
+  let winnerWeight = 0;
+  let totalWeight = 0;
+
+  for (const [category, weight] of distribution) {
+    totalWeight += weight;
+    // Deterministic winner: weight desc, then category id asc. The tie-break is
+    // not cosmetic — without it a 50/50 key resolves by iteration order, and
+    // eval numbers move when row order changes.
+    if (weight > winnerWeight || (weight === winnerWeight && (winner === undefined || category < winner))) {
+      winner = category;
+      winnerWeight = weight;
+    }
+  }
+
+  if (winner === undefined || totalWeight <= 0) return undefined;
+
+  return {
+    category: winner,
+    confidence: wilsonLowerBound(winnerWeight, totalWeight, z),
+    support: totalWeight,
+    agreement: winnerWeight / totalWeight,
+  };
+}
+
 export class MerchantMemory {
   private readonly config: MemoryConfig;
   private readonly byKey = new Map<string, Map<CategoryId, Tally>>();
 
   constructor(config: Partial<MemoryConfig> = {}) {
     this.config = { ...DEFAULT_MEMORY_CONFIG, ...config };
+  }
+
+  /**
+   * Rebuilds a store from already-weighted tallies — the rows a database holds.
+   *
+   * Deliberately not `remember()` in a loop: that would re-apply source weighting
+   * to weights already discounted when they were first recorded, so a store
+   * round-tripped through Postgres would score differently from the one that
+   * wrote it.
+   */
+  static fromTallies(
+    rows: Iterable<{ merchantKey: string; categoryId: CategoryId; weight: number; count: number }>,
+    config: Partial<MemoryConfig> = {},
+  ): MerchantMemory {
+    const memory = new MerchantMemory(config);
+    for (const row of rows) {
+      const tallies = memory.byKey.get(row.merchantKey) ?? new Map<CategoryId, Tally>();
+      tallies.set(row.categoryId, { weight: row.weight, count: row.count });
+      memory.byKey.set(row.merchantKey, tallies);
+    }
+    return memory;
+  }
+
+  /** The weight one observation from this source contributes. */
+  weightOf(source: ObservationSource): number {
+    return SOURCE_WEIGHT(this.config, source);
   }
 
   /**
@@ -195,32 +267,15 @@ export class MerchantMemory {
     const tallies = this.byKey.get(key);
     if (!tallies || tallies.size === 0) return { status: 'unseen', key };
 
-    // Deterministic winner: weight desc, then category id asc. The tie-break is
-    // not cosmetic — without it a 50/50 key would resolve by insertion order and
-    // eval numbers would shift when the fixture's row order changed.
-    let winner: CategoryId | undefined;
-    let winnerWeight = 0;
-    let totalWeight = 0;
-    for (const [category, tally] of tallies) {
-      totalWeight += tally.weight;
-      if (tally.weight > winnerWeight || (tally.weight === winnerWeight && (winner === undefined || category < winner))) {
-        winner = category;
-        winnerWeight = tally.weight;
-      }
-    }
-    if (winner === undefined || totalWeight <= 0) return { status: 'unseen', key };
+    const score = scoreTallies(
+      [...tallies].map(([category, tally]) => [category, tally.weight] as const),
+      this.config.z,
+    );
+    if (score === undefined) return { status: 'unseen', key };
 
-    const confidence = wilsonLowerBound(winnerWeight, totalWeight, this.config.z);
-    const shared = {
-      key,
-      category: winner,
-      confidence,
-      support: totalWeight,
-      agreement: winnerWeight / totalWeight,
-    };
-    return confidence >= this.config.minConfidence
-      ? { status: 'hit', ...shared }
-      : { status: 'low_confidence', ...shared };
+    return score.confidence >= this.config.minConfidence
+      ? { status: 'hit', key, ...score }
+      : { status: 'low_confidence', key, ...score };
   }
 
   /** Router-facing form. `null` means escalate — for any of the three reasons. */
