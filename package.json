@@ -14,6 +14,7 @@
     "analyze:memory": "tsx scripts/analyze-memory.ts",
     "analyze:knn": "tsx scripts/analyze-knn.ts",
     "analyze:llm": "tsx scripts/analyze-llm.ts",
+    "analyze:learning": "tsx scripts/analyze-learning.ts",
     "eval": "tsx evals/runner.ts",
     "test": "tsx scripts/test.ts"
   },

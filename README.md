@@ -165,6 +165,39 @@ The gate landed at 0.90 — chosen by sweep on the validation split, not by read
 
 ---
 
+## Does it actually get cheaper as it is used?
+
+This README claimed from the first commit that user corrections write back to the merchant store, so the system gets cheaper the more it is used. That was an assertion. `npm run analyze:learning` makes it a measurement, and the answer is *yes, but*.
+
+The experiment replays the 12-month holdout one transaction at a time in date order. Anything the cascade declines goes to a review queue where a simulated user corrects it. Two arms, identical except that corrections in the **learning** arm write back through the real `Ledger.correct()` path and in the **control** arm are discarded.
+
+|  | learning | control |
+|---|---|---|
+| coverage, 1st half → 2nd | 92.6% → **95.4%** | 91.8% → 93.9% |
+| answered by the free tier | 82.9% → 80.7% | 82.4% → 79.6% |
+| cost per 1,000 | $0.386 → **$0.357** | $0.420 → $0.430 |
+
+In the second half the loop is worth **+1.5 points of coverage and $0.072 per 1,000 transactions** — about 17% off the model bill. 85 corrections over the year (5.9% of transactions) taught the store 42 merchants it had never seen.
+
+**And here is the part worth knowing.** Aggregate precision drifts down slightly in the learning arm, which is easy to wave away as noise. It isn't. Diffing the two arms transaction by transaction:
+
+```
+MARGINAL ANSWERS   the transactions learning answered and control did not
+  count            17 (17 flagged hard)
+  precision        64.7%  — against the 97% floor every gate in this project is held to
+  by tier          memory 12 · embedding 5
+```
+
+Every single marginal answer was a `hard` transaction, and they were right two times in three. The feedback loop is buying coverage by shipping wrong answers into budget totals — exactly the trade the rest of this system is built to refuse.
+
+The cause is a threshold applied outside the population it was chosen on. Tier 1's 0.30 gate was selected against a store seeded with 18 months of history, where a merchant that clears the gate has dozens of observations behind it. A freshly-learned merchant clears the same gate on two or three corrections — Wilson gives 0.34 at 2/2 and 0.44 at 3/3 — and for a genuinely mixed-basket merchant, three agreeing corrections are luck rather than evidence.
+
+**This is not fixed by picking a bigger number.** Doing it properly means re-running gate selection on a validation population that contains freshly-learned merchants, which is a different split from the one that produced 0.30. Quietly raising the threshold to make the number look better would be exactly the thing this project's methodology exists to prevent.
+
+The loop works. It is worth having. It currently needs a support floor it does not have, and the only reason that is known is that the claim got measured instead of repeated.
+
+---
+
 ## The eval harness and the accuracy gate
 
 ```bash
