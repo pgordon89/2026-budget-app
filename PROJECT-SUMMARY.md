@@ -127,6 +127,42 @@ Merchants now have lifecycles and arrive in near-miss families (`PRESIDIO DENTAL
 
 ---
 
+## Plan — the next four work items
+
+Ordered by effort-to-evidence ratio. Each has an acceptance test stated up front, because the selection-rule episode showed what happens when it isn't.
+
+### A. Tier 2 precision (the top open item), three angles in cost order
+
+1. **Tighten the gate and price it.** Sweep `minAgreement`/`minConfidence` with the cost delta reported alongside — every point of Tier 2 coverage surrendered is priced in Haiku calls and review-queue growth. The tooling exists; this is a numbers decision, not a vibes one. *Accept if:* holdout precision for the tier ≥97% at a stated, measured cost, or the sweep proves no setting gets there and says at what precision the frontier tops out.
+2. **Contested-neighbourhood hybrid.** When the vote fails the agreement floor, Tier 2 stops being a classifier and becomes a prior: the vote distribution is handed to Tier 3 explicitly (in the volatile suffix), and that slice is scored separately. Model cost is paid only when neighbours disagree. Tier 3 already takes few-shot examples from the neighbours, so this is an extension of an existing seam, not new machinery. *Accept if:* the contested slice's precision beats both plain Tier 2 and plain Tier 3 on the same transactions.
+3. **Hosted embedding model.** TF-IDF over character trigrams is exactly what confuses `PRESIDIO DENTAL` with `PRESIDIO VETERINARY` — the `Embedder` interface and disk cache are the prepared seam. **Blocked on access:** the dev environment's proxy injects Anthropic credentials only; Voyage/OpenAI need their own keys and egress. Built behind the cache when unblocked so the eval stays free. *Accept if:* it beats the lexical baseline's 89.3% on the same corpus — the number it exists to beat.
+
+### B. The correction-loop residue gets a mechanism, not a threshold
+
+Measured and settled: no gate reaches 97% on the answers write-back creates (88.7%/95.2% ceilings). So stop gating and change what an answer *is*:
+
+- **Now:** marginal answers land in the ledger as `provisional`, upgraded to `confirmed` after N agreeing sightings. Schema change plus upgrade rule; measurable immediately (provisional population, upgrade rate, precision of provisional vs confirmed).
+- **At UI time:** provisional rows are exactly what the one-tap "we think it's *Dining* — confirm?" surface asks about. Users tolerate confirming a category far better than discovering a wrong one, so the review cost is one tap, not a queue.
+
+*Accept if:* `confirmed`-status precision ≥97% with provisional answers excluded from budget-facing totals until upgraded.
+
+### C. Fix the selection objective, not just its floors
+
+"Maximise coverage subject to floors" has twice selected settings that passed validation and regressed the holdout — classic overfitting to the split. Two changes, together:
+
+- **Margin:** select against 97.5% on validation to target 97% deployed.
+- **Objective:** switch to *expected cost per resolved transaction*, with a wrong answer priced at a large synthetic multiple of an escalation. The system already believes errors are expensive; the formula should too — permissive settings then penalise themselves.
+
+*Accept if:* the new objective, run against history, rejects both settings that previously cleared the floors and regressed the holdout. If it wouldn't have caught them, it isn't fixed.
+
+### D. Unblock prompt caching by crossing the 4,096 floor — with static tokens only
+
+The system prompt is ~2,900 tokens against Haiku 4.5's 4,096-token minimum cacheable prefix, so `cache_control` is silently inert. Padding it over the line could improve cost *and* accuracy together — the rare non-tradeoff — but the padding must be **static**: caching is prefix-match, so the per-transaction neighbour examples cannot move into the prefix without destroying the cache they're meant to fill. The padding is per-category canonical exemplars, fixed across every call; neighbour few-shots stay in the volatile suffix. Ships as `PROMPT_VERSION = 'v2'`.
+
+*Accept if:* `cache_creation_input_tokens` goes non-zero, `cache_read_input_tokens` dominates on the second call onward, and Tier 3 precision does not regress (improvement is the hope, non-regression is the gate).
+
+---
+
 ## Roadmap
 
 | Phase | Scope | Status |
@@ -137,7 +173,7 @@ Merchants now have lifecycles and arrive in near-miss families (`PRESIDIO DENTAL
 | 4 | NL → constrained SQL, insight agent, cash-flow forecasting | |
 | 5 | Multimodal statement ingestion, cost/observability dashboard | |
 
-**Next up in Phase 3:** CSV/OFX import, then the Next.js UI over this ledger, then budgets and reporting.
+**Next up:** the four plan items above (Tier 2 precision first), then CSV/OFX import, the Next.js UI over this ledger, budgets and reporting.
 
 ---
 
