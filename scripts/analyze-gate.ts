@@ -37,7 +37,7 @@ import { fileURLToPath } from 'node:url';
 
 import { MerchantMemory, DEFAULT_MEMORY_CONFIG, wilsonLowerBound } from '../src/ai/memory.js';
 import { fitLexicalEmbedder } from '../src/ai/embed.js';
-import { NeighbourIndex } from '../src/ai/knn.js';
+import { NeighbourIndex, DEFAULT_NEIGHBOUR_CONFIG } from '../src/ai/knn.js';
 import { normalizeDescriptor } from '../src/ai/normalize.js';
 import type { SyntheticTransaction } from '../src/synthetic/generator.js';
 
@@ -66,7 +66,15 @@ const history = load('history.json');
 const fit = history.filter((t) => t.date < VALIDATION_SPLIT);
 const validation = history.filter((t) => t.date >= VALIDATION_SPLIT);
 
-const CONFIDENCE_CANDIDATES = [0.2, 0.3, 0.4, 0.5];
+/**
+ * Which tier's gate is being selected. `--tier=2` fixes Tier 1 at its own
+ * selected values and sweeps Tier 2 — sequential rather than joint, because the
+ * cascade is sequential: Tier 2 only ever sees what Tier 1 declined, so its
+ * population is defined by Tier 1's settings and not the reverse.
+ */
+const TIER = process.argv.includes('--tier=2') ? 2 : 1;
+
+const CONFIDENCE_CANDIDATES = TIER === 1 ? [0.2, 0.3, 0.4, 0.5] : [0.3, 0.4, 0.5, 0.6];
 const AGREEMENT_CANDIDATES = [0, 0.6, 0.7, 0.8, 0.85, 0.9, 0.95, 1.0];
 
 /**
@@ -151,12 +159,13 @@ async function main(): Promise<void> {
 
   const passes = (r: Result) =>
     r.answered > 0 &&
-    REFUSES_SINGLE_SIGHTING(r.minConfidence) &&
+    (TIER === 2 || REFUSES_SINGLE_SIGHTING(r.minConfidence)) &&
     r.correct / r.answered >= PRECISION_FLOOR &&
     (r.marginal === 0 || r.marginalCorrect / r.marginal >= PRECISION_FLOOR);
 
   const lines: string[] = [
-    `GATE SELECTION     selecting Tier 1's gate against the population write-back creates`,
+    `GATE SELECTION     selecting Tier ${TIER}'s gate against the population write-back creates`,
+    `FIXED              ${TIER === 2 ? `tier 1 at ${DEFAULT_MEMORY_CONFIG.minConfidence}/${DEFAULT_MEMORY_CONFIG.minAgreement}` : 'nothing — this is the first tier'}`,
     `SPLITS             fit ${fit.length} → validation ${validation.length}, walked in date order`,
     `METHOD             two arms per setting (write-back on / off); the marginal set is every`,
     `                   answer that exists only because corrections reached the store`,
@@ -210,10 +219,14 @@ async function replay(
   minAgreement: number,
   learns: boolean,
 ): Promise<{ outcomes: Map<string, Outcome>; answered: number; correct: number; corrections: number }> {
-  const memory = new MerchantMemory({ minConfidence, minAgreement });
+  const memory =
+    TIER === 1 ? new MerchantMemory({ minConfidence, minAgreement }) : new MerchantMemory();
   for (const t of fit) memory.remember(t.rawDescriptor, t.label.category);
 
-  let index = await buildIndex(memory);
+  const tier2Config =
+    TIER === 2 ? { minConfidence, minAgreement } : {};
+
+  let index = await buildIndex(memory, tier2Config);
   let indexMonth = monthOf(validation[0]!.date);
 
   const outcomes = new Map<string, Outcome>();
@@ -224,7 +237,7 @@ async function replay(
   for (const txn of validation) {
     const month = monthOf(txn.date);
     if (month !== indexMonth) {
-      index = await buildIndex(memory);
+      index = await buildIndex(memory, tier2Config);
       indexMonth = month;
     }
 
@@ -255,9 +268,12 @@ async function replay(
   return { outcomes, answered, correct, corrections };
 }
 
-async function buildIndex(memory: MerchantMemory): Promise<NeighbourIndex> {
+async function buildIndex(
+  memory: MerchantMemory,
+  config: Partial<typeof DEFAULT_NEIGHBOUR_CONFIG>,
+): Promise<NeighbourIndex> {
   const embedder = fitLexicalEmbedder([...memory.entries()].map((e) => e.key));
-  return NeighbourIndex.build(memory, embedder);
+  return NeighbourIndex.build(memory, embedder, config);
 }
 
 main();

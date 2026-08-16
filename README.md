@@ -208,11 +208,19 @@ Error rate on answered transactions is more than halved, 1.51% → 0.61%.
 
 The sweep happily selects `minConfidence 0.20`, which is above Wilson(1,1) = 0.207 — meaning a merchant seen exactly **once** would answer. It scores well because this corpus's singleton merchants happen to be consistent. A single observation cannot distinguish a merchant that is always groceries from one that is groceries *this time*, so refusing n=1 is encoded as a constraint in the selection policy rather than left to the data, and the sweep then selects 0.30. Two unit tests assert the invariant directly.
 
-### What is still not fixed
+### Tier 2 has the same defect, and it could not be fixed the same way
 
-On the holdout replay the residual is 11 marginal answers at 63.6% — but **6 of those 11 now come from Tier 2**, whose confidence is a separate heuristic with no agreement floor at all. The same class of defect exists there and has not been addressed.
+Tier 2's confidence is `agreement × nearest-similarity` — also a product, so a weak agreement can be bought back by a close neighbour. Structurally identical, and after the Tier 1 fix it accounts for most of what remains wrong.
 
-That residual is also nearly unmeasurable: 11 samples put the true rate somewhere around 35–85%. The validation replay, with 79 marginal answers at 100%, is the better-powered measurement — and the two populations genuinely differ, because with an 18-month seed the only merchants corrections can tip are the irreducibly ambiguous ones. Closing this properly means an agreement floor for Tier 2 and a corpus with enough marginal traffic to select it on.
+The same treatment was attempted and **it did not work**, which is worth recording precisely because the first fix did.
+
+`analyze:gate -- --tier=2` sweeps an agreement floor for Tier 2 on the same validation replay. That replay reports Tier 2 already at **100% precision on the answers write-back creates, with no floor at all** — there is no defect visible in it to select against. The golden replay does show one, but it is 6 to 8 answers: far too few to choose a threshold from, and choosing one by looking at the holdout would be tuning on the test set.
+
+Taking the sweep's coverage-maximising answer anyway (`0.40 / 0.60`) was tried and measured. On the holdout it pushed Tier 2's share from 6.3% to 10.8% at 95.5% precision and dropped overall precision from 99.4% to 98.9%. Reverted.
+
+What ships instead is the one value defensible without data: a **strict majority** (`0.51`). Below it, more of the neighbourhood disagrees with the answer than agrees — justifiable from first principles, no corpus required. It is rarely binding and changes no measured number.
+
+So the residual stands: 13 marginal answers at 61.5% on the holdout replay, now mostly Tier 2. Closing it needs a corpus with enough Tier 2 marginal traffic to select a real threshold on, which this fixture does not produce. That is a data problem, and pretending otherwise by shipping a fitted constant would be worse than the bug.
 
 ---
 

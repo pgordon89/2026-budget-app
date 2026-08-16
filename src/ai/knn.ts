@@ -40,6 +40,23 @@ export interface NeighbourConfig {
   /** Minimum confidence to answer instead of escalating to the LLM tier. */
   readonly minConfidence: number;
   /**
+   * Minimum share of the vote the winning category must hold, gated separately
+   * from the confidence product.
+   *
+   * Same structural defect Tier 1 had: `agreement × nearest` is a product, so a
+   * weak agreement can be bought back by a close neighbour. 0.55 agreement times
+   * 0.95 similarity clears a 0.50 gate and is right about 55% of the time, and
+   * the product cannot tell that apart from 0.95 agreement times 0.55 similarity
+   * — a confident vote from a slightly distant neighbourhood.
+   *
+   * **0.51 is a principled bound, not a selected one, and that is a limitation.**
+   * Requiring a strict majority is justifiable without any data: below it, more
+   * of the neighbourhood disagrees with the answer than agrees. Everything above
+   * that would need selecting, and no split available here can do it — see the
+   * note on the value below.
+   */
+  readonly minAgreement: number;
+  /**
    * Marginal cost attributed to one lookup, for the router's cost accounting.
    * Zero for the offline lexical embedder; non-zero once a hosted embedding
    * model is wired in, where it is the per-query embed cost after cache misses.
@@ -48,14 +65,28 @@ export interface NeighbourConfig {
 }
 
 /**
- * Selected by sweep on a validation slice of history, never on the golden
- * holdout — `npm run analyze:knn`. k and the gate are chosen together because
- * they trade against each other: more voters smooth out a single bad neighbour
- * but dilute a good one, so the best gate moves with k.
+ * k and `minConfidence` come from `npm run analyze:knn`, swept on a validation
+ * slice and never on the holdout.
+ *
+ * `minAgreement` is **not** selected, and the honest reason is that no split
+ * available here can select it. Running `analyze:gate -- --tier=2` sweeps it on a
+ * validation replay with write-back on, and that replay reports Tier 2 already at
+ * 100% precision on the answers write-back creates *without* any agreement floor
+ * — there is no defect there to select against. The golden replay does show one,
+ * but it is 6 to 8 answers, far too few to choose a threshold from.
+ *
+ * Taking the sweep's coverage-maximising answer anyway (0.40 / 0.60) was tried
+ * and measured: on the holdout it pushed Tier 2's share from 6.3% to 10.8% at
+ * 95.5% precision and dropped overall precision from 99.4% to 98.9%. Reverted.
+ *
+ * So this ships the one value defensible without data — a strict majority — and
+ * the gap is stated rather than papered over. Closing it needs a corpus with
+ * enough Tier 2 marginal traffic to select on.
  */
 export const DEFAULT_NEIGHBOUR_CONFIG: NeighbourConfig = {
   k: 3,
   minConfidence: 0.5,
+  minAgreement: 0.51,
   costPerLookupUsd: 0,
 };
 
@@ -238,7 +269,10 @@ export class NeighbourIndex {
     const confidence = agreement * nearest;
 
     return {
-      status: confidence >= this.config.minConfidence ? 'hit' : 'low_confidence',
+      status:
+        confidence >= this.config.minConfidence && agreement >= this.config.minAgreement
+          ? 'hit'
+          : 'low_confidence',
       key,
       category: winner,
       confidence,

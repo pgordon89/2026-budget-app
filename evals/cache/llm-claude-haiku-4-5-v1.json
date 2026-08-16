@@ -2855,6 +2855,20 @@
   },
   "latencyMs": 3199
  },
+ "PAYMENT THANK YOU -": {
+  "status": "ok",
+  "category": "transfer.credit_payment",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2917,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3038
+ },
  "PGANDE WEB ONLINE PMT": {
   "status": "ok",
   "category": "housing.utilities",
