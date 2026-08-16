@@ -295,18 +295,23 @@ Current corpus (seed `20260101`):
 
 | | |
 |---|---|
-| Transactions | 3,526 over 30 months |
-| History split | 2,097 (2024-02 → 2025-07) |
-| Golden holdout | 1,429 (2025-08 → 2026-07) |
-| Hard slice | 420 (29.4%) |
+| Transactions | 3,601 over 30 months |
+| History split | 2,088 (2024-02 → 2025-07) |
+| Golden holdout | 1,513 (2025-08 → 2026-07) |
+| Hard slice | 413 (27.3%) |
+| Merchants new mid-corpus | 15 in the holdout, 6 in the validation window |
 | Category coverage | 54 / 54 |
-| Persona | $8,847/mo income, $8,561/mo spend, 3.2% savings rate |
+| Persona | $8,847/mo income, $8,760/mo spend, 1.0% savings rate |
 
 Two decisions worth calling out:
 
 **The split is temporal, not random.** The cheap tiers of the pipeline learn from the user's own labeled history. A random split would leak future labels backwards into the memory store and report an accuracy the system could never achieve in production.
 
 **The "hard" slice is labeled explicitly.** ~30% of transactions are genuinely ambiguous from the descriptor alone — `AMZN Mktp US*2K4LM9XY3` could be household supplies or electronics; `COSTCO WHSE #0421` could be groceries or a television. Reporting one blended accuracy number over easy and hard cases hides where the system actually fails, so they are scored separately.
+
+**Merchants churn.** The first version of this corpus had every merchant present for all 30 months, which meant *no merchant was ever new* — and Tier 2 exists specifically to answer merchants the user's history has not seen. It was being evaluated against a population that did not contain its own use case. Merchants now have lifecycles: 15 appear only in the holdout, 6 only in the validation window, and two gyms are genuine switches rather than additions. They also arrive in **near-miss families** — `PRESIDIO DENTAL` beside `PRESIDIO VETERINARY`, `MARINA MARKET` beside `MARINA DELI` — so a lexical neighbourhood is contested rather than trivially unanimous.
+
+That change cost Tier 2 nine points of precision, which is the point: the old number was an artifact.
 
 Amount distributions are right-skewed rather than normal. Real spend at a merchant clusters near the low end with a long tail; drawing from the midpoint of a range instead made every wide-range merchant behave like its rare expensive case and produced a fixture that spent 2× its income.
 

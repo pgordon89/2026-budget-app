@@ -8,74 +8,74 @@
     "llmModel": "claude-haiku-4-5"
   },
   "dataset": {
-    "historyTransactions": 2097,
-    "holdoutTransactions": 1429,
-    "hardTransactions": 420
+    "historyTransactions": 2088,
+    "holdoutTransactions": 1513,
+    "hardTransactions": 413
   },
   "normalizer": {
-    "distinctRawDescriptors": 2370,
-    "distinctKeys": 602,
-    "collapseRatio": 3.94,
+    "distinctRawDescriptors": 2460,
+    "distinctKeys": 647,
+    "collapseRatio": 3.8,
     "collisions": 0
   },
   "overall": {
-    "transactions": 1429,
-    "answered": 1305,
-    "correct": 1297,
-    "coveragePct": 91.32,
-    "precisionPct": 99.39,
-    "resolvedPct": 90.76
+    "transactions": 1513,
+    "answered": 1347,
+    "correct": 1321,
+    "coveragePct": 89.03,
+    "precisionPct": 98.07,
+    "resolvedPct": 87.31
   },
   "slices": {
     "easy": {
-      "transactions": 1009,
-      "answered": 1007,
-      "correct": 1007,
-      "coveragePct": 99.8,
-      "precisionPct": 100,
-      "resolvedPct": 99.8
+      "transactions": 1100,
+      "answered": 1050,
+      "correct": 1035,
+      "coveragePct": 95.45,
+      "precisionPct": 98.57,
+      "resolvedPct": 94.09
     },
     "hard": {
-      "transactions": 420,
-      "answered": 298,
-      "correct": 290,
-      "coveragePct": 70.95,
-      "precisionPct": 97.32,
-      "resolvedPct": 69.05
+      "transactions": 413,
+      "answered": 297,
+      "correct": 286,
+      "coveragePct": 71.91,
+      "precisionPct": 96.3,
+      "resolvedPct": 69.25
     }
   },
   "tiers": {
     "memory": {
-      "transactions": 1135,
-      "answered": 1135,
-      "correct": 1129,
-      "hitRatePct": 79.43,
-      "coveragePct": 79.43,
-      "precisionPct": 99.47,
-      "resolvedPct": 79.01
+      "transactions": 1115,
+      "answered": 1115,
+      "correct": 1111,
+      "hitRatePct": 73.69,
+      "coveragePct": 73.69,
+      "precisionPct": 99.64,
+      "resolvedPct": 73.43
     },
     "embedding": {
-      "transactions": 90,
-      "answered": 90,
-      "correct": 89,
-      "hitRatePct": 6.3,
-      "coveragePct": 6.3,
-      "precisionPct": 98.89,
-      "resolvedPct": 6.23
+      "transactions": 121,
+      "answered": 121,
+      "correct": 108,
+      "hitRatePct": 8,
+      "coveragePct": 8,
+      "precisionPct": 89.26,
+      "resolvedPct": 7.14
     },
     "llm": {
-      "transactions": 80,
-      "answered": 80,
-      "correct": 79,
-      "hitRatePct": 5.6,
-      "coveragePct": 5.6,
-      "precisionPct": 98.75,
-      "resolvedPct": 5.53
+      "transactions": 111,
+      "answered": 111,
+      "correct": 102,
+      "hitRatePct": 7.34,
+      "coveragePct": 7.34,
+      "precisionPct": 91.89,
+      "resolvedPct": 6.74
     }
   },
   "review": {
-    "transactions": 124,
-    "pct": 8.68
+    "transactions": 166,
+    "pct": 10.97
   },
   "transfers": {
     "inHoldout": 68,
@@ -86,16 +86,36 @@
   },
   "worstConfusions": [
     {
+      "pair": "health.fitness → shopping.hobbies",
+      "count": 6
+    },
+    {
+      "pair": "health.pharmacy → personal.pets",
+      "count": 5
+    },
+    {
+      "pair": "housing.maintenance → personal.care",
+      "count": 3
+    },
+    {
+      "pair": "shopping.household → shopping.general",
+      "count": 3
+    },
+    {
+      "pair": "housing.furnishing → housing.maintenance",
+      "count": 2
+    },
+    {
       "pair": "shopping.electronics → food.groceries",
       "count": 2
     },
     {
-      "pair": "shopping.household → food.groceries",
-      "count": 2
+      "pair": "food.groceries → shopping.general",
+      "count": 1
     },
     {
-      "pair": "shopping.household → shopping.general",
-      "count": 2
+      "pair": "housing.maintenance → personal.pets",
+      "count": 1
     },
     {
       "pair": "shopping.electronics → personal.software",
@@ -107,18 +127,18 @@
     }
   ],
   "cost": {
-    "totalUsd": 0.680944,
-    "perThousandTransactionsUsd": 0.4765,
-    "perThousandModelCallsUsd": 3.338,
+    "totalUsd": 0.925252,
+    "perThousandTransactionsUsd": 0.6115,
+    "perThousandModelCallsUsd": 3.3403,
     "modelTokens": {
-      "inputTokens": 598094,
-      "outputTokens": 16570,
+      "inputTokens": 810917,
+      "outputTokens": 22867,
       "cacheReadTokens": 0,
       "cacheCreationTokens": 0
     }
   },
   "llmLatencyAtCaptureMs": {
-    "p50": 1978,
-    "p95": 3654
+    "p50": 1929,
+    "p95": 3278
   }
 }

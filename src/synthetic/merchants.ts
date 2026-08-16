@@ -53,6 +53,22 @@ export interface MerchantDef {
    * annotator would need account context. These form the "hard" eval slice.
    */
   readonly hard?: boolean;
+  /**
+   * Merchant lifecycle. Absent means present for the whole range.
+   *
+   * Added because the first corpus had every merchant spanning all 30 months, so
+   * *no merchant was ever new*. Tier 2 exists precisely to answer merchants the
+   * user's history has never seen, and the fixture gave it none — its escalation
+   * population was only descriptor variants of merchants Tier 1 already knew.
+   * That made Tier 2's gate impossible to select against: sweeps reported 100%
+   * precision on a population of a handful of answers.
+   *
+   * Real ledgers churn. People change gyms, move, cancel a subscription, find a
+   * new dentist. Modelling that is both more realistic and the only way to
+   * generate the traffic the tier is built for.
+   */
+  readonly activeFrom?: string;
+  readonly activeUntil?: string;
 }
 
 // Annotated rather than `as const satisfies` on purpose: literal narrowing would
@@ -79,8 +95,8 @@ export const MERCHANTS: readonly MerchantDef[] = [
   { name: 'Adobe Creative Cloud', category: 'personal.software', descriptors: ['ADOBE *CREATIVE CLOUD', 'ADOBE INC {n4}'], amount: [22.99, 59.99], cadence: { kind: 'monthly', dayOfMonth: 24 }, fixedAmount: true },
   { name: 'Dropbox', category: 'personal.software', descriptors: ['DROPBOX*{n4}', 'DBX*DROPBOX PLUS'], amount: [11.99, 19.99], cadence: { kind: 'monthly', dayOfMonth: 2 }, fixedAmount: true },
   { name: 'PlayStation Plus', category: 'entertainment.games', descriptors: ['PLAYSTATION NETWORK', 'SONY *PLAYSTATION {n4}'], amount: [9.99, 17.99], cadence: { kind: 'monthly', dayOfMonth: 17 }, fixedAmount: true },
-  { name: '24 Hour Fitness', category: 'health.fitness', descriptors: ['24 HOUR FITNESS {n5}', '24HRFIT*{city} {st}'], amount: [44, 69], cadence: { kind: 'monthly', dayOfMonth: 1 }, fixedAmount: true },
-  { name: 'ClassPass', category: 'health.fitness', descriptors: ['CLASSPASS INC', 'CLASSPASS*{n5}'], amount: [49, 99], cadence: { kind: 'monthly', dayOfMonth: 20 }, fixedAmount: true },
+  { name: '24 Hour Fitness', category: 'health.fitness', descriptors: ['24 HOUR FITNESS {n5}', '24HRFIT*{city} {st}'], amount: [44, 69], cadence: { kind: 'monthly', dayOfMonth: 1 }, fixedAmount: true, activeUntil: '2025-12-31' },
+  { name: 'ClassPass', category: 'health.fitness', descriptors: ['CLASSPASS INC', 'CLASSPASS*{n5}'], amount: [49, 99], cadence: { kind: 'monthly', dayOfMonth: 20 }, fixedAmount: true, activeUntil: '2025-09-30' },
 
   // ── Groceries ─────────────────────────────────────────────────────────────
   { name: 'Whole Foods Market', category: 'food.groceries', descriptors: ['WHOLEFDS {city} #{n5}', 'WHOLE FOODS MARKET {n4}', 'AMZN WHOLE FOODS {city}'], amount: [24, 210], cadence: { kind: 'weekly', timesPerWeek: 0.75 } },
@@ -174,6 +190,45 @@ export const MERCHANTS: readonly MerchantDef[] = [
   { name: 'Transfer to Savings', category: 'transfer.internal', descriptors: ['ONLINE TRANSFER TO SAV {n4}', 'TRANSFER TO SAVINGS {n4}'], amount: [200, 1500], cadence: { kind: 'monthly', dayOfMonth: 6 }, hard: true },
   { name: 'Venmo', category: 'transfer.person', descriptors: ['VENMO PAYMENT {n10}', 'VENMO CASHOUT {n10}', 'VENMO *{ref}'], amount: [10, 320], cadence: { kind: 'weekly', timesPerWeek: 0.7 }, hard: true },
   { name: 'Zelle', category: 'transfer.person', descriptors: ['ZELLE PAYMENT TO {ref}', 'ZELLE FROM {ref} {n8}'], amount: [25, 900], cadence: { kind: 'sporadic', timesPerYear: 14 }, hard: true },
+  // ── Merchant churn and near-miss families ─────────────────────────────────
+  //
+  // Two jobs. The `activeFrom` merchants are genuinely new to the user partway
+  // through, which is the only traffic Tier 2 is built for and which the first
+  // corpus contained none of. And they come in *families* that share a leading
+  // token while spanning different categories — PRESIDIO DENTAL against PRESIDIO
+  // VETERINARY — so a lexical neighbourhood is contested rather than trivially
+  // unanimous. A near-miss neighbourhood is the case a nearest-neighbour vote is
+  // supposed to be careful about, and a fixture with none of them cannot show
+  // whether it is.
+  //
+  // Regional-name families are not a contrivance: real high streets are full of
+  // them, and they are exactly where a descriptor-only classifier should hesitate.
+  { name: 'Presidio Dental Group', category: 'health.dental_vision', descriptors: ['PRESIDIO DENTAL GRP', 'PRESIDIO DENTAL {n4}'], amount: [95, 420], cadence: { kind: 'sporadic', timesPerYear: 2 }, activeFrom: '2025-09-01' },
+  { name: 'Presidio Veterinary', category: 'personal.pets', descriptors: ['PRESIDIO VETERINARY', 'PRESIDIO VET CLINIC {n3}'], amount: [65, 260], cadence: { kind: 'sporadic', timesPerYear: 3 }, activeFrom: '2025-09-01' },
+  { name: 'Presidio Cleaners', category: 'housing.maintenance', descriptors: ['PRESIDIO CLEANERS', 'PRESIDIO DRY CLEAN {n3}'], amount: [18, 74], cadence: { kind: 'sporadic', timesPerYear: 8 }, activeFrom: '2025-10-01' },
+
+  { name: 'Marina Market', category: 'food.groceries', descriptors: ['MARINA MARKET {n3}', 'MARINA MKT {city}'], amount: [12, 60], cadence: { kind: 'weekly', timesPerWeek: 0.3 }, activeFrom: '2025-08-15' },
+  { name: 'Marina Deli & Grill', category: 'food.restaurants', descriptors: ['MARINA DELI GRILL', 'TST* MARINA DELI'], amount: [14, 52], cadence: { kind: 'weekly', timesPerWeek: 0.3 }, activeFrom: '2025-08-15' },
+  { name: 'Marina Pet Supply', category: 'personal.pets', descriptors: ['MARINA PET SUPPLY', 'MARINA PET {n4}'], amount: [22, 90], cadence: { kind: 'sporadic', timesPerYear: 6 }, activeFrom: '2025-11-01' },
+
+  { name: 'Bayside Pharmacy', category: 'health.pharmacy', descriptors: ['BAYSIDE PHARMACY {n4}', 'BAYSIDE RX {city}'], amount: [8, 165], cadence: { kind: 'sporadic', timesPerYear: 11 }, activeFrom: '2025-08-01' },
+  { name: 'Bayside Wine & Spirits', category: 'food.bars', descriptors: ['BAYSIDE WINE SPIRITS', 'BAYSIDE WINE {n3}'], amount: [19, 72], cadence: { kind: 'sporadic', timesPerYear: 9 }, activeFrom: '2025-08-01' },
+  { name: 'Bayside Hardware', category: 'housing.maintenance', descriptors: ['BAYSIDE HARDWARE {n3}', 'BAYSIDE HDW {city} {st}'], amount: [11, 120], cadence: { kind: 'sporadic', timesPerYear: 6 }, activeFrom: '2025-12-01' },
+
+  { name: 'Golden Gate Auto Care', category: 'transport.maintenance', descriptors: ['GOLDEN GATE AUTO CARE', 'GG AUTO CARE {n4}'], amount: [58, 420], cadence: { kind: 'sporadic', timesPerYear: 2 }, activeFrom: '2026-01-01' },
+  { name: 'Golden Gate Optometry', category: 'health.dental_vision', descriptors: ['GOLDEN GATE OPTOMETRY', 'GG OPTOMETRY {n3}'], amount: [85, 445], cadence: { kind: 'sporadic', timesPerYear: 2 }, activeFrom: '2026-01-01' },
+  { name: 'Golden Gate Athletic Club', category: 'health.fitness', descriptors: ['GOLDEN GATE ATHLETIC', 'GG ATHLETIC CLUB {n4}'], amount: [79, 129], cadence: { kind: 'monthly', dayOfMonth: 4 }, fixedAmount: true, activeFrom: '2026-01-01' },
+
+  // Churn, modelled as genuine switches rather than additive spend: ClassPass
+  // ends as Ridgeline begins, and 24 Hour Fitness ends as Golden Gate Athletic
+  // begins. The old keys go quiet and the new ones must be learned from scratch
+  // mid-ledger, which is the realistic shape and keeps the persona solvent —
+  // a fixture whose spend quietly climbs past its income stops being a
+  // believable demo, which is how the amount distributions got fixed the first
+  // time round.
+  { name: 'Ridgeline Climbing Gym', category: 'health.fitness', descriptors: ['RIDGELINE CLIMBING', 'RIDGELINE CLMB {n4}'], amount: [95, 155], cadence: { kind: 'monthly', dayOfMonth: 7 }, fixedAmount: true, activeFrom: '2025-10-01' },
+  { name: 'Ridgeline Pro Shop', category: 'shopping.hobbies', descriptors: ['RIDGELINE PRO SHOP', 'RIDGELINE SHOP {n3}'], amount: [24, 260], cadence: { kind: 'sporadic', timesPerYear: 6 }, activeFrom: '2025-10-01' },
+
 ];
 
 export const HARD_MERCHANTS: readonly string[] = MERCHANTS.filter((m) => m.hard).map((m) => m.name);

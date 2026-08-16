@@ -273,7 +273,15 @@ export function generateTransactions(opts: GenerateOptions): SyntheticTransactio
     const direction = getCategory(merchant.category)?.direction ?? 'outflow';
     const [min, max] = merchant.amount;
 
-    for (const day of occurrenceDays(merchant.cadence, startDay, endDay, rng)) {
+    // Merchant lifecycle. A merchant that starts partway through is genuinely
+    // new to the user at that point, which is the only traffic Tier 2 exists to
+    // serve — and which a catalog where every merchant spans the whole range
+    // produces none of.
+    const activeFrom = merchant.activeFrom ? Math.max(startDay, toDayNumber(merchant.activeFrom)) : startDay;
+    const activeUntil = merchant.activeUntil ? Math.min(endDay, toDayNumber(merchant.activeUntil)) : endDay;
+    if (activeUntil < activeFrom) continue;
+
+    for (const day of occurrenceDays(merchant.cadence, activeFrom, activeUntil, rng)) {
       let amount: number;
       if (merchant.fixedAmount) {
         // Fixed-price merchants drift only at contract boundaries, not per charge.
