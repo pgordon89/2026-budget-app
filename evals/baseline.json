@@ -20,11 +20,11 @@
   },
   "overall": {
     "transactions": 1429,
-    "answered": 1327,
-    "correct": 1307,
-    "coveragePct": 92.86,
-    "precisionPct": 98.49,
-    "resolvedPct": 91.46
+    "answered": 1305,
+    "correct": 1297,
+    "coveragePct": 91.32,
+    "precisionPct": 99.39,
+    "resolvedPct": 90.76
   },
   "slices": {
     "easy": {
@@ -37,22 +37,22 @@
     },
     "hard": {
       "transactions": 420,
-      "answered": 320,
-      "correct": 300,
-      "coveragePct": 76.19,
-      "precisionPct": 93.75,
-      "resolvedPct": 71.43
+      "answered": 298,
+      "correct": 290,
+      "coveragePct": 70.95,
+      "precisionPct": 97.32,
+      "resolvedPct": 69.05
     }
   },
   "tiers": {
     "memory": {
-      "transactions": 1157,
-      "answered": 1157,
-      "correct": 1139,
-      "hitRatePct": 80.97,
-      "coveragePct": 80.97,
-      "precisionPct": 98.44,
-      "resolvedPct": 79.71
+      "transactions": 1135,
+      "answered": 1135,
+      "correct": 1129,
+      "hitRatePct": 79.43,
+      "coveragePct": 79.43,
+      "precisionPct": 99.47,
+      "resolvedPct": 79.01
     },
     "embedding": {
       "transactions": 90,
@@ -74,8 +74,8 @@
     }
   },
   "review": {
-    "transactions": 102,
-    "pct": 7.14
+    "transactions": 124,
+    "pct": 8.68
   },
   "transfers": {
     "inHoldout": 68,
@@ -86,23 +86,15 @@
   },
   "worstConfusions": [
     {
-      "pair": "shopping.household → shopping.general",
-      "count": 5
-    },
-    {
-      "pair": "personal.care → health.pharmacy",
-      "count": 4
-    },
-    {
-      "pair": "shopping.household → health.pharmacy",
-      "count": 4
-    },
-    {
       "pair": "shopping.electronics → food.groceries",
       "count": 2
     },
     {
       "pair": "shopping.household → food.groceries",
+      "count": 2
+    },
+    {
+      "pair": "shopping.household → shopping.general",
       "count": 2
     },
     {
@@ -112,25 +104,21 @@
     {
       "pair": "shopping.hobbies → housing.maintenance",
       "count": 1
-    },
-    {
-      "pair": "shopping.hobbies → shopping.general",
-      "count": 1
     }
   ],
   "cost": {
-    "totalUsd": 0.60725,
-    "perThousandTransactionsUsd": 0.4249,
-    "perThousandModelCallsUsd": 3.3365,
+    "totalUsd": 0.680944,
+    "perThousandTransactionsUsd": 0.4765,
+    "perThousandModelCallsUsd": 3.338,
     "modelTokens": {
-      "inputTokens": 533775,
-      "outputTokens": 14695,
+      "inputTokens": 598094,
+      "outputTokens": 16570,
       "cacheReadTokens": 0,
       "cacheCreationTokens": 0
     }
   },
   "llmLatencyAtCaptureMs": {
-    "p50": 1997,
-    "p95": 3880
+    "p50": 1978,
+    "p95": 3654
   }
 }

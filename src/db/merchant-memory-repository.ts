@@ -19,6 +19,7 @@
 import { and, eq, sql } from 'drizzle-orm';
 
 import {
+  acceptsScore,
   DEFAULT_MEMORY_CONFIG,
   MerchantMemory,
   scoreTallies,
@@ -93,7 +94,7 @@ export class MerchantMemoryRepository {
     );
     if (score === undefined) return { status: 'unseen', key };
 
-    return score.confidence >= this.config.minConfidence
+    return acceptsScore(score, this.config)
       ? { status: 'hit', key, ...score }
       : { status: 'low_confidence', key, ...score };
   }

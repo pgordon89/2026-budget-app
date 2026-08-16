@@ -58,6 +58,14 @@ export interface MemoryConfig {
    * the golden holdout — a threshold fitted to the test set makes the accuracy
    * it produces an estimate of nothing.
    *
+   * Stays at 0.30 now that `minAgreement` exists, for one reason: Wilson(1,1) is
+   * 0.207, so anything at or below that lets a merchant seen exactly once answer.
+   * The sweep is happy to select 0.20 — the fixture's singleton merchants are
+   * consistent, so it scores those answers as accurate — which is precisely why
+   * refusing n=1 is encoded as a constraint in the selection policy rather than
+   * left to the data. One observation cannot distinguish a merchant that is
+   * always groceries from one that is groceries this time.
+   *
    * Raising it buys precision and spends money at the next tier.
    */
   readonly minConfidence: number;
@@ -72,15 +80,72 @@ export interface MemoryConfig {
    * it takes repeated agreement before the cache is trusted.
    */
   readonly inferredWeight: number;
+  /**
+   * Minimum share of the evidence the winning category must hold.
+   *
+   * Wilson cannot do this job, and that is the whole finding. Wilson is a lower
+   * bound on a proportion, so it moves with agreement *and* sample size — which
+   * means it scores "seen 4 times, always groceries" the same as "seen 100
+   * times, groceries 39% of the time". The first is a merchant worth answering.
+   * The second is right 39% of the time, forever.
+   *
+   * The agreement a Wilson gate actually admits, by sample size:
+   *
+   *     gate     n=10    n=30    n=100
+   *     0.30     0.59    0.47    0.39
+   *     0.50     0.81    0.68    0.60
+   *
+   * So a 0.30 Wilson gate was never a 97%-precision policy. On well-observed
+   * merchants it is a *39%*-precision policy, and the correction loop exposed it
+   * by tipping exactly those merchants across the line. Raising the Wilson gate
+   * does not fix it — 0.50 still admits 60% agreement at n=100, which is why it
+   * moved measured precision on those answers only from 65% to 71% while adding
+   * 45% to the model bill.
+   *
+   * Agreement is the point estimate of "how often will this be right". Wilson is
+   * "how sure am I of that estimate". A mixed-basket merchant sits near 0.46
+   * agreement at any sample size and is refused here permanently; a small
+   * unanimous merchant passes here and is held back by Wilson until it has been
+   * seen enough times.
+   *
+   * A minimum *support* floor was tried first and abandoned on measurement: it
+   * moved the affected answers from 83% to 91% and never reached target, at a
+   * cost of 25 points of coverage. Wrong axis — the problem was never too little
+   * evidence, it was too little agreement.
+   */
+  readonly minAgreement: number;
   /** Wilson z. 1.96 ≈ 95% one-sided-ish; larger = more conservative on small n. */
   readonly z: number;
 }
 
 export const DEFAULT_MEMORY_CONFIG: MemoryConfig = {
+  // Both selected together by `npm run analyze:gate`, on a validation replay with
+  // write-back on — the population the original gate was never chosen against.
+  // Rule: widest coverage clearing 97% on overall precision *and* on the answers
+  // that exist only because corrections reached the store.
+  //
+  // The agreement floor is insensitive between 0.80 and 1.00 — 0.3 points of
+  // coverage separates them — because few merchants in this corpus sit between
+  // 80% and 97% agreement. 0.80 is what the stated rule selects; if the merchant
+  // mix ever fills that band, re-run the sweep rather than nudging this.
   minConfidence: 0.3,
+  minAgreement: 0.8,
   inferredWeight: 0.25,
   z: 1.96,
 };
+
+/**
+ * The accept decision, in one place.
+ *
+ * Both gates must pass and neither subsumes the other. `minAgreement` asks
+ * whether this merchant is predictable at all; `minConfidence` asks whether
+ * there is enough evidence to believe it. A merchant seen 100 times and split
+ * three ways is well-evidenced and unpredictable; a merchant seen twice and
+ * unanimous is predictable and unproven. Neither should answer.
+ */
+export function acceptsScore(score: TallyScore, config: MemoryConfig): boolean {
+  return score.agreement >= config.minAgreement && score.confidence >= config.minConfidence;
+}
 
 const SOURCE_WEIGHT = (config: MemoryConfig, source: ObservationSource): number =>
   source === 'confirmed' ? 1 : config.inferredWeight;
@@ -123,9 +188,10 @@ export type MemoryOutcome =
  * Wilson score interval, lower bound.
  *
  * Chosen over a raw proportion because the raw proportion cannot tell 1/1 from
- * 100/100, and over a fixed `minSupport` threshold because that would be a
- * second knob doing a worse version of the same job — Wilson already collapses
- * toward zero as n shrinks, continuously, with no cliff to tune.
+ * 100/100.
+ *
+ * It is not, on its own, a precision policy: see `minAgreement`. Wilson bounds
+ * how sure you are of a proportion, not how useful that proportion is.
  *
  * Accepts fractional counts: `inferred` observations contribute partial weight,
  * so n here is an effective sample size rather than an integer.
@@ -273,7 +339,7 @@ export class MerchantMemory {
     );
     if (score === undefined) return { status: 'unseen', key };
 
-    return score.confidence >= this.config.minConfidence
+    return acceptsScore(score, this.config)
       ? { status: 'hit', key, ...score }
       : { status: 'low_confidence', key, ...score };
   }
