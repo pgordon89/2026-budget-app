@@ -49,11 +49,18 @@ export interface NeighbourConfig {
    * the product cannot tell that apart from 0.95 agreement times 0.55 similarity
    * — a confident vote from a slightly distant neighbourhood.
    *
-   * **0.51 is a principled bound, not a selected one, and that is a limitation.**
-   * Requiring a strict majority is justifiable without any data: below it, more
-   * of the neighbourhood disagrees with the answer than agrees. Everything above
-   * that would need selecting, and no split available here can do it — see the
-   * note on the value below.
+   * This is the gate that carries the decision, because it is the only part of
+   * the score measurably ordered against correctness. `npm run analyze:tier2`
+   * buckets both factors on the validation inbox:
+   *
+   *   agreement     0.00–0.50  27.8%   0.50–0.70  57.1%   0.70–0.90  65.4%   0.90+  87.7%
+   *   nearest sim   0.00–0.50  53.1%   0.50–0.70  78.0%   0.70–0.80  53.8%   0.90+  42.9%
+   *
+   * Agreement climbs and never reverses. Similarity does not rise at all, and its
+   * *top* bucket is its worst — near-miss merchant families share a token, so the
+   * closest lexical neighbour of `PRESIDIO VETERINARY` is `PRESIDIO DENTAL`, and
+   * a similarity near 1.0 is evidence of a shared name fragment rather than a
+   * shared category.
    */
   readonly minAgreement: number;
   /**
@@ -65,28 +72,45 @@ export interface NeighbourConfig {
 }
 
 /**
- * k and `minConfidence` come from `npm run analyze:knn`, swept on a validation
- * slice and never on the holdout.
+ * k comes from `npm run analyze:knn`. The two gates come from
+ * `npm run analyze:tier2`, which prices the whole grid by putting a real model
+ * response on file for every transaction Tier 1 escalates — so each setting's
+ * cost is measured rather than extrapolated from a mean call price.
  *
- * `minAgreement` is **not** selected, and the honest reason is that no split
- * available here can select it. Running `analyze:gate -- --tier=2` sweeps it on a
- * validation replay with write-back on, and that replay reports Tier 2 already at
- * 100% precision on the answers write-back creates *without* any agreement floor
- * — there is no defect there to select against. The golden replay does show one,
- * but it is 6 to 8 answers, far too few to choose a threshold from.
+ * The shape of this gate is the finding. It was `0.50 / 0.51`: most of the
+ * weight on the confidence product, with agreement held at a strict majority
+ * because nothing available could select it. Sweeping it revealed that the
+ * frontier runs *backwards* — every increment of `minConfidence` above 0.50 cost
+ * precision as well as coverage, from 85.7% down to 63.6%, because raising a
+ * threshold on a badly-ordered score removes good answers before bad ones.
  *
- * Taking the sweep's coverage-maximising answer anyway (0.40 / 0.60) was tried
- * and measured: on the holdout it pushed Tier 2's share from 6.3% to 10.8% at
- * 95.5% precision and dropped overall precision from 99.4% to 98.9%. Reverted.
+ * So the weight moved: `minConfidence` down to a floor that only rejects the
+ * bottom of the distribution, `minAgreement` up to where the ordering is real.
+ * Measured on the holdout, scored once at the settings validation chose:
  *
- * So this ships the one value defensible without data — a strict majority — and
- * the gap is stated rather than papered over. Closing it needs a corpus with
- * enough Tier 2 marginal traffic to select on.
+ *   tier 2 share      8.0%  →  8.5%
+ *   tier 2 precision  89.3% → 97.7%     ← clears the 97% floor for the first time
+ *   cost per 1,000    $0.6115 → $0.5937
+ *
+ * Better on all three at once, which is why it is safe to ship despite the
+ * project's history with this exact kind of change. The rule that twice cleared
+ * validation and regressed the holdout was coverage-maximisation resolving a real
+ * tradeoff in the permissive direction. A point that beats the incumbent on
+ * coverage *and* precision *and* cost is not resolving a tradeoff; it is preferred
+ * by every objective monotone in the three, so no reweighting of them can undo it.
+ *
+ * Two things this does not claim. Whole-cascade coverage falls (89.0% → 88.4%):
+ * the gate reshapes which transactions Tier 2 takes rather than taking more, and
+ * the ones it hands back are the ones it was getting wrong — resolved rises,
+ * 87.31% → 87.40%. And 97.7% is a point estimate over 129 answers; the 95% lower
+ * bound is nearer 93%, so this clears the floor as an observation, not a
+ * guarantee. Validation predicted 89.1% for the same setting, and that 8-point
+ * spread is the honest width of these estimates at this corpus size.
  */
 export const DEFAULT_NEIGHBOUR_CONFIG: NeighbourConfig = {
   k: 3,
-  minConfidence: 0.5,
-  minAgreement: 0.51,
+  minConfidence: 0.3,
+  minAgreement: 0.9,
   costPerLookupUsd: 0,
 };
 

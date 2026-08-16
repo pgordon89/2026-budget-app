@@ -234,7 +234,11 @@ async function main(): Promise<void> {
       `  precision        ${pct(chosenRow.correct, chosenRow.answered).trim()}`,
       `  marginal         ${pct(chosenRow.marginalCorrect, chosenRow.marginal).trim()} over ${chosenRow.marginal} answers write-back created`,
       ``,
-      `CURRENT DEFAULT    minConfidence ${DEFAULT_MEMORY_CONFIG.minConfidence} · minAgreement ${DEFAULT_MEMORY_CONFIG.minAgreement}`,
+      // Whichever tier is being swept. Printing Tier 1's config in `--tier=2` mode
+      // was actively misleading once the two gates landed a tenth apart.
+      TIER === 1
+        ? `CURRENT DEFAULT    minConfidence ${DEFAULT_MEMORY_CONFIG.minConfidence} · minAgreement ${DEFAULT_MEMORY_CONFIG.minAgreement}`
+        : `CURRENT DEFAULT    minConfidence ${DEFAULT_NEIGHBOUR_CONFIG.minConfidence} · minAgreement ${DEFAULT_NEIGHBOUR_CONFIG.minAgreement}`,
     );
   }
 

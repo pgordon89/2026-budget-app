@@ -97,6 +97,20 @@
   },
   "latencyMs": 1381
  },
+ "24HRFIT*SF CA  SANFRAN CA": {
+  "status": "ok",
+  "category": "health.fitness",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2922,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1221
+ },
  "ACH DEBIT BLUE SHIEL": {
   "status": "ok",
   "category": "health.insurance",
@@ -124,6 +138,20 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 2558
+ },
+ "ACH DEBIT TOYOTA FIN": {
+  "status": "ok",
+  "category": "transport.auto_payment",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2925,
+   "outputTokens": 86,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2993
  },
  "ADOBE INC 1186": {
   "status": "ok",
@@ -265,6 +293,34 @@
   },
   "latencyMs": 1573
  },
+ "AIRBNB * HMR3Z1K6RT4": {
+  "status": "ok",
+  "category": "travel.lodging",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2943,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2841
+ },
+ "AIRBNB HMYRY9HFL": {
+  "status": "ok",
+  "category": "travel.lodging",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2939,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2641
+ },
  "ALLIANZ TRAVEL INS 576457": {
   "status": "ok",
   "category": "travel.other",
@@ -278,6 +334,20 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 1289
+ },
+ "AMAZON.COM REFUND 1EF2LAPE": {
+  "status": "ok",
+  "category": "income.refund",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2951,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2581
  },
  "AMAZON.COM REFUND 9MPRR13W": {
   "status": "ok",
@@ -306,6 +376,34 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 4113
+ },
+ "AMAZON.COM REFUND TYMXA7SH": {
+  "status": "ok",
+  "category": "income.refund",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2949,
+   "outputTokens": 84,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1212
+ },
+ "AMAZON.COM REFUND VMTGQVASR9": {
+  "status": "ok",
+  "category": "income.refund",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2951,
+   "outputTokens": 105,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1588
  },
  "AMAZON.COM REFUND X8NLNH45  SANFRAN CA": {
   "status": "ok",
@@ -741,6 +839,20 @@
   },
   "latencyMs": 3091
  },
+ "AMZN Mktp US 6YRRCZJKT6": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2947,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1164
+ },
  "AMZN Mktp US 82YWRNQ19L4": {
   "status": "ok",
   "category": "shopping.general",
@@ -978,6 +1090,34 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 1187
+ },
+ "AMZN Mktp US*84FMWP1DP9N": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2950,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2745
+ },
+ "AMZN Mktp US*8FFRM94G": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2946,
+   "outputTokens": 99,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1374
  },
  "AMZN Mktp US*8HW6TH": {
   "status": "ok",
@@ -1273,6 +1413,48 @@
   },
   "latencyMs": 2586
  },
+ "AMZN WHOLE FOODS OAKLA": {
+  "status": "ok",
+  "category": "food.groceries",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2939,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2899
+ },
+ "AMZN WHOLE FOODS SAN": {
+  "status": "ok",
+  "category": "food.groceries",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2939,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1284
+ },
+ "AMZN WHOLE FOODS SANFR": {
+  "status": "ok",
+  "category": "food.groceries",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2941,
+   "outputTokens": 100,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1560
+ },
  "APL*ITUNES.COM/BILL": {
   "status": "ok",
   "category": "entertainment.streaming",
@@ -1286,6 +1468,34 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 2955
+ },
+ "APPLE.COM/US 1971": {
+  "status": "ok",
+  "category": "personal.software",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2919,
+   "outputTokens": 85,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1550
+ },
+ "ATM SURCHARGE FEE ALAMEDA": {
+  "status": "ok",
+  "category": "financial.fees",
+  "confidence": 0.99,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2932,
+   "outputTokens": 76,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2391
  },
  "Amazon.com*38GNX9SA094": {
   "status": "ok",
@@ -1553,6 +1763,34 @@
   },
   "latencyMs": 1237
  },
+ "BARBER & BLADE EMERYVL": {
+  "status": "ok",
+  "category": "personal.care",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2923,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1450
+ },
+ "BARBER & BLADE OAKLAND  ALAMEDA CA": {
+  "status": "ok",
+  "category": "personal.care",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2925,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2515
+ },
  "BART-BERKELEY": {
   "status": "ok",
   "category": "transport.transit",
@@ -1665,6 +1903,20 @@
   },
   "latencyMs": 2946
  },
+ "BAYSIDE HDW SF CA": {
+  "status": "ok",
+  "category": "housing.maintenance",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2917,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2615
+ },
  "BAYSIDE PHARMACY 1912": {
   "status": "ok",
   "category": "health.pharmacy",
@@ -1721,6 +1973,34 @@
   },
   "latencyMs": 1929
  },
+ "BAYSIDE RX ALAMEDA": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2921,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2500
+ },
+ "BAYSIDE RX BERKELEY": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2920,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2667
+ },
  "BAYSIDE RX BERKELEY  SANFRAN CA": {
   "status": "ok",
   "category": "health.pharmacy",
@@ -1734,6 +2014,48 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 1535
+ },
+ "BAYSIDE RX DALY CITY": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2923,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2666
+ },
+ "BAYSIDE RX EMERYVLE": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2922,
+   "outputTokens": 84,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2600
+ },
+ "BAYSIDE RX SF": {
+  "status": "ok",
+  "category": "health.pharmacy",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2919,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2613
  },
  "BAYSIDE VETERINARY CLINIC": {
   "status": "ok",
@@ -1973,6 +2295,76 @@
   },
   "latencyMs": 2601
  },
+ "CASH BACK REWARD REDEMPTION": {
+  "status": "ok",
+  "category": "income.other",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2921,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2669
+ },
+ "CHASE CREDIT CRD AUTOPAY 08U7VAVKAM": {
+  "status": "ok",
+  "category": "transfer.credit_payment",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2969,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2967
+ },
+ "CHASE CREDIT CRD AUTOPAY 0Y27": {
+  "status": "ok",
+  "category": "transfer.credit_payment",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2959,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1235
+ },
+ "CHASE CREDIT CRD AUTOPAY J4X8AM4": {
+  "status": "ok",
+  "category": "transfer.credit_payment",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2962,
+   "outputTokens": 99,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1240
+ },
+ "CHASE CREDIT CRD AUTOPAY XG8X5CWC2G": {
+  "status": "ok",
+  "category": "transfer.credit_payment",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2957,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2531
+ },
  "CHEWY INC 2N03DNUUA9F": {
   "status": "ok",
   "category": "personal.pets",
@@ -1987,6 +2379,20 @@
   },
   "latencyMs": 2687
  },
+ "CHEWY INC 7U85UCW": {
+  "status": "ok",
+  "category": "personal.pets",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2929,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2579
+ },
  "CHEWY INC 9N8G4TTAQ3B": {
   "status": "ok",
   "category": "personal.pets",
@@ -2000,6 +2406,118 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 1358
+ },
+ "CHEWY INC EQPBYWU0JNV": {
+  "status": "ok",
+  "category": "personal.pets",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2939,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2611
+ },
+ "CHEWY INC LXABAFY": {
+  "status": "ok",
+  "category": "personal.pets",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2928,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2819
+ },
+ "CHEWY INC MRGGNY": {
+  "status": "ok",
+  "category": "personal.pets",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2924,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1216
+ },
+ "CITY OF ALAMEDA WATER DE": {
+  "status": "ok",
+  "category": "housing.utilities",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2934,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2783
+ },
+ "CITY OF ALAMEDA WATER DEPT": {
+  "status": "ok",
+  "category": "housing.utilities",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2937,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1233
+ },
+ "CITY OF DALY CITY WATER DEPT": {
+  "status": "ok",
+  "category": "housing.utilities",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2940,
+   "outputTokens": 75,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2834
+ },
+ "CITY OF SF WATER DEPT": {
+  "status": "ok",
+  "category": "housing.utilities",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2933,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1177
+ },
+ "COSTCO WHOLESALE ALAMEDA": {
+  "status": "ok",
+  "category": "food.groceries",
+  "confidence": 0.9,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2918,
+   "outputTokens": 85,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1305
  },
  "COSTCO WHOLESALE BERKELEY": {
   "status": "ok",
@@ -2042,6 +2560,20 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 3243
+ },
+ "COSTCO WHOLESALE SAN MATEO": {
+  "status": "ok",
+  "category": "food.groceries",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2920,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2607
  },
  "COSTCO WHOLESALE SANFRAN": {
   "status": "ok",
@@ -2252,6 +2784,48 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 1216
+ },
+ "COURSERA INC 32862": {
+  "status": "ok",
+  "category": "personal.education",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2944,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1323
+ },
+ "COURSERA.ORG 4NL2YQ": {
+  "status": "ok",
+  "category": "personal.education",
+  "confidence": 0.99,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2952,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1216
+ },
+ "COURSERA.ORG 8BSWEU2": {
+  "status": "ok",
+  "category": "personal.education",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2959,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1353
  },
  "COURSERA.ORG KQNAZCD8JL": {
   "status": "ok",
@@ -2715,6 +3289,76 @@
   },
   "latencyMs": 2706
  },
+ "DD *DOORDASH 8QWLBTLBU": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2932,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1239
+ },
+ "DD *DOORDASH 8T0UKS6AW": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2934,
+   "outputTokens": 103,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1368
+ },
+ "DD *DOORDASH 99UYKPG  EMERYVLE CA": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2934,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1272
+ },
+ "DD *DOORDASH C4VSM5UP": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2926,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2491
+ },
+ "DD *DOORDASH QPPMNF": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2924,
+   "outputTokens": 99,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1425
+ },
  "DD *DOORDASH UU1KKZXQB": {
   "status": "ok",
   "category": "food.delivery",
@@ -2729,6 +3373,34 @@
   },
   "latencyMs": 2511
  },
+ "DD *DOORDASH YXFU9F3S": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2930,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3777
+ },
+ "DD *DOORDASH ZNB12UV": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2924,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1277
+ },
  "DEPOSIT MERIDIAN LABS LLC": {
   "status": "ok",
   "category": "income.freelance",
@@ -2742,6 +3414,20 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 1354
+ },
+ "DIRECT DEPOSIT NORTHST": {
+  "status": "ok",
+  "category": "income.salary",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2922,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2877
  },
  "DMV RENEWAL FEE CA": {
   "status": "ok",
@@ -2911,6 +3597,20 @@
   },
   "latencyMs": 3132
  },
+ "ETSY.COM - RFFE3R4U": {
+  "status": "ok",
+  "category": "shopping.gifts",
+  "confidence": 0.72,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2933,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2613
+ },
  "ETSY.COM - ZV3ETUW3MWH": {
   "status": "ok",
   "category": "shopping.gifts",
@@ -3009,6 +3709,48 @@
   },
   "latencyMs": 2927
  },
+ "GITHUB.COM 3U86M7W": {
+  "status": "ok",
+  "category": "personal.software",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2924,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1211
+ },
+ "GITHUB.COM 61XHRGU5": {
+  "status": "ok",
+  "category": "personal.software",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2924,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1638
+ },
+ "GITHUB.COM 7F2746": {
+  "status": "ok",
+  "category": "personal.software",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2918,
+   "outputTokens": 74,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1202
+ },
  "GITHUB.COM A9RFNYBJJT": {
   "status": "ok",
   "category": "personal.software",
@@ -3036,6 +3778,20 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 1304
+ },
+ "GITHUB.COM K1HM047  BERKELEY CA": {
+  "status": "ok",
+  "category": "personal.software",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2926,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2602
  },
  "GOLDEN GATE ATHLETIC": {
   "status": "ok",
@@ -3289,6 +4045,48 @@
   },
   "latencyMs": 2670
  },
+ "IKEA.COM 01581  SAN MATEO OR": {
+  "status": "ok",
+  "category": "housing.furnishing",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2926,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2504
+ },
+ "IKEA.COM 03209": {
+  "status": "ok",
+  "category": "housing.furnishing",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2919,
+   "outputTokens": 106,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1422
+ },
+ "INSTACART*WEUD5FZKTW": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2930,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2657
+ },
  "INTEREST CHARGED ON PURCHASES": {
   "status": "ok",
   "category": "financial.interest",
@@ -3415,6 +4213,132 @@
   },
   "latencyMs": 4542
  },
+ "LYFT *RIDE 0Z8P33WE1F5": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2947,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3036
+ },
+ "LYFT *RIDE 42A0MZ": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.99,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2937,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2053
+ },
+ "LYFT *RIDE A9BYTG": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2935,
+   "outputTokens": 85,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1604
+ },
+ "LYFT *RIDE ADJMDMD": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2933,
+   "outputTokens": 84,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2714
+ },
+ "LYFT *RIDE AGWP5E": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.99,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2937,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1289
+ },
+ "LYFT *RIDE BEBHK7YGV7": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.99,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2943,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2799
+ },
+ "LYFT *RIDE GEN89VLX8  EMERYVLE NV": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2946,
+   "outputTokens": 109,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2076
+ },
+ "LYFT *RIDE GHFXE7": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2937,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1242
+ },
+ "LYFT *RIDE QKFR11F6GU": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2945,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2664
+ },
  "LYFT *RIDE UWDCN802Q0K": {
   "status": "ok",
   "category": "transport.rideshare",
@@ -3428,6 +4352,20 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 2683
+ },
+ "LYFT *RIDE XSUSZ3": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2935,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2614
  },
  "MARINA DELI GRILL": {
   "status": "ok",
@@ -3765,6 +4703,20 @@
   },
   "latencyMs": 1237
  },
+ "MUNICIPAL WATER SVCS E": {
+  "status": "ok",
+  "category": "housing.utilities",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2928,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1457
+ },
  "NON-CHASE ATM FEE": {
   "status": "ok",
   "category": "financial.fees",
@@ -3778,6 +4730,90 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 2632
+ },
+ "NORDSTROM #1745": {
+  "status": "ok",
+  "category": "shopping.clothing",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2926,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1509
+ },
+ "NORDSTROM #3654": {
+  "status": "ok",
+  "category": "shopping.clothing",
+  "confidence": 0.88,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2926,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2609
+ },
+ "NORDSTROM #6976": {
+  "status": "ok",
+  "category": "shopping.clothing",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2935,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2583
+ },
+ "NORDSTROM.COM 5Z3SHVRDK": {
+  "status": "ok",
+  "category": "shopping.clothing",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2933,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2627
+ },
+ "NORDSTROM.COM 92H8WC": {
+  "status": "ok",
+  "category": "shopping.clothing",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2942,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2709
+ },
+ "NORDSTROM.COM NV2E1EF": {
+  "status": "ok",
+  "category": "shopping.clothing",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2932,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2648
  },
  "NORDSTROM.COM TBBMDHBVY": {
   "status": "ok",
@@ -3807,6 +4843,146 @@
   },
   "latencyMs": 3718
  },
+ "NORTHSTAR SYS PAYROLL 59HED8": {
+  "status": "ok",
+  "category": "income.salary",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2949,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2648
+ },
+ "NORTHSTAR SYS PAYROLL 6MELAUUBP9": {
+  "status": "ok",
+  "category": "income.salary",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2958,
+   "outputTokens": 85,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2777
+ },
+ "NORTHSTAR SYS PAYROLL CYVTM86ET7": {
+  "status": "ok",
+  "category": "income.salary",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2958,
+   "outputTokens": 85,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2737
+ },
+ "NORTHSTAR SYS PAYROLL D1A2": {
+  "status": "ok",
+  "category": "income.salary",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2947,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2847
+ },
+ "NORTHSTAR SYS PAYROLL GJUNQSZFA": {
+  "status": "ok",
+  "category": "income.salary",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2954,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2634
+ },
+ "NORTHSTAR SYS PAYROLL TKAJ3E1L  DALY CITY NV": {
+  "status": "ok",
+  "category": "income.salary",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2964,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1443
+ },
+ "NORTHSTAR SYS PAYROLL UC5U0U": {
+  "status": "ok",
+  "category": "income.salary",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2949,
+   "outputTokens": 85,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2656
+ },
+ "NORTHSTAR SYS PAYROLL VXD8YU8": {
+  "status": "ok",
+  "category": "income.salary",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2953,
+   "outputTokens": 85,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2722
+ },
+ "NORTHSTAR SYSTEMS DIREC": {
+  "status": "ok",
+  "category": "income.salary",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2927,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1574
+ },
+ "NORTHSTAR SYSTEMS DIRECT": {
+  "status": "ok",
+  "category": "income.salary",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2922,
+   "outputTokens": 84,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2541
+ },
  "ONE MEDICAL GROUP": {
   "status": "ok",
   "category": "health.medical",
@@ -3821,6 +4997,34 @@
   },
   "latencyMs": 3199
  },
+ "ONLINE TRANSFER TO SA": {
+  "status": "ok",
+  "category": "transfer.internal",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2915,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2726
+ },
+ "PARKING METER DALY CIT": {
+  "status": "ok",
+  "category": "transport.parking_tolls",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2927,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3087
+ },
  "PAYMENT THANK YOU -": {
   "status": "ok",
   "category": "transfer.credit_payment",
@@ -3834,6 +5038,34 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 3038
+ },
+ "PAYPAL *SPOTIFYUSA": {
+  "status": "ok",
+  "category": "entertainment.streaming",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2907,
+   "outputTokens": 76,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2417
+ },
+ "PG&E ONLINE PMT 09E98UC9DKX": {
+  "status": "ok",
+  "category": "housing.utilities",
+  "confidence": 0.99,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2958,
+   "outputTokens": 101,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1262
  },
  "PGANDE WEB ONLINE PMT": {
   "status": "ok",
@@ -3876,6 +5108,34 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 2448
+ },
+ "POS DEBIT ACH DEBIT STERLING RID": {
+  "status": "ok",
+  "category": "housing.rent",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2926,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1363
+ },
+ "POS DEBIT ACH DEBIT STERLING RIDGE A": {
+  "status": "ok",
+  "category": "housing.rent",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2927,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1259
  },
  "POS DEBIT ADOBE INC 2153": {
   "status": "ok",
@@ -4129,6 +5389,20 @@
   },
   "latencyMs": 2707
  },
+ "POS DEBIT CHEWY INC K5YH3JUKDRX": {
+  "status": "ok",
+  "category": "personal.pets",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2942,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1269
+ },
  "POS DEBIT CVS 02166 SF CA": {
   "status": "ok",
   "category": "health.pharmacy",
@@ -4283,6 +5557,34 @@
   },
   "latencyMs": 2614
  },
+ "POS DEBIT NORDSTROM.COM EES7TT3": {
+  "status": "ok",
+  "category": "shopping.clothing",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2935,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2621
+ },
+ "POS DEBIT NORTHSTAR SYSTEMS DI": {
+  "status": "ok",
+  "category": "income.salary",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2937,
+   "outputTokens": 108,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1558
+ },
  "POS DEBIT ONE MEDICAL GROUP": {
   "status": "ok",
   "category": "health.medical",
@@ -4325,6 +5627,20 @@
   },
   "latencyMs": 1253
  },
+ "POS DEBIT SQ *BLUE BOTTLE #6080 SANFRAN  SAN MATEO CA": {
+  "status": "ok",
+  "category": "food.coffee",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2938,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2449
+ },
  "POS DEBIT STATEMENT CREDIT REWARDS": {
   "status": "ok",
   "category": "income.other",
@@ -4353,6 +5669,20 @@
   },
   "latencyMs": 1274
  },
+ "POS DEBIT TARGET 98918068": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2912,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2626
+ },
  "POS DEBIT TARGET.COM * 9L9ECAHB": {
   "status": "ok",
   "category": "shopping.general",
@@ -4366,6 +5696,20 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 2684
+ },
+ "POS DEBIT TARGET.COM * W6SLGX": {
+  "status": "ok",
+  "category": "shopping.general",
+  "confidence": 0.72,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2918,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2603
  },
  "POS DEBIT TFS AUTO PAY 6151234283": {
   "status": "ok",
@@ -4409,6 +5753,34 @@
   },
   "latencyMs": 2649
  },
+ "POS DEBIT TST* SIGHTGLASS - BERK": {
+  "status": "ok",
+  "category": "food.coffee",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2930,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2761
+ },
+ "POS DEBIT UBER *EATS FSZU6R": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2938,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2789
+ },
  "POS DEBIT UBER *TRIP BBMTFFCF": {
   "status": "ok",
   "category": "transport.rideshare",
@@ -4423,6 +5795,20 @@
   },
   "latencyMs": 1263
  },
+ "POS DEBIT UBER *TRIP PDASJ9": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2939,
+   "outputTokens": 84,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1613
+ },
  "POS DEBIT UBER *TRIP WG5C3ZECAGT": {
   "status": "ok",
   "category": "transport.rideshare",
@@ -4436,6 +5822,34 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 2728
+ },
+ "POS DEBIT UBER *TRIP YASH84": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2937,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1253
+ },
+ "POS DEBIT UBER EATS HELP.UBER.": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2939,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3208
  },
  "POS DEBIT US TREASURY TAX PYMT": {
   "status": "ok",
@@ -4464,6 +5878,20 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 2675
+ },
+ "POS DEBIT ZELLE PAYMENT TO MQ9SVUV0  DALY CITY NV": {
+  "status": "ok",
+  "category": "transfer.person",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2950,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2839
  },
  "PRESIDIO CLEANERS": {
   "status": "ok",
@@ -4619,6 +6047,20 @@
   },
   "latencyMs": 2498
  },
+ "REI.COM K5K133TY": {
+  "status": "ok",
+  "category": "shopping.hobbies",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2932,
+   "outputTokens": 105,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1413
+ },
  "REI.COM WFG4EXN9K": {
   "status": "ok",
   "category": "shopping.hobbies",
@@ -4632,6 +6074,20 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 1443
+ },
+ "REWARDS REDEMPTION 885491": {
+  "status": "ok",
+  "category": "income.other",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2919,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1440
  },
  "RIDGELINE CLIMBING": {
   "status": "ok",
@@ -4829,6 +6285,48 @@
   },
   "latencyMs": 1449
  },
+ "SF INS PREM E29DG6FYR": {
+  "status": "ok",
+  "category": "transport.insurance",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2946,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1198
+ },
+ "SF INS PREM RKMUPUVRS": {
+  "status": "ok",
+  "category": "transport.insurance",
+  "confidence": 0.9,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2941,
+   "outputTokens": 85,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1276
+ },
+ "SF INS PREM UNC8865K5": {
+  "status": "ok",
+  "category": "transport.insurance",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2941,
+   "outputTokens": 85,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2669
+ },
  "SQ *BAYSIDE VET ALAMEDA": {
   "status": "ok",
   "category": "personal.pets",
@@ -4857,6 +6355,34 @@
   },
   "latencyMs": 2817
  },
+ "SQ *BLUE BOTTLE #1977 ALAMEDA  OAKLAND CA": {
+  "status": "ok",
+  "category": "food.coffee",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2928,
+   "outputTokens": 100,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1523
+ },
+ "SQ *BLUE BOTTLE #2547 EMERYVLE  OAKLAND NV": {
+  "status": "ok",
+  "category": "food.coffee",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2931,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1245
+ },
  "SQ *SITTER SERVICES": {
   "status": "ok",
   "category": "personal.childcare",
@@ -4870,6 +6396,48 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 1265
+ },
+ "STARBUCKS 21971 ALAMED": {
+  "status": "ok",
+  "category": "food.coffee",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2921,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2524
+ },
+ "STARBUCKS 27517 BERKE": {
+  "status": "ok",
+  "category": "food.coffee",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2920,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1319
+ },
+ "STARBUCKS 29510 OAKLA": {
+  "status": "ok",
+  "category": "food.coffee",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2923,
+   "outputTokens": 101,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1324
  },
  "STARBUCKS 55548 DALY CITY  OAKLAND CA": {
   "status": "ok",
@@ -4899,6 +6467,20 @@
   },
   "latencyMs": 1151
  },
+ "STARBUCKS 91641 OAKLAND  BERKELEY NV": {
+  "status": "ok",
+  "category": "food.coffee",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2924,
+   "outputTokens": 104,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1666
+ },
  "STATEFARM RO 08 AUTOPAY": {
   "status": "ok",
   "category": "transport.insurance",
@@ -4912,6 +6494,34 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 2459
+ },
+ "STATEFARM RO 10 AUTOPA": {
+  "status": "ok",
+  "category": "transport.insurance",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2932,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2534
+ },
+ "STATEFARM RO 19 AUTOP": {
+  "status": "ok",
+  "category": "transport.insurance",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2928,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2827
  },
  "STATEFARM RO 28 AUTOPAY": {
   "status": "ok",
@@ -4983,6 +6593,20 @@
   },
   "latencyMs": 2729
  },
+ "STERLING RIDGE APTS REN": {
+  "status": "ok",
+  "category": "housing.rent",
+  "confidence": 0.99,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2926,
+   "outputTokens": 102,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1878
+ },
  "STERLINGRIDGE PROPERTY MGMT  OAKLAND NV": {
   "status": "ok",
   "category": "housing.rent",
@@ -4996,6 +6620,62 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 11133
+ },
+ "STRIPE TRANSFER 0F0NXCSV4": {
+  "status": "ok",
+  "category": "income.freelance",
+  "confidence": 0.85,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2933,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1247
+ },
+ "STRIPE TRANSFER 7TPQ2FMW6X": {
+  "status": "ok",
+  "category": "income.freelance",
+  "confidence": 0.82,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2933,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2629
+ },
+ "STRIPE TRANSFER N28KN4CRR22": {
+  "status": "ok",
+  "category": "income.freelance",
+  "confidence": 0.78,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2932,
+   "outputTokens": 84,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2682
+ },
+ "STRIPE TRANSFER NXQG9PMCZ": {
+  "status": "ok",
+  "category": "income.freelance",
+  "confidence": 0.75,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2933,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2748
  },
  "TARGET 04947506": {
   "status": "ok",
@@ -5403,6 +7083,104 @@
   },
   "latencyMs": 2561
  },
+ "TICKETMASTER 751127627": {
+  "status": "ok",
+  "category": "entertainment.events",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2940,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 3068
+ },
+ "TICKETMASTER 8075148908": {
+  "status": "ok",
+  "category": "entertainment.events",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2941,
+   "outputTokens": 100,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1338
+ },
+ "TICKETMASTER.COM 84HJ9HZ5  DALY CITY CA": {
+  "status": "ok",
+  "category": "entertainment.events",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2943,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1159
+ },
+ "TICKETMASTER.COM C87SU6D3": {
+  "status": "ok",
+  "category": "entertainment.events",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2942,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2647
+ },
+ "TICKETMASTER.COM DFJ3N7DWDX": {
+  "status": "ok",
+  "category": "entertainment.events",
+  "confidence": 0.99,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2938,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1221
+ },
+ "TICKETMASTER.COM FFFWJVRWH07": {
+  "status": "ok",
+  "category": "entertainment.events",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2937,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2696
+ },
+ "TICKETMASTER.COM L7Q83MA1H": {
+  "status": "ok",
+  "category": "entertainment.events",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2945,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2637
+ },
  "TJ'S ALAMEDA CA  BERKELEY CA": {
   "status": "ok",
   "category": "food.groceries",
@@ -5430,6 +7208,62 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 1403
+ },
+ "TOTALWINE #5392 BERKELEY  DALY CITY NV": {
+  "status": "ok",
+  "category": "food.bars",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2926,
+   "outputTokens": 77,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2549
+ },
+ "TST* CHIPOTLE - EMERYV": {
+  "status": "ok",
+  "category": "food.restaurants",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2923,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1255
+ },
+ "TST* CHIPOTLE - EMERYVL": {
+  "status": "ok",
+  "category": "food.restaurants",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2922,
+   "outputTokens": 100,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1846
+ },
+ "TST* CHIPOTLE - SAN MA": {
+  "status": "ok",
+  "category": "food.restaurants",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2919,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2589
  },
  "TST* MARINA DELI": {
   "status": "ok",
@@ -5472,6 +7306,48 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 3099
+ },
+ "TST* SIGHTGLASS - DALY CITY  BERKELEY CA": {
+  "status": "ok",
+  "category": "food.coffee",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2933,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2678
+ },
+ "TST* SIGHTGLASS - OAKLAND  ALAMEDA OR": {
+  "status": "ok",
+  "category": "food.coffee",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2928,
+   "outputTokens": 84,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1421
+ },
+ "TURBOTAX 60907408": {
+  "status": "ok",
+  "category": "financial.taxes",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2923,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1940
  },
  "UBER *EATS 0UHU83EPH": {
   "status": "ok",
@@ -5683,6 +7559,34 @@
   },
   "latencyMs": 1978
  },
+ "UBER *TRIP KUARF1": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2932,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2827
+ },
+ "UBER *TRIP MAC4LJ": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2932,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1461
+ },
  "UBER *TRIP MR83FLNA0VL": {
   "status": "ok",
   "category": "transport.rideshare",
@@ -5795,6 +7699,62 @@
   },
   "latencyMs": 1826
  },
+ "UBER EATS HELP.UBER.": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2936,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1283
+ },
+ "UBER EATS HELP.UBER.CO": {
+  "status": "ok",
+  "category": "food.delivery",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2944,
+   "outputTokens": 84,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2582
+ },
+ "UBER TRIP HELP.UBER.": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2942,
+   "outputTokens": 84,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2584
+ },
+ "UBER TRIP HELP.UBER.CO": {
+  "status": "ok",
+  "category": "transport.rideshare",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2941,
+   "outputTokens": 83,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1577
+ },
  "UNIQLO DALY CITY CA  DALY CITY CA": {
   "status": "ok",
   "category": "shopping.clothing",
@@ -5808,6 +7768,20 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 1315
+ },
+ "UNIQLO USA 5451": {
+  "status": "ok",
+  "category": "shopping.clothing",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2909,
+   "outputTokens": 84,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2723
  },
  "UNITED 0574633134891": {
   "status": "ok",
@@ -5850,6 +7824,34 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 4438
+ },
+ "VANGUARD BUY INVESTME": {
+  "status": "ok",
+  "category": "financial.investment",
+  "confidence": 0.98,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2929,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2727
+ },
+ "VANGUARD GROUP 36839 A": {
+  "status": "ok",
+  "category": "financial.investment",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2926,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2646
  },
  "VENMO *CFT4AAQZ": {
   "status": "ok",
@@ -5948,6 +7950,20 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 3144
+ },
+ "VERIZON WIRELESS PAYMENTS": {
+  "status": "ok",
+  "category": "housing.internet_phone",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2931,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2636
  },
  "VERIZON WRLS 03605-402": {
   "status": "ok",
@@ -6313,6 +8329,20 @@
   },
   "latencyMs": 2851
  },
+ "ZEITGEIST BAR SAN MATE": {
+  "status": "ok",
+  "category": "food.bars",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2926,
+   "outputTokens": 78,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2716
+ },
  "ZELLE FROM 1QTJECNPV6V 13858819": {
   "status": "ok",
   "category": "transfer.person",
@@ -6326,6 +8356,20 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 3137
+ },
+ "ZELLE FROM 25S3SKDV8Z 45251162": {
+  "status": "ok",
+  "category": "transfer.person",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2942,
+   "outputTokens": 84,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2839
  },
  "ZELLE FROM GXUS390Y8S 77391034": {
   "status": "ok",
@@ -6341,6 +8385,34 @@
   },
   "latencyMs": 1373
  },
+ "ZELLE FROM H153HAA 69537682": {
+  "status": "ok",
+  "category": "transfer.person",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2931,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1305
+ },
+ "ZELLE FROM XN9SJ043 71887766": {
+  "status": "ok",
+  "category": "transfer.person",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2938,
+   "outputTokens": 82,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2602
+ },
  "ZELLE FROM ZC8NQXA5G 83659114": {
   "status": "ok",
   "category": "transfer.person",
@@ -6354,6 +8426,76 @@
    "cacheCreationTokens": 0
   },
   "latencyMs": 2748
+ },
+ "ZELLE PAYMENT TO 0G50FAHB": {
+  "status": "ok",
+  "category": "transfer.person",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2935,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2861
+ },
+ "ZELLE PAYMENT TO 3NCXSU0LL": {
+  "status": "ok",
+  "category": "transfer.person",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2939,
+   "outputTokens": 81,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1255
+ },
+ "ZELLE PAYMENT TO 90SAG7NTY": {
+  "status": "ok",
+  "category": "transfer.person",
+  "confidence": 0.92,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2937,
+   "outputTokens": 80,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2557
+ },
+ "ZELLE PAYMENT TO E2T4WZ": {
+  "status": "ok",
+  "category": "transfer.person",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2933,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 1246
+ },
+ "ZELLE PAYMENT TO N37AZKSJZD": {
+  "status": "ok",
+  "category": "transfer.person",
+  "confidence": 0.95,
+  "attempts": 1,
+  "repairs": [],
+  "usage": {
+   "inputTokens": 2937,
+   "outputTokens": 79,
+   "cacheReadTokens": 0,
+   "cacheCreationTokens": 0
+  },
+  "latencyMs": 2712
  },
  "ZUNI CAFE BERKELEY OR  DALY CITY CA": {
   "status": "ok",

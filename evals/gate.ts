@@ -28,6 +28,27 @@ export interface GatedMetric {
   readonly tolerance: number;
 }
 
+/**
+ * One caveat that costs a reader half an hour if it is not written down.
+ *
+ * The `tiers.*.precisionPct` entries are denominator-sensitive in a way the
+ * overall metrics are not. Each tier only sees what the tier above it declined,
+ * so changing any gate changes the *composition* of every downstream tier's
+ * inbox — and a tier can therefore "regress" here without answering a single
+ * transaction differently.
+ *
+ * That is not hypothetical. Retuning Tier 2's gate dropped `tiers.llm.precisionPct`
+ * from 91.89% to 90.43% while Tier 3's absolute error count stayed at exactly 9:
+ * Tier 2 had absorbed 17 transactions the model was answering, all 17 of them
+ * correctly, so the model kept every mistake and lost only easy wins. Overall
+ * precision rose 0.73 points in the same run.
+ *
+ * So a per-tier precision alarm on a commit that moved a gate is a prompt to
+ * check the error *counts* before believing it. On a commit that did not move a
+ * gate, the inboxes are fixed and the alarm means what it says. Kept gated in
+ * both cases, because the failure mode it exists to catch — a tier quietly
+ * getting worse while the aggregate hides it — is worth a false alarm.
+ */
 export const GATED_METRICS: readonly GatedMetric[] = [
   { path: 'normalizer.collisions', direction: 'lower-is-better', tolerance: 0 },
   { path: 'overall.precisionPct', direction: 'higher-is-better', tolerance: 0 },

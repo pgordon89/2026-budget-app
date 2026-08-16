@@ -2,7 +2,7 @@
   "promptVersion": "v1",
   "config": {
     "memoryGate": 0.3,
-    "neighbourGate": 0.5,
+    "neighbourGate": 0.3,
     "neighbourK": 3,
     "llmGate": 0.9,
     "llmModel": "claude-haiku-4-5"
@@ -20,28 +20,28 @@
   },
   "overall": {
     "transactions": 1513,
-    "answered": 1347,
-    "correct": 1321,
-    "coveragePct": 89.03,
-    "precisionPct": 98.07,
-    "resolvedPct": 87.31
+    "answered": 1338,
+    "correct": 1322,
+    "coveragePct": 88.43,
+    "precisionPct": 98.8,
+    "resolvedPct": 87.38
   },
   "slices": {
     "easy": {
       "transactions": 1100,
-      "answered": 1050,
-      "correct": 1035,
-      "coveragePct": 95.45,
-      "precisionPct": 98.57,
-      "resolvedPct": 94.09
+      "answered": 1048,
+      "correct": 1039,
+      "coveragePct": 95.27,
+      "precisionPct": 99.14,
+      "resolvedPct": 94.45
     },
     "hard": {
       "transactions": 413,
-      "answered": 297,
-      "correct": 286,
-      "coveragePct": 71.91,
-      "precisionPct": 96.3,
-      "resolvedPct": 69.25
+      "answered": 290,
+      "correct": 283,
+      "coveragePct": 70.22,
+      "precisionPct": 97.59,
+      "resolvedPct": 68.52
     }
   },
   "tiers": {
@@ -55,31 +55,31 @@
       "resolvedPct": 73.43
     },
     "embedding": {
-      "transactions": 121,
-      "answered": 121,
-      "correct": 108,
-      "hitRatePct": 8,
-      "coveragePct": 8,
-      "precisionPct": 89.26,
-      "resolvedPct": 7.14
+      "transactions": 129,
+      "answered": 129,
+      "correct": 126,
+      "hitRatePct": 8.53,
+      "coveragePct": 8.53,
+      "precisionPct": 97.67,
+      "resolvedPct": 8.33
     },
     "llm": {
-      "transactions": 111,
-      "answered": 111,
-      "correct": 102,
-      "hitRatePct": 7.34,
-      "coveragePct": 7.34,
-      "precisionPct": 91.89,
-      "resolvedPct": 6.74
+      "transactions": 94,
+      "answered": 94,
+      "correct": 85,
+      "hitRatePct": 6.21,
+      "coveragePct": 6.21,
+      "precisionPct": 90.43,
+      "resolvedPct": 5.62
     }
   },
   "review": {
-    "transactions": 166,
-    "pct": 10.97
+    "transactions": 175,
+    "pct": 11.57
   },
   "transfers": {
     "inHoldout": 68,
-    "answered": 67,
+    "answered": 68,
     "misclassifiedAsSpend": 0,
     "misclassifiedAsSpendPct": 0,
     "spendMisclassifiedAsTransfer": 0
@@ -88,10 +88,6 @@
     {
       "pair": "health.fitness → shopping.hobbies",
       "count": 6
-    },
-    {
-      "pair": "health.pharmacy → personal.pets",
-      "count": 5
     },
     {
       "pair": "housing.maintenance → personal.care",
@@ -106,19 +102,7 @@
       "count": 2
     },
     {
-      "pair": "shopping.electronics → food.groceries",
-      "count": 2
-    },
-    {
       "pair": "food.groceries → shopping.general",
-      "count": 1
-    },
-    {
-      "pair": "housing.maintenance → personal.pets",
-      "count": 1
-    },
-    {
-      "pair": "shopping.electronics → personal.software",
       "count": 1
     },
     {
@@ -127,18 +111,18 @@
     }
   ],
   "cost": {
-    "totalUsd": 0.925252,
-    "perThousandTransactionsUsd": 0.6115,
-    "perThousandModelCallsUsd": 3.3403,
+    "totalUsd": 0.898205,
+    "perThousandTransactionsUsd": 0.5937,
+    "perThousandModelCallsUsd": 3.3391,
     "modelTokens": {
-      "inputTokens": 810917,
-      "outputTokens": 22867,
+      "inputTokens": 787080,
+      "outputTokens": 22225,
       "cacheReadTokens": 0,
       "cacheCreationTokens": 0
     }
   },
   "llmLatencyAtCaptureMs": {
     "p50": 1929,
-    "p95": 3278
+    "p95": 3243
   }
 }
