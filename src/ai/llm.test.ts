@@ -11,6 +11,7 @@ const INPUT: ClassificationInput = {
   normalizedKey: 'PEETS COFFEE',
   amount: -6.75,
   neighbours: [{ key: 'BLUE BOTTLE COFFEE', category: 'food.coffee', similarity: 0.42 }],
+  vote: null,
 };
 
 const USAGE = { input_tokens: 1200, output_tokens: 25, cache_read_input_tokens: 0, cache_creation_input_tokens: 0 };

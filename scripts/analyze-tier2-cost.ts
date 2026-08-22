@@ -43,7 +43,8 @@ import { fitLexicalEmbedder } from '../src/ai/embed.js';
 import { NeighbourIndex, DEFAULT_NEIGHBOUR_CONFIG } from '../src/ai/knn.js';
 import { normalizeDescriptor } from '../src/ai/normalize.js';
 import { LlmClassifier, messageCreator, type LlmOutcome } from '../src/ai/llm.js';
-import { PROMPT_VERSION, type ClassificationInput, type NeighbourExample } from '../src/ai/prompt.js';
+import { PROMPT_VERSION, type ClassificationInput } from '../src/ai/prompt.js';
+import { escalationInput } from '../src/ai/escalation.js';
 import { createClient, MODELS, costOf, type ModelId, type TokenUsage } from '../src/ai/client.js';
 import type { SyntheticTransaction } from '../src/synthetic/generator.js';
 import type { CategoryId } from '../src/core/taxonomy.js';
@@ -139,20 +140,10 @@ async function inboxOf(
     }
 
     const tier2 = await index.lookup(txn.rawDescriptor);
-    const neighbours: NeighbourExample[] =
-      tier2.status === 'hit' || tier2.status === 'low_confidence'
-        ? tier2.neighbours.map((n) => ({ key: n.key, category: n.category, similarity: n.similarity }))
-        : [];
-
-    // The neighbours go to the model whether or not Tier 2 would have answered.
-    // Under a tighter gate this exact transaction escalates carrying exactly this
-    // evidence, so pricing it any other way would price a different system.
-    const input: ClassificationInput = {
-      rawDescriptor: txn.rawDescriptor,
-      normalizedKey: normalizeDescriptor(txn.rawDescriptor).key,
-      amount: txn.amount,
-      neighbours,
-    };
+    // The evidence goes to the model whether or not Tier 2 would have answered.
+    // Under a different gate this exact transaction escalates carrying exactly
+    // this, so pricing it any other way would price a different system.
+    const input = escalationInput(txn.rawDescriptor, txn.amount, tier2);
 
     candidates.push(
       tier2.status === 'hit' || tier2.status === 'low_confidence'

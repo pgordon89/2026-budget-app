@@ -83,7 +83,7 @@ Four tiers, cheapest first. Each either answers confidently or passes the transa
 
 ---
 
-## Four findings the measurement produced
+## Five findings the measurement produced
 
 ### 1. A Wilson gate is not a precision policy
 
@@ -128,6 +128,21 @@ Moving the weight — `minConfidence` 0.50 → 0.30, `minAgreement` 0.51 → 0.9
 
 Net effect on the whole cascade: **10 wrong answers removed, 1 right answer gained.** Whole-cascade coverage falls 89.0% → 88.4% because the gate reshapes which transactions Tier 2 takes rather than taking more; resolved rises anyway, which is the same fact from the other side.
 
+### 5. Handing Tier 2's vote to the model was worth nothing
+
+The plan's highest-value item: when Tier 2's neighbourhood is too split to publish an answer, it discards a full weighted distribution and escalates with only the three merchant keys that produced it. The model is left re-deriving a distribution the previous tier already computed exactly. Passing it costs a few dozen tokens.
+
+Two arms, 269 holdout transactions, differing only by that block. Compared **at matched coverage** rather than at a fixed gate — the prior shifts the whole confidence distribution, so holding the accept gate at 0.90 would compare two different operating points and read the coverage gap as a quality gap:
+
+**96 of 109 correct without the prior. 95 of 109 with it.**
+
+One answer, in the wrong direction. The likely reason is that the information was already present: the neighbour keys and their labels were in the prompt before the change, and aggregating three of them is not work the model needed help with. A prior pays only when it carries something the evidence does not, and a summary of the evidence carries nothing.
+
+Reverted. Two things the method is worth more for than the result:
+
+- **The version bump changed two things, so both were priced.** v2 added the vote *and* reworded the system block. A third arm, free from the committed v1 responses, isolated the rewording — it cost **11 points of validation precision** (96.7% → 85.7%), so it was reverted too. Bundled changes get separated before either is judged.
+- **The planned control did not exist, and it is reported rather than dropped.** The design assumed a slice of keys with no neighbours, whose prompts are identical across arms, as a free read on model nondeterminism. That slice is empty here — a character-trigram embedder shares a feature with nearly anything — so the delta has no error bar. A difference of 1 in 109 needs none, but the gap is stated.
+
 ---
 
 ## Known problems
@@ -146,6 +161,8 @@ Net effect on the whole cascade: **10 wrong answers removed, 1 right answer gain
 
 **A coverage-maximising selection rule drifts permissive.** It has twice selected settings that cleared the floors on validation and regressed the holdout. When the floors cannot bind, the objective is wrong rather than merely loose.
 
+**The review queue is 11.6% and nothing has moved it.** Tier 3 receives 269 escalations and answers 94; the rest fail its 0.90 confidence gate. This is now the largest single bucket of unresolved work, and finding #5 closed off the cheapest idea for reducing it.
+
 **Persona savings rate is 1.0%**, down from 3.2%, after adding churn merchants. Low but solvent, and flagged rather than tuned to a target.
 
 ---
@@ -157,9 +174,8 @@ Ordered by effort-to-evidence ratio. Each has an acceptance test stated up front
 ### A. Tier 2 precision (the top open item), three angles in cost order
 
 1. ~~**Tighten the gate and price it.**~~ ✅ **Done — see finding #4.** The answer was that tightening is strictly counterproductive on this score, and reshaping the gate onto the factor that is actually ordered took Tier 2 from 89.3% to **97.7% precision at 8.5% share for $0.5937 per 1,000** — better on all three axes. Delivered `npm run analyze:tier2`, which prices the frontier against real model responses rather than a mean call cost.
-2. **Contested-neighbourhood hybrid.** When the vote fails the agreement floor, Tier 2 stops being a classifier and becomes a prior: the vote distribution is handed to Tier 3 explicitly (in the volatile suffix), and that slice is scored separately. Model cost is paid only when neighbours disagree. Tier 3 already takes few-shot examples from the neighbours, so this is an extension of an existing seam, not new machinery. *Accept if:* the contested slice's precision beats both plain Tier 2 and plain Tier 3 on the same transactions.
+2. ~~**Contested-neighbourhood hybrid.**~~ ❌ **Done — measured and rejected, see finding #5.** Handing Tier 2's vote to the model as an explicit prior was worth 95 correct answers out of 109 against the control's 96, at matched coverage on the holdout. The neighbour keys were already in the prompt; summarising them added nothing. Delivered `npm run analyze:prior` and the committed responses for both arms, so the negative result is reproducible rather than asserted.
 
-   **This is now the highest-value item on the list, and #4 says why.** Agreement is the ordered signal and it is already gated at 0.90; what the model should receive is the sub-0.90 residue *with the vote attached*, because that residue is exactly where the neighbourhood is contested. The measured prize is bounded and known: Tier 3 currently answers 210 of 398 escalations when Tier 2 abstains entirely, so roughly half that traffic is falling to review rather than being decided.
 3. **Hosted embedding model.** TF-IDF over character trigrams is exactly what confuses `PRESIDIO DENTAL` with `PRESIDIO VETERINARY` — the `Embedder` interface and disk cache are the prepared seam. **Blocked on access:** the dev environment's proxy injects Anthropic credentials only; Voyage/OpenAI need their own keys and egress. Built behind the cache when unblocked so the eval stays free. *Accept if:* it beats the lexical baseline on the same corpus — and note the bar moved, from 89.3% to **97.7%**, because the gate fix took most of what a better embedder was expected to deliver. The remaining case for it is coverage, not precision.
 
 ### B. The correction-loop residue gets a mechanism, not a threshold
@@ -214,6 +230,7 @@ npm run analyze:normalizer   # Tier 0: collapse ratio, collisions
 npm run analyze:memory       # Tier 1: coverage/precision sweep
 npm run analyze:knn          # Tier 2: k and gate selection, calibration
 npm run analyze:tier2        # Tier 2: the gate frontier, priced in real model calls
+npm run analyze:prior        # Tier 2's vote as a Tier 3 prior — the negative result
 npm run analyze:llm          # Tier 3: cost, latency, calibration, routing
 npm run analyze:gate         # gate selection against a write-back replay (--tier=2)
 npm run analyze:learning     # what the correction loop is actually worth

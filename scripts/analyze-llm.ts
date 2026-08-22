@@ -31,7 +31,8 @@ import { fitLexicalEmbedder } from '../src/ai/embed.js';
 import { NeighbourIndex } from '../src/ai/knn.js';
 import { normalizeDescriptor } from '../src/ai/normalize.js';
 import { LlmClassifier, messageCreator, type LlmOutcome } from '../src/ai/llm.js';
-import { PROMPT_VERSION, type ClassificationInput, type NeighbourExample } from '../src/ai/prompt.js';
+import { PROMPT_VERSION, type ClassificationInput } from '../src/ai/prompt.js';
+import { escalationInput } from '../src/ai/escalation.js';
 import { createClient, MODELS, costOf, addUsage, EMPTY_USAGE, type ModelId, type TokenUsage } from '../src/ai/client.js';
 import type { SyntheticTransaction } from '../src/synthetic/generator.js';
 import type { CategoryId } from '../src/core/taxonomy.js';
@@ -135,20 +136,7 @@ async function runCascade(
       continue;
     }
 
-    const neighbours: NeighbourExample[] =
-      tier2.status === 'low_confidence'
-        ? tier2.neighbours.map((n) => ({ key: n.key, category: n.category, similarity: n.similarity }))
-        : [];
-
-    escalations.push({
-      txn,
-      input: {
-        rawDescriptor: txn.rawDescriptor,
-        normalizedKey: normalizeDescriptor(txn.rawDescriptor).key,
-        amount: txn.amount,
-        neighbours,
-      },
-    });
+    escalations.push({ txn, input: escalationInput(txn.rawDescriptor, txn.amount, tier2) });
   }
 
   return { escalations, resolved, resolvedCorrect };

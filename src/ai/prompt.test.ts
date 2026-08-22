@@ -12,6 +12,7 @@ const BASE: ClassificationInput = {
     { key: 'BLUE BOTTLE COFFEE', category: 'food.coffee', similarity: 0.42 },
     { key: 'SIGHTGLASS COFFEE', category: 'food.coffee', similarity: 0.38 },
   ],
+  vote: null,
 };
 
 test('offers exactly the taxonomy the eval scores', () => {
@@ -31,6 +32,7 @@ test('the system block is identical for every transaction', () => {
     normalizedKey: 'STERLING RIDGE APT',
     amount: -2164.29,
     neighbours: [],
+    vote: null,
   };
 
   assert.equal(systemPrompt(), systemPrompt());
@@ -65,4 +67,40 @@ test('says so plainly when history offers no neighbours', () => {
 
 test('carries a prompt version, so wording changes cannot look like model changes', () => {
   assert.match(PROMPT_VERSION, /^v\d+$/);
+});
+
+test('renders the vote as a distribution, not just its winner', () => {
+  // The winner alone is what Tier 2 already decided it could not trust. The
+  // shape of the rest is the added information: 52/31/17 across three
+  // categories and 51/49 across two are the same winner and different problems.
+  const message = userMessage({
+    ...BASE,
+    vote: {
+      category: 'food.coffee',
+      agreement: 0.52,
+      distribution: [
+        { category: 'food.coffee', share: 0.52 },
+        { category: 'food.restaurants', share: 0.31 },
+        { category: 'food.groceries', share: 0.17 },
+      ],
+    },
+  });
+
+  assert.match(message, /food\.coffee 52%/);
+  assert.match(message, /food\.restaurants 31%/);
+  assert.match(message, /food\.groceries 17%/);
+});
+
+test('omits the vote block entirely when there is no vote', () => {
+  // An empty table is something the model has to interpret. Silence is not.
+  assert.ok(!userMessage(BASE).includes('voted'));
+});
+
+test('the vote never reaches the cached prefix', () => {
+  // The whole reason the prior is affordable. A prior in the system block would
+  // differ per transaction, so nothing before the breakpoint would ever match
+  // and the cache would be destroyed silently rather than loudly.
+  const prompt = systemPrompt();
+  assert.ok(!prompt.includes('52%'));
+  assert.ok(!prompt.includes('food.coffee 52'));
 });

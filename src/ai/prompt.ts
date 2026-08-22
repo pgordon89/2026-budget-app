@@ -17,13 +17,54 @@
 
 import { taxonomyForPrompt, type CategoryId } from '../core/taxonomy.js';
 
-/** Bump on any change to the system block or the user-message shape. */
+/**
+ * Bump on any change to the system block or the user-message shape.
+ *
+ * Still v1 after the vote-prior experiment, because that experiment shipped
+ * nothing. Both halves of the v2 draft were measured and reverted — see
+ * `npm run analyze:prior` and the note on `VotePrior` below. The committed v1
+ * responses stay valid precisely because the revert was byte-exact: a null vote
+ * renders no block at all, so this file emits what it emitted before.
+ */
 export const PROMPT_VERSION = 'v1';
 
 export interface NeighbourExample {
   readonly key: string;
   readonly category: CategoryId;
   readonly similarity: number;
+}
+
+/**
+ * Tier 2's vote, as a prior for the model. **Measured, and not shipped.**
+ *
+ * The hypothesis was good enough to be worth the money: Tier 2 computes a full
+ * weighted distribution over categories, discards everything but the winner, and
+ * then — when the winner cannot clear its agreement floor — discards that too and
+ * escalates. The model is left to re-derive from three merchant keys a
+ * distribution the previous tier had already computed exactly. Handing it over
+ * costs a few dozen tokens in the volatile half of the prompt.
+ *
+ * It bought nothing. Two arms differing only by this block, 269 holdout
+ * transactions, compared at matched coverage so the comparison could not be
+ * confounded by the prior shifting the confidence distribution: **96 of 109
+ * correct without it, 95 of 109 with it.** One answer, in the wrong direction.
+ *
+ * The reason appears to be that the information was already there. The neighbour
+ * keys and their labels were in the prompt before this change, and aggregating
+ * three of them into a distribution is not work the model needed help with. A
+ * prior only pays when it carries something the evidence does not, and a summary
+ * of the evidence carries nothing.
+ *
+ * Kept as a type and a code path because the measurement is the deliverable, and
+ * a reader who wonders whether anyone tried this deserves the answer plus the
+ * script that produced it. `escalationInput` defaults it off.
+ */
+export interface VotePrior {
+  /** Heaviest category, and its share of the total vote weight. */
+  readonly category: CategoryId;
+  readonly agreement: number;
+  /** Every category that drew weight, heaviest first. Shares sum to 1. */
+  readonly distribution: readonly { readonly category: CategoryId; readonly share: number }[];
 }
 
 export interface ClassificationInput {
@@ -34,6 +75,15 @@ export interface ClassificationInput {
   readonly amount: number;
   /** Nearest labelled merchants from Tier 2, most similar first. May be empty. */
   readonly neighbours: readonly NeighbourExample[];
+  /**
+   * Tier 2's contested vote, or `null` when there was none to hand over.
+   *
+   * Required rather than optional on purpose. An omitted prior and an absent
+   * prior are the same value to the type checker but different experiments to
+   * the eval, and the whole point of this field is measuring what it is worth —
+   * so every construction site is made to say which one it means.
+   */
+  readonly vote: VotePrior | null;
 }
 
 /**
@@ -100,6 +150,15 @@ export function userMessage(input: ClassificationInput): string {
     }
   } else {
     lines.push('', 'No similar merchant appears in this user\'s history.');
+  }
+
+  // After the neighbours, because it is a summary of them: the reader should see
+  // what voted before seeing how the vote fell.
+  if (input.vote !== null) {
+    lines.push('', 'How that neighbourhood voted, weighted by similarity:');
+    for (const entry of input.vote.distribution) {
+      lines.push(`  ${entry.category} ${(entry.share * 100).toFixed(0)}%`);
+    }
   }
 
   return lines.join('\n');

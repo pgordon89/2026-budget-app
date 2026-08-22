@@ -132,6 +132,15 @@ export type NeighbourOutcome =
       /** Similarity of the closest voting neighbour. */
       readonly nearest: number;
       readonly neighbours: readonly ScoredNeighbour[];
+      /**
+       * Every category that drew weight, heaviest first, shares summing to 1.
+       *
+       * The tier's own decision needs only the winner and its share, but the
+       * shape of the rest is what distinguishes a merchant with one odd
+       * neighbour from a genuinely split neighbourhood. Tier 3 is given it as a
+       * prior when this vote is too contested to publish — see `VotePrior`.
+       */
+      readonly distribution: readonly { readonly category: CategoryId; readonly share: number }[];
     }
   /** No labeled merchant shares a single feature with this key. */
   | { readonly status: 'no_neighbours'; readonly key: string }
@@ -307,6 +316,11 @@ export class NeighbourIndex {
         similarity: v.similarity,
         category: plurality(this.distributions[v.index]!),
       })),
+      // Ties broken by id, like every other ordering here, so a cached prompt
+      // built from this stays byte-identical across runs.
+      distribution: [...votes.entries()]
+        .map(([category, weight]) => ({ category, share: weight / totalWeight }))
+        .sort((a, b) => b.share - a.share || (a.category < b.category ? -1 : 1)),
     };
   }
 
