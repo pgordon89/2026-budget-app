@@ -15,6 +15,13 @@ import { and, asc, eq, isNull, or, sql } from 'drizzle-orm';
 import { normalizeDescriptor } from '../ai/normalize.js';
 import { DEFAULT_MEMORY_CONFIG, MerchantMemory, type MemoryConfig } from '../ai/memory.js';
 import { isCategoryId, type CategoryId } from '../core/taxonomy.js';
+import {
+  DEFAULT_PROVISIONAL_CONFIG,
+  HUMAN_SOURCE,
+  statusFor,
+  type CategoryStatus,
+  type ProvisionalConfig,
+} from '../core/provisional.js';
 import { corrections, merchantMemory, transactions, type NewTransaction, type Transaction } from './schema.js';
 import type { Database } from './client.js';
 
@@ -34,6 +41,15 @@ export interface PredictionRecord {
   readonly source: string;
   readonly confidence: number;
   readonly costMicroUsd: number;
+  /**
+   * Independent sightings behind this merchant+category, from `MemoryOutcome`.
+   *
+   * Required rather than defaulted. A caller that does not know the support has
+   * not consulted the store, and silently treating that as zero would mark every
+   * such row provisional — which looks conservative but is really a missing
+   * measurement wearing a safe-looking default.
+   */
+  readonly confirmedSupport: number;
 }
 
 export interface CorrectionResult {
@@ -44,16 +60,28 @@ export interface CorrectionResult {
   readonly previousSource: string | null;
   /** True when the pipeline had committed to an answer and it was wrong. */
   readonly overturned: boolean;
+  /**
+   * Other rows this correction promoted out of `provisional`.
+   *
+   * The number that makes the mechanism worth having. If confirming one coffee
+   * shop settles the nine earlier visits to it, the queue drains faster than a
+   * human works through it — and if this is usually zero, the design has failed
+   * and the measurement says so.
+   */
+  readonly upgraded: number;
 }
 
 export class Ledger {
   private readonly config: MemoryConfig;
+  private readonly provisional: ProvisionalConfig;
 
   constructor(
     private readonly db: Database,
     config: Partial<MemoryConfig> = {},
+    provisional: Partial<ProvisionalConfig> = {},
   ) {
     this.config = { ...DEFAULT_MEMORY_CONFIG, ...config };
+    this.provisional = { ...DEFAULT_PROVISIONAL_CONFIG, ...provisional };
   }
 
   /**
@@ -89,8 +117,15 @@ export class Ledger {
     return inserted.length;
   }
 
-  /** Attach what the pipeline decided. Does not mark the row confirmed. */
-  async recordPrediction(transactionId: string, prediction: PredictionRecord): Promise<void> {
+  /**
+   * Attach what the pipeline decided, and how far it may be trusted.
+   *
+   * Never writes `confirmed` on the strength of a tier's own confidence — that
+   * status means independent evidence exists, and a tier agreeing with itself is
+   * not evidence. See `src/core/provisional.ts`.
+   */
+  async recordPrediction(transactionId: string, prediction: PredictionRecord): Promise<CategoryStatus> {
+    const status = statusFor(prediction.source, prediction.confirmedSupport, this.provisional);
     await this.db
       .update(transactions)
       .set({
@@ -98,20 +133,26 @@ export class Ledger {
         categorySource: prediction.source,
         categoryConfidence: prediction.confidence,
         categoryCostMicroUsd: prediction.costMicroUsd,
+        categoryStatus: status,
       })
       .where(eq(transactions.id, transactionId));
+    return status;
   }
 
   /**
-   * What a human still needs to look at: uncategorised, or categorised by the
-   * pipeline without confirmation. Oldest first, because a review queue worked
-   * newest-first never reaches the bottom.
+   * What a human still needs to look at: uncategorised, or provisional. Oldest
+   * first, because a review queue worked newest-first never reaches the bottom.
+   *
+   * The two are different jobs for the person doing them, and the UI should say
+   * so. An uncategorised row is a question — what is this. A provisional row is
+   * a proposal — we think it is X, one tap to agree. The second is the cheap one,
+   * and it is most of the queue.
    */
   async reviewQueue(limit = 50): Promise<Transaction[]> {
     return this.db
       .select()
       .from(transactions)
-      .where(and(eq(transactions.categoryConfirmed, false), or(isNull(transactions.categoryId), sql`true`)))
+      .where(or(isNull(transactions.categoryStatus), eq(transactions.categoryStatus, 'provisional')))
       .orderBy(asc(transactions.postedOn), asc(transactions.id))
       .limit(limit);
   }
@@ -120,7 +161,41 @@ export class Ledger {
     const [row] = await this.db
       .select({ count: sql<number>`count(*)::int` })
       .from(transactions)
-      .where(eq(transactions.categoryConfirmed, false));
+      .where(or(isNull(transactions.categoryStatus), eq(transactions.categoryStatus, 'provisional')));
+    return row?.count ?? 0;
+  }
+
+  /**
+   * Total spend by category, over confirmed rows only.
+   *
+   * The whole point of the status column, in one query. A provisional label is
+   * displayable and not summable, so every budget-facing figure filters here
+   * rather than each caller remembering to — a total that quietly includes
+   * provisional rows is exactly the silent wrong number this is built to prevent.
+   */
+  async totalsByCategory(from: string, to: string): Promise<{ categoryId: string; totalCents: number }[]> {
+    return this.db
+      .select({
+        categoryId: sql<string>`${transactions.categoryId}`,
+        totalCents: sql<number>`sum(${transactions.amountCents})::int`,
+      })
+      .from(transactions)
+      .where(
+        and(
+          eq(transactions.categoryStatus, 'confirmed'),
+          sql`${transactions.postedOn} >= ${from}`,
+          sql`${transactions.postedOn} <= ${to}`,
+        ),
+      )
+      .groupBy(transactions.categoryId);
+  }
+
+  /** What the totals above are leaving out, so the gap is reportable rather than invisible. */
+  async provisionalExcludedCount(): Promise<number> {
+    const [row] = await this.db
+      .select({ count: sql<number>`count(*)::int` })
+      .from(transactions)
+      .where(eq(transactions.categoryStatus, 'provisional'));
     return row?.count ?? 0;
   }
 
@@ -155,10 +230,16 @@ export class Ledger {
 
       await tx
         .update(transactions)
-        .set({ categoryId: category, categorySource: 'human', categoryConfidence: 1, categoryConfirmed: true })
+        .set({
+          categoryId: category,
+          categorySource: HUMAN_SOURCE,
+          categoryConfidence: 1,
+          categoryStatus: 'confirmed',
+        })
         .where(eq(transactions.id, transactionId));
 
       await this.reinforce(tx, row.merchantKey, category);
+      const upgraded = await this.promote(tx, row.merchantKey, category);
 
       return {
         transactionId,
@@ -167,6 +248,7 @@ export class Ledger {
         previousCategoryId: row.categoryId,
         previousSource: row.categorySource,
         overturned: row.categoryId !== null && row.categoryId !== category,
+        upgraded,
       };
     });
   }
@@ -182,15 +264,62 @@ export class Ledger {
     const weight = new MerchantMemory(this.config).weightOf('confirmed');
     await tx
       .insert(merchantMemory)
-      .values({ merchantKey, categoryId: category, weight, count: 1 })
+      .values({ merchantKey, categoryId: category, weight, count: 1, confirmedCount: 1 })
       .onConflictDoUpdate({
         target: [merchantMemory.merchantKey, merchantMemory.categoryId],
         set: {
           weight: sql`${merchantMemory.weight} + ${weight}`,
           count: sql`${merchantMemory.count} + 1`,
+          // A correction is by definition independent evidence, so this path
+          // always increments. Missing it here once meant promotion could never
+          // fire: `reinforce` is the only writer on the correction path, and the
+          // repository's `remember` — which does maintain the counter — is not
+          // on it.
+          confirmedCount: sql`${merchantMemory.confirmedCount} + 1`,
           updatedAt: sql`now()`,
         },
       });
+  }
+
+  /**
+   * Promote a merchant's provisional backlog, if this correction tipped it over.
+   *
+   * The mechanism that keeps `provisional` from being a second review queue. One
+   * confirmation does not settle one row — it settles the *merchant*, so every
+   * earlier transaction the pipeline labelled the same way stops being a question.
+   * Confirm one visit to a coffee shop and the previous nine leave the queue.
+   *
+   * Scoped to the corrected category on purpose. A merchant genuinely split
+   * across categories accumulates confirmations for each independently, so
+   * confirming one `shopping.household` charge at a marketplace does not certify
+   * its `shopping.electronics` rows — which is the case that made a mixed-basket
+   * merchant dangerous in the first place.
+   *
+   * Runs inside the correction's transaction, so a promotion cannot survive a
+   * rolled-back correction and leave rows certified by evidence that no longer
+   * exists.
+   */
+  private async promote(tx: Executor, merchantKey: string, category: CategoryId): Promise<number> {
+    const [row] = await tx
+      .select({ confirmedCount: merchantMemory.confirmedCount })
+      .from(merchantMemory)
+      .where(and(eq(merchantMemory.merchantKey, merchantKey), eq(merchantMemory.categoryId, category)));
+
+    if ((row?.confirmedCount ?? 0) < this.provisional.minConfirmations) return 0;
+
+    const promoted = await tx
+      .update(transactions)
+      .set({ categoryStatus: 'confirmed' })
+      .where(
+        and(
+          eq(transactions.merchantKey, merchantKey),
+          eq(transactions.categoryId, category),
+          eq(transactions.categoryStatus, 'provisional'),
+        ),
+      )
+      .returning({ id: transactions.id });
+
+    return promoted.length;
   }
 
   /** How often the pipeline was overruled, by the tier that answered. */

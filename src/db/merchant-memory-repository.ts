@@ -62,15 +62,17 @@ export class MerchantMemoryRepository {
     if (degenerate) return;
 
     const weight = new MerchantMemory(this.config).weightOf(source);
+    const confirmed = source === 'confirmed' ? 1 : 0;
 
     await this.db
       .insert(merchantMemory)
-      .values({ merchantKey: key, categoryId: category, weight, count: 1 })
+      .values({ merchantKey: key, categoryId: category, weight, count: 1, confirmedCount: confirmed })
       .onConflictDoUpdate({
         target: [merchantMemory.merchantKey, merchantMemory.categoryId],
         set: {
           weight: sql`${merchantMemory.weight} + ${weight}`,
           count: sql`${merchantMemory.count} + 1`,
+          confirmedCount: sql`${merchantMemory.confirmedCount} + ${confirmed}`,
           updatedAt: sql`now()`,
         },
       });
@@ -82,14 +84,20 @@ export class MerchantMemoryRepository {
     if (degenerate) return { status: 'degenerate', key };
 
     const rows = await this.db
-      .select({ categoryId: merchantMemory.categoryId, weight: merchantMemory.weight })
+      .select({
+        categoryId: merchantMemory.categoryId,
+        weight: merchantMemory.weight,
+        confirmedCount: merchantMemory.confirmedCount,
+      })
       .from(merchantMemory)
       .where(eq(merchantMemory.merchantKey, key));
 
     if (rows.length === 0) return { status: 'unseen', key };
 
     const score = scoreTallies(
-      rows.map((row) => [row.categoryId as CategoryId, row.weight] as const),
+      rows.map(
+        (row) => [row.categoryId as CategoryId, { weight: row.weight, confirmed: row.confirmedCount }] as const,
+      ),
       this.config.z,
     );
     if (score === undefined) return { status: 'unseen', key };
@@ -107,11 +115,12 @@ export class MerchantMemoryRepository {
         categoryId: merchantMemory.categoryId,
         weight: merchantMemory.weight,
         count: merchantMemory.count,
+        confirmedCount: merchantMemory.confirmedCount,
       })
       .from(merchantMemory);
 
     return MerchantMemory.fromTallies(
-      rows.map((row) => ({ ...row, categoryId: row.categoryId as CategoryId })),
+      rows.map((row) => ({ ...row, categoryId: row.categoryId as CategoryId, confirmed: row.confirmedCount })),
       this.config,
     );
   }

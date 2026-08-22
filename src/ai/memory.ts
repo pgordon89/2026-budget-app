@@ -156,6 +156,24 @@ interface Tally {
   weight: number;
   /** Raw sighting count. Reported for debugging; never used in the score. */
   count: number;
+  /**
+   * Sightings a human stood behind: imported history, or a review-queue
+   * correction. Tracked apart from `weight` because the two answer different
+   * questions and only one of them is safe to build a trust decision on.
+   *
+   * `weight` blends confirmed and inferred observations, so it grows when the
+   * pipeline writes its own answers back. Anything derived from it inherits that
+   * feedback loop — attenuated by `inferredWeight`, but present. This counter
+   * cannot move except when independent evidence arrives, which is what makes it
+   * usable as the basis for promoting a ledger row out of `provisional`.
+   */
+  confirmed: number;
+}
+
+/** The part of a tally the scorer reads. Same shape in memory and in Postgres. */
+export interface TallyLike {
+  readonly weight: number;
+  readonly confirmed: number;
 }
 
 export type MemoryOutcome =
@@ -169,6 +187,8 @@ export type MemoryOutcome =
       readonly support: number;
       /** Winner's share of that support, ungated. Diagnostic only. */
       readonly agreement: number;
+      /** Independent sightings behind the winner. Drives the ledger's status. */
+      readonly confirmedSupport: number;
     }
   /** Key known, but the evidence is thin or split. The interesting escalation. */
   | {
@@ -178,6 +198,7 @@ export type MemoryOutcome =
       readonly confidence: number;
       readonly support: number;
       readonly agreement: number;
+      readonly confirmedSupport: number;
     }
   /** Never seen this merchant. The unavoidable escalation. */
   | { readonly status: 'unseen'; readonly key: string }
@@ -211,6 +232,15 @@ export interface TallyScore {
   readonly confidence: number;
   readonly support: number;
   readonly agreement: number;
+  /**
+   * Independent sightings behind the winning category.
+   *
+   * Not part of the accept decision — the two gates own that. This rides along
+   * because the ledger needs it downstream to decide whether an answer is solid
+   * enough to count in a budget total, and recomputing it there would mean a
+   * second traversal of the same distribution that could disagree with this one.
+   */
+  readonly confirmedSupport: number;
 }
 
 /**
@@ -224,14 +254,16 @@ export interface TallyScore {
  * Returns undefined when there is nothing to score.
  */
 export function scoreTallies(
-  distribution: Iterable<readonly [CategoryId, number]>,
+  distribution: Iterable<readonly [CategoryId, TallyLike]>,
   z: number,
 ): TallyScore | undefined {
   let winner: CategoryId | undefined;
   let winnerWeight = 0;
   let totalWeight = 0;
+  let winnerConfirmed = 0;
 
-  for (const [category, weight] of distribution) {
+  for (const [category, tally] of distribution) {
+    const weight = tally.weight;
     totalWeight += weight;
     // Deterministic winner: weight desc, then category id asc. The tie-break is
     // not cosmetic — without it a 50/50 key resolves by iteration order, and
@@ -239,6 +271,7 @@ export function scoreTallies(
     if (weight > winnerWeight || (weight === winnerWeight && (winner === undefined || category < winner))) {
       winner = category;
       winnerWeight = weight;
+      winnerConfirmed = tally.confirmed;
     }
   }
 
@@ -249,6 +282,7 @@ export function scoreTallies(
     confidence: wilsonLowerBound(winnerWeight, totalWeight, z),
     support: totalWeight,
     agreement: winnerWeight / totalWeight,
+    confirmedSupport: winnerConfirmed,
   };
 }
 
@@ -269,13 +303,19 @@ export class MerchantMemory {
    * wrote it.
    */
   static fromTallies(
-    rows: Iterable<{ merchantKey: string; categoryId: CategoryId; weight: number; count: number }>,
+    rows: Iterable<{
+      merchantKey: string;
+      categoryId: CategoryId;
+      weight: number;
+      count: number;
+      confirmed: number;
+    }>,
     config: Partial<MemoryConfig> = {},
   ): MerchantMemory {
     const memory = new MerchantMemory(config);
     for (const row of rows) {
       const tallies = memory.byKey.get(row.merchantKey) ?? new Map<CategoryId, Tally>();
-      tallies.set(row.categoryId, { weight: row.weight, count: row.count });
+      tallies.set(row.categoryId, { weight: row.weight, count: row.count, confirmed: row.confirmed });
       memory.byKey.set(row.merchantKey, tallies);
     }
     return memory;
@@ -307,9 +347,10 @@ export class MerchantMemory {
     if (degenerate) return;
 
     const tallies = this.byKey.get(key) ?? new Map<CategoryId, Tally>();
-    const tally = tallies.get(category) ?? { weight: 0, count: 0 };
+    const tally = tallies.get(category) ?? { weight: 0, count: 0, confirmed: 0 };
     tally.weight += SOURCE_WEIGHT(this.config, source);
     tally.count += 1;
+    if (source === 'confirmed') tally.confirmed += 1;
     tallies.set(category, tally);
     this.byKey.set(key, tallies);
   }
@@ -333,10 +374,7 @@ export class MerchantMemory {
     const tallies = this.byKey.get(key);
     if (!tallies || tallies.size === 0) return { status: 'unseen', key };
 
-    const score = scoreTallies(
-      [...tallies].map(([category, tally]) => [category, tally.weight] as const),
-      this.config.z,
-    );
+    const score = scoreTallies([...tallies], this.config.z);
     if (score === undefined) return { status: 'unseen', key };
 
     return acceptsScore(score, this.config)
@@ -370,6 +408,21 @@ export class MerchantMemory {
       for (const [category, tally] of tallies) distribution.set(category, tally.weight);
       yield { key, distribution };
     }
+  }
+
+  /**
+   * Independent sightings of one specific merchant-and-category pair.
+   *
+   * `lookup` reports this for the winning category only, which is the wrong
+   * number when a later tier answers with something the store does not favour —
+   * a model labelling a split merchant `shopping.electronics` when memory leans
+   * `shopping.household`. The ledger's trust decision is about the category
+   * actually being written, so it needs this rather than the winner's.
+   */
+  confirmedSupportFor(rawDescriptor: string, category: CategoryId): number {
+    const { key, degenerate } = normalizeDescriptor(rawDescriptor);
+    if (degenerate) return 0;
+    return this.byKey.get(key)?.get(category)?.confirmed ?? 0;
   }
 
   /** Distinct merchant keys held. */

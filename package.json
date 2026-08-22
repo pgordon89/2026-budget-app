@@ -16,6 +16,7 @@
     "analyze:knn": "tsx scripts/analyze-knn.ts",
     "analyze:tier2": "tsx scripts/analyze-tier2-cost.ts",
     "analyze:prior": "tsx scripts/analyze-prior.ts",
+    "analyze:provisional": "tsx scripts/analyze-provisional.ts",
     "analyze:llm": "tsx scripts/analyze-llm.ts",
     "analyze:learning": "tsx scripts/analyze-learning.ts",
     "eval": "tsx evals/runner.ts",

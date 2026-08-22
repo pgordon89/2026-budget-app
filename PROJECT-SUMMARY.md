@@ -28,6 +28,7 @@ npm install && npm run eval
 | Precision | 98.8% of those correct |
 | Resolved | 87.4% end to end |
 | Human review queue | 11.6% |
+| Counted in budget totals | 85.4%, at **99.7%** precision |
 | **Cost** | **$0.59 per 1,000 transactions** |
 | Cost if every transaction hit the model | $3.34 per 1,000 (extrapolated) |
 | Transfers misclassified as spend | **0 of 68** |
@@ -59,6 +60,8 @@ Four tiers, cheapest first. Each either answers confidently or passes the transa
 
 **Correction loop.** A user fixing a category writes back to the merchant store atomically — ledger row, immutable correction log, and reweighted tally in one transaction.
 
+**Label trust — `provisional` or `confirmed`.** A category being *shown* and a category being *summed* are different claims, and the ledger stores them separately. Labels from similarity or from the model are displayed and pre-fill a one-tap confirmation; they are excluded from every budget total until independent evidence backs them. Totals are built from exact merchant matches and human confirmations only.
+
 ---
 
 ## Engineering decisions worth defending
@@ -83,7 +86,7 @@ Four tiers, cheapest first. Each either answers confidently or passes the transa
 
 ---
 
-## Five findings the measurement produced
+## Six findings the measurement produced
 
 ### 1. A Wilson gate is not a precision policy
 
@@ -143,6 +146,25 @@ Reverted. Two things the method is worth more for than the result:
 - **The version bump changed two things, so both were priced.** v2 added the vote *and* reworded the system block. A third arm, free from the committed v1 responses, isolated the rewording — it cost **11 points of validation precision** (96.7% → 85.7%), so it was reverted too. Bundled changes get separated before either is judged.
 - **The planned control did not exist, and it is reported rather than dropped.** The design assumed a slice of keys with no neighbours, whose prompts are identical across arms, as a free read on model nondeterminism. That slice is empty here — a character-trigram embedder shares a feature with nearly anything — so the delta has no error bar. A difference of 1 in 109 needs none, but the gap is stated.
 
+### 6. The correction residue needed a third state, not a better threshold
+
+Findings #1 and #4 both ended at the same wall: the answers the correction loop creates top out at 92.3% (Tier 1) and 95.2% (Tier 2) whatever the gate, against a 97% floor, and Tier 3 runs at 90.4% on its own traffic. A system whose only states are *answered* and *sent to a human* must then either sum known-bad numbers into monthly totals or queue a quarter of the ledger.
+
+`provisional` is the third state. The label is written, shown, and pre-fills a one-tap confirmation; it is excluded from every total until something independent backs it. `npm run analyze:provisional` swept twelve rules over two dimensions — a floor on independent sightings, and which tiers may certify their own answers — and selected on validation, scored once on the holdout:
+
+| | counted in totals | precision |
+|---|---|---|
+| sum every pipeline answer (the old boolean) | 100% | 98.4% |
+| **selected rule** | **85.4%** | **99.7%** |
+
+**14.6 points of coverage in the totals, for 1.3 points of precision on the numbers a user actually reads.**
+
+Three things the measurement settled that the design got wrong:
+
+- **The tier matters; the count barely does.** Moving the support floor from 1 to 2 changed the counted set by one row out of 546. Almost the whole effect came from *which tiers may self-certify* — a dimension a support floor cannot express, and a support floor was the obvious first design. The rule reduces to: exact merchant matches and human confirmations count, similarity and the model do not.
+- **The 97% floor decides nothing here, so the objective had to change.** All twelve candidates clear it. A coverage-maximising rule would take the loosest and book 7 wrong totals to gain 3.8 points — the same slack-floor failure that twice selected a tier gate which regressed the holdout. Errors are ordered first instead, with coverage as the tiebreak, because the fallback is one tap rather than a paid escalation.
+- **Automatic promotion barely works, and that was the plan's premise.** The design assumed provisional rows would be lifted out as evidence accumulated. Measured: **4 rows of 221.** The reason is structural — a merchant only produces provisional rows when the pipeline *answers* it, and answering it is exactly why the user is never asked about it, so evidence never arrives on its own. The backlog is drained by taps, not by waiting. Because promotion is per merchant-and-category, clearing 221 rows costs 170 taps rather than 221 — a real but modest 1.3 rows per tap.
+
 ---
 
 ## Known problems
@@ -161,6 +183,10 @@ Reverted. Two things the method is worth more for than the result:
 
 **A coverage-maximising selection rule drifts permissive.** It has twice selected settings that cleared the floors on validation and regressed the holdout. When the floors cannot bind, the objective is wrong rather than merely loose.
 
+**Promotion-by-evidence is nearly inert: 4 rows of 221.** The provisional backlog is cleared by the user tapping confirm, not by the system settling it — so the one-tap UI is the mechanism, not a convenience on top of it. Until that UI exists, 14.6% of transactions stay out of totals with no way to clear them.
+
+**The eval does not score the budget-facing numbers.** `npm run eval` reports cascade coverage and precision; counted-in-totals and its precision come from `analyze:provisional` and are not in the regression gate. The number closest to what a user experiences is the one CI does not protect.
+
 **The review queue is 11.6% and nothing has moved it.** Tier 3 receives 269 escalations and answers 94; the rest fail its 0.90 confidence gate. This is now the largest single bucket of unresolved work, and finding #5 closed off the cheapest idea for reducing it.
 
 **Persona savings rate is 1.0%**, down from 3.2%, after adding churn merchants. Low but solvent, and flagged rather than tuned to a target.
@@ -178,14 +204,13 @@ Ordered by effort-to-evidence ratio. Each has an acceptance test stated up front
 
 3. **Hosted embedding model.** TF-IDF over character trigrams is exactly what confuses `PRESIDIO DENTAL` with `PRESIDIO VETERINARY` — the `Embedder` interface and disk cache are the prepared seam. **Blocked on access:** the dev environment's proxy injects Anthropic credentials only; Voyage/OpenAI need their own keys and egress. Built behind the cache when unblocked so the eval stays free. *Accept if:* it beats the lexical baseline on the same corpus — and note the bar moved, from 89.3% to **97.7%**, because the gate fix took most of what a better embedder was expected to deliver. The remaining case for it is coverage, not precision.
 
-### B. The correction-loop residue gets a mechanism, not a threshold
+### B. ~~The correction-loop residue gets a mechanism, not a threshold~~ ✅ Done — see finding #6
 
-Measured and settled: no gate reaches 97% on the answers write-back creates (88.7%/95.2% ceilings). So stop gating and change what an answer *is*:
+Shipped: a `category_status` column (`provisional` | `confirmed`), a `confirmed_count` on the merchant store that only independent evidence can move, promotion scoped to merchant-and-category, and `totalsByCategory` filtering to confirmed rows so no caller has to remember to. Selected by `npm run analyze:provisional`, and the selected rule is re-run through the real `Ledger` against Postgres and asserted to match the sweep — a rule chosen against a simulation is only as good as the simulation.
 
-- **Now:** marginal answers land in the ledger as `provisional`, upgraded to `confirmed` after N agreeing sightings. Schema change plus upgrade rule; measurable immediately (provisional population, upgrade rate, precision of provisional vs confirmed).
-- **At UI time:** provisional rows are exactly what the one-tap "we think it's *Dining* — confirm?" surface asks about. Users tolerate confirming a category far better than discovering a wrong one, so the review cost is one tap, not a queue.
+**Result: 85.4% of transactions counted in totals at 99.7% precision, against 98.4% for summing everything.** The acceptance test (≥97% on counted rows, provisional excluded) passes.
 
-*Accept if:* `confirmed`-status precision ≥97% with provisional answers excluded from budget-facing totals until upgraded.
+Carried forward: the one-tap confirm surface. Finding #6 showed automatic promotion clears 4 rows of 221, so that UI is the mechanism rather than a convenience — it belongs with the Next.js work, and the ledger query it needs (`reviewQueue`, which now distinguishes *questions* from *proposals*) is already there.
 
 ### C. Fix the selection objective, not just its floors
 
@@ -212,7 +237,7 @@ The system prompt is ~2,900 tokens against Haiku 4.5's 4,096-token minimum cache
 |---|---|---|
 | 1 | Taxonomy, seeded fixture corpus, temporal split | ✅ |
 | 2 | Four-tier pipeline, eval harness, CI accuracy gate | ✅ |
-| 3 | Ledger, correction loop, import, UI, budgets, reporting | ledger + correction loop done |
+| 3 | Ledger, correction loop, import, UI, budgets, reporting | ledger, correction loop, label-trust states done |
 | 4 | NL → constrained SQL, insight agent, cash-flow forecasting | |
 | 5 | Multimodal statement ingestion, cost/observability dashboard | |
 
@@ -231,6 +256,7 @@ npm run analyze:memory       # Tier 1: coverage/precision sweep
 npm run analyze:knn          # Tier 2: k and gate selection, calibration
 npm run analyze:tier2        # Tier 2: the gate frontier, priced in real model calls
 npm run analyze:prior        # Tier 2's vote as a Tier 3 prior — the negative result
+npm run analyze:provisional  # which labels a budget total may include
 npm run analyze:llm          # Tier 3: cost, latency, calibration, routing
 npm run analyze:gate         # gate selection against a write-back replay (--tier=2)
 npm run analyze:learning     # what the correction loop is actually worth

@@ -25,7 +25,6 @@ import {
   doublePrecision,
   timestamp,
   date,
-  boolean,
   index,
   uniqueIndex,
   primaryKey,
@@ -69,8 +68,24 @@ export const transactions = pgTable(
     /** Which tier answered: 'memory' | 'embedding' | 'llm' | null. */
     categorySource: text('category_source'),
     categoryConfidence: doublePrecision('category_confidence'),
-    /** True once a human has confirmed or corrected the category. */
-    categoryConfirmed: boolean('category_confirmed').notNull().default(false),
+    /**
+     * How much this label can be relied on: 'provisional' | 'confirmed'. Null
+     * while uncategorised.
+     *
+     * Replaces a `category_confirmed` boolean, and the extra state earns its
+     * keep. The boolean had to answer two questions at once — has a human seen
+     * this, and may a budget total include it — and the measurement said those
+     * come apart. No threshold gets the answers the correction loop creates above
+     * 97% precision (92.3% for Tier 1, 95.2% for Tier 2 at their ceilings), so a
+     * system that only knows "confirmed or not" must either book known-bad
+     * numbers into totals or send every unconfirmed row to a human.
+     *
+     * `provisional` is the third option: the label is good enough to show and to
+     * pre-fill a one-tap confirmation with, and not good enough to sum. Rows
+     * leave it by an upgrade rule (see `Ledger.correct`), so the queue drains as
+     * evidence accumulates rather than requiring a human per row.
+     */
+    categoryStatus: text('category_status'),
     /** Marginal cost of the prediction, in millionths of a dollar. Integer, so
      *  summing a million rows cannot drift. */
     categoryCostMicroUsd: bigint('category_cost_micro_usd', { mode: 'number' }).notNull().default(0),
@@ -81,8 +96,8 @@ export const transactions = pgTable(
     index('transactions_posted_on_idx').on(table.postedOn),
     index('transactions_merchant_key_idx').on(table.merchantKey),
     index('transactions_category_idx').on(table.categoryId),
-    // The review queue: uncategorised or unconfirmed, oldest first.
-    index('transactions_review_idx').on(table.categoryConfirmed, table.postedOn),
+    // The review queue and the budget-total filter both key off status.
+    index('transactions_status_idx').on(table.categoryStatus, table.postedOn),
     // Import idempotency: the same descriptor, date, amount and account is the
     // same transaction. Re-importing an overlapping statement must not duplicate.
     uniqueIndex('transactions_natural_key_idx').on(
@@ -114,6 +129,16 @@ export const merchantMemory = pgTable(
       .references(() => categories.id),
     weight: doublePrecision('weight').notNull().default(0),
     count: integer('count').notNull().default(0),
+    /**
+     * Sightings backed by independent evidence — imported history or a human
+     * correction — as opposed to the pipeline's own write-backs.
+     *
+     * Separate from `weight` because `weight` includes inferred observations and
+     * therefore moves when the system reads back its own guesses. A promotion
+     * rule built on `weight` would let a merchant certify itself; built on this,
+     * it cannot move without a human or history saying something new.
+     */
+    confirmedCount: integer('confirmed_count').notNull().default(0),
     updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
   },
   (table) => [primaryKey({ columns: [table.merchantKey, table.categoryId] })],

@@ -150,12 +150,18 @@ async function runArm(name: string, learns: boolean): Promise<ArmResult> {
       let tier: string | undefined;
       let confidence = 0;
       let cost = 0;
+      // Independent sightings behind whatever gets predicted, so the ledger can
+      // decide whether the label is solid enough to sum. Zero unless Tier 1
+      // answered: the later tiers exist precisely because the store has little
+      // or nothing on this merchant.
+      let confirmedSupport = 0;
 
       const tier1 = await memory.lookup(txn.rawDescriptor);
       if (tier1.status === 'hit') {
         predicted = tier1.category;
         tier = 'memory';
         confidence = tier1.confidence;
+        confirmedSupport = tier1.confirmedSupport;
       } else {
         const tier2 = await index.lookup(txn.rawDescriptor);
         if (tier2.status === 'hit') {
@@ -197,6 +203,7 @@ async function runArm(name: string, learns: boolean): Promise<ArmResult> {
           source: tier,
           confidence,
           costMicroUsd: Math.round(cost * 1_000_000),
+          confirmedSupport,
         });
         continue;
       }
